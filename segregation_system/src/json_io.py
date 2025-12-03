@@ -18,6 +18,7 @@ class JsonIO:
         return JsonIO._instance
 
     def listener(self, ip, port):
+        print(f"[SEGREGATION SYSTEM] Flask server online")
         self._app.run(host=ip, port=port, debug=False, threaded=True)
 
     def get_app(self):
