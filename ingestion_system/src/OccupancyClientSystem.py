@@ -16,6 +16,6 @@ class OccupancyClientSystem:
         self.uuid += 1
         return {
             "uuid": uuid,
-            "timestamp": datetime.datetime.now(),
+            "timestamp": datetime.datetime.now().isoformat(),
             "people_number": row["occupancy"]
         }

@@ -16,6 +16,6 @@ class ExpertClientSystem:
         self.uuid += 1
         return {
             "uuid": uuid,
-            "timestamp": datetime.datetime.now(),
+            "timestamp": datetime.datetime.now().isoformat(),
             "label": row["label"]
         }
