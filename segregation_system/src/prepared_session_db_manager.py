@@ -30,7 +30,7 @@ class PreparedSessionStorage:
         # TODO Validate before storing session
 
         query = """
-                INSERT INTO prepared_sessions (
+                INSERT INTO prepared_session (
                     session_id,
                     mean_current,
                     mean_voltage,
@@ -62,7 +62,7 @@ class PreparedSessionStorage:
             cur.execute("""
                 SELECT session_id, mean_current, mean_voltage, mean_temperature,
                        mean_external_temperature, mean_external_humidity, mean_occupancy, label
-                FROM prepared_sessions
+                FROM prepared_session
             """)
             sessions = cur.fetchall()
             return sessions
@@ -73,7 +73,7 @@ class PreparedSessionStorage:
     def clear_dataset(self):
         try:
             cur = self._conn.cursor()
-            cur.execute("DELETE FROM prepared_sessions")
+            cur.execute("DELETE FROM prepared_session")
             self._conn.commit()
             print("[INFO] Dataset successfully cleared.")
         except Exception as e:
