@@ -11,6 +11,7 @@ from segregation_system.src.coverage_report import CoverageReport
 class SegregationSystem:
 
     def __init__(self):
+        self.state = None
         self.segregation_system_config = None
         self.prepared_session_storage = PreparedSessionStorage()
         self.balancing_report = BalancingReport()
@@ -26,14 +27,14 @@ class SegregationSystem:
             print(f"Error: file {file_path} is not in JSON format.")
 
     def read_state(self):
-        state_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.txt")
-        with open(state_path, "r") as f:
-            state = f.read()
+        state_path = os.path.join(os.getcwd(), "state.txt")
+        with open(state_path, "r", encoding="utf-8") as f:
+            state = f.read().strip()
             return state
 
     def write_state(self, state):
-        state_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.txt")
-        with open(state_path, "w") as f:
+        state_path = os.path.join(os.getcwd(), "state.txt")
+        with open(state_path, "w", encoding="utf-8") as f:
             f.write(state)
 
     def run(self):
@@ -45,6 +46,9 @@ class SegregationSystem:
 
         print(f"[SEGREGATION SYSTEM] Configuration loaded")
 
+        current_state = self.read_state()
+        print(current_state)
+
         jsonIO = JsonIO.get_instance()
         listener = Thread(target=jsonIO.listener,
                           args=(self.segregation_system_config["segregation_system"]["ip"],
@@ -53,7 +57,6 @@ class SegregationSystem:
         listener.start()
 
         while True:
-            current_state = self.read_state()
 
             if current_state == "STORE":
 
@@ -70,13 +73,15 @@ class SegregationSystem:
 
                 self.prepared_session_storage.reset_counter()
 
-                print(f"[SEGREGATION SYSTEM] Store stage terminated. Balancing stage starting")
+                print(f"[SEGREGATION SYSTEM] Store state terminated. Balancing state starting")
                 self.write_state("BALANCING")
+                current_state = "BALANCING"
 
                 continue
 
             elif current_state == "BALANCING":
 
+                print(f"[SEGREGATION SYSTEM] dbg")
                 dataset = self.prepared_session_storage.get_all_sessions()
 
                 print(f"[SEGREGATION SYSTEM] Balancing report generated.")
@@ -86,8 +91,9 @@ class SegregationSystem:
                 print(f"[SEGREGATION SYSTEM] Balancing report exported in balancing_report.png.")
                 self.balancing_report.show_balancing_report()
 
-                print(f"[SEGREGATION SYSTEM] Balancing stage terminated. Coverage stage starting")
+                print(f"[SEGREGATION SYSTEM] Balancing state terminated. Coverage state starting")
                 self.write_state("COVERAGE")
+                current_state = "COVERAGE"
 
                 continue
 
@@ -101,9 +107,10 @@ class SegregationSystem:
                 print(f"[SEGREGATION SYSTEM] Coverage report exported in coverage_report.png.")
                 self.coverage_report.show_coverage_report()
 
-                print(f"[SEGREGATION SYSTEM] Coverage stage terminated. Learning stage starting")
+                print(f"[SEGREGATION SYSTEM] Coverage state terminated. Learning state starting")
                 self.write_state("LEARNING")
+                current_state = "LEARNING"
 
-                continue
+                exit(0)
 
             # todo elif current_state == "LEARNING":
