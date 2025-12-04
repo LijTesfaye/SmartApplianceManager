@@ -5,9 +5,14 @@ from threading import Thread
 from development_system.src.json_io import JsonIO
 
 
-class DevelopmentSystem:
+STAGES = ["waiting" , "set_avg_hyp" , "set_num_iters", "train", "set_hyp" ,
+          "gen_lrn_report" ,"gen_vld_report" , "gen_test_report" , "config_sent" ,
+          "classifier_sent", "ask_cnfg", "snd_clsfr"]
+
+class DevelopmentSystemOrchestrator:
 
     def __init__(self):
+        print("[INFO] STARTING THE DEVELOPMENT SYSTEM...")
         self.development_system_config = None
 
     def import_cfg(self, file_path):
