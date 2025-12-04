@@ -16,7 +16,7 @@ class ApplianceClientSystem:
         self.index = (self.index + 1) % len(self.df)
         return {
             "uuid": uuid,
-            "timestamp": datetime.datetime.now(),
+            "timestamp": datetime.datetime.now().isoformat(),
             "current": row["current"],
             "voltage": row["voltage"],
             "temperature": row["temperature"],

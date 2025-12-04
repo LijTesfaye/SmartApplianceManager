@@ -16,7 +16,7 @@ class EnvironmentalClientSystem:
         self.uuid += 1
         return {
             "uuid": uuid,
-            "timestamp": datetime.datetime.now(),
+            "timestamp": datetime.datetime.now().isoformat(),
             "temperature": row["temperature"],
             "humidity": row["humidity"]
         }
