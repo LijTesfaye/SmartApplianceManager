@@ -21,5 +21,6 @@
   },
   "currentPhase": "production",
   "minimumRecords": 10,
-  "missingSamplesThreshold": 3
+  "missingSamplesThreshold": 3,
+  "recordsCollectionPeriodSeconds": 10
 }

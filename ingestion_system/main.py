@@ -7,5 +7,5 @@ if __name__ == '__main__':
     try:
         ingestion_system.run()
     except KeyboardInterrupt:
-        print("Segregation App terminated")
+        print("Ingestion System App terminated")
         sys.exit(0)
