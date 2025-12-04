@@ -2,10 +2,11 @@ import json
 from pathlib import Path
 import time
 from threading import Thread
-from ingestion_system.src.json_io import JsonIO
+
+from ingestion_system.src.MessageController import MessageController
 
 
-class IngestionSystem:
+class IngestionSystemOrchestrator:
 
     def __init__(self):
         self.ingestion_system_config = None
@@ -28,12 +29,14 @@ class IngestionSystem:
 
         print(f"[INGESTION SYSTEM] Configuration loaded")
 
-        jsonIO = JsonIO.get_instance()
-        listener = Thread(target=jsonIO.listener,
+        message_controller = MessageController.get_instance()
+        listener = Thread(target=message_controller.listener,
                           args=(self.ingestion_system_config["ingestion_system"]["ip"],
                                 self.ingestion_system_config["ingestion_system"]["port"]))
         listener.setDaemon(True)
         listener.start()
+
+        
 
         while True:
             time.sleep(1)

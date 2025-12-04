@@ -6,7 +6,7 @@
   },
   "ingestion_system":
   {
-    "ip": "127.0.0.1",
+    "ip": "25.18.213.203",
     "port": 5002
   },
   "segregation_system":

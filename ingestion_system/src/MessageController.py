@@ -4,7 +4,7 @@ from flask import Flask, request
 from requests import post, exceptions
 
 
-class JsonIO:
+class MessageController:
     _instance = None
 
     def __init__(self):
@@ -15,9 +15,9 @@ class JsonIO:
 
     @staticmethod
     def get_instance():
-        if JsonIO._instance is None:
-            JsonIO._instance = JsonIO()
-        return JsonIO._instance
+        if MessageController._instance is None:
+            MessageController._instance = MessageController()
+        return MessageController._instance
 
     def listener(self, ip, port):
         # execute the listening server, for each message received, it will be handled by a thread
@@ -61,13 +61,13 @@ class JsonIO:
         return True
 
 
-app = JsonIO.get_instance().get_app()
+app = MessageController.get_instance().get_app()
 
 
 @app.get('/start')
 def start_app():
     print("[INFO] Start msg received")
-    receive_thread = Thread(target=JsonIO.get_instance().send_to_main)
+    receive_thread = Thread(target=MessageController.get_instance().send_to_main)
     receive_thread.start()
     return {}, 200
 
