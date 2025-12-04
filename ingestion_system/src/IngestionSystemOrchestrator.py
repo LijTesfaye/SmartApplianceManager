@@ -48,7 +48,5 @@ class IngestionSystemOrchestrator:
         occupancy_client = OccupancyClientSystem("data/occupancy.csv")
         expert_client = ExpertClientSystem("data/expert.csv")
 
-
-
         while True:
             time.sleep(1)
