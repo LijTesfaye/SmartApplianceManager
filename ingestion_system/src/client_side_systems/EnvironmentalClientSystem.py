@@ -35,7 +35,7 @@ class EnvironmentalClientSystem:
         return record
 
 
-    def simulate_missing_samples(self, record):
+    def simulate_missing_samples(self, record) -> dict:
         missing_probability = 0.05
         for key in record:
             if key == "uuid" or key == "timestamp":
