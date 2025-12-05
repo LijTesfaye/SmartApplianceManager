@@ -19,8 +19,8 @@
     "ip": "127.0.0.1",
     "port": 5007
   },
-  "currentPhase": "production",
-  "minimumRecords": 10,
+  "currentPhase": "evaluation",
+  "minimumRecords": 1,
   "missingSamplesThreshold": 3,
-  "recordsCollectionPeriodSeconds": 5
+  "recordsCollectionPeriodSeconds": 10
 }
