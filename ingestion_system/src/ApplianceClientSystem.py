@@ -1,5 +1,6 @@
 import datetime
-
+import time
+import random
 import pandas as pd
 
 class ApplianceClientSystem:
@@ -14,6 +15,9 @@ class ApplianceClientSystem:
         uuid = self.uuid
         self.uuid += 1
         self.index = (self.index + 1) % len(self.df)
+        # simulate delay
+        delay = random.uniform(1, 5)
+        time.sleep(delay)
         return {
             "uuid": uuid,
             "timestamp": datetime.datetime.now().isoformat(),

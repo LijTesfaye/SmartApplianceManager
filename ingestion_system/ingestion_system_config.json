@@ -20,7 +20,7 @@
     "port": 5007
   },
   "currentPhase": "evaluation",
-  "minimumRecords": 1,
+  "minimumRecords": 10,
   "missingSamplesThreshold": 3,
-  "recordsCollectionPeriodSeconds": 10
+  "recordsCollectionPeriodSeconds": 1
 }
