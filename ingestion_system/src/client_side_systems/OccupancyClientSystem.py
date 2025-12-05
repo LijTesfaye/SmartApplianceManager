@@ -12,7 +12,7 @@ class OccupancyClientSystem:
         self.index = 0
         self.uuid = 0
 
-    def get_record(self):
+    def get_record(self) -> OccupancyRecord:
         row = self.df.iloc[self.index]
 
         self.index = (self.index + 1) % len(self.df)
@@ -32,7 +32,7 @@ class OccupancyClientSystem:
         record.people_number = data["people_number"]
         return record
 
-    def simulate_missing_samples(self, record):
+    def simulate_missing_samples(self, record) -> dict:
         missing_probability = 0.05
         for key in record:
             if key == "uuid" or key == "timestamp":
