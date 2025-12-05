@@ -17,6 +17,7 @@ class IngestionSystemOrchestrator:
     def __init__(self):
         self.configuration_controller = None
         self.records_buffer = None
+        self.next_raw_session_uuid = 0
 
     def import_cfg(self, file_path):
         self.configuration_controller = ConfigurationController(file_path)
@@ -76,17 +77,13 @@ class IngestionSystemOrchestrator:
 
             print("[INGESTION SYSTEM] Creating raw session...")
             # create raw session
-            raw_session = self.create_raw_session()
+            raw_session = self.create_raw_session(label_record)
 
             # remove records
             self.records_buffer.delete_records()
 
             # mark missing samples
-            missing_samples = 0
-            for key in raw_session:
-                for sample in raw_session[key]:
-                    if sample is None:
-                        missing_samples += 1
+            missing_samples = self.mark_missing_samples(raw_session)
 
             # raw session valid?
             if missing_samples >= threshold:
@@ -100,7 +97,7 @@ class IngestionSystemOrchestrator:
                 else:
                     print("[INGESTION SYSTEM] Failed to send label to evaluation system")
 
-            raw_session["label"] = label_record
+            print(json.dumps(raw_session, indent=4))
             result = message_controller.send(preparation_system_address["ip"], preparation_system_address["port"], "???", raw_session)
             if result:
                 print("[INGESTION SYSTEM] Sent Raw session to preparation system")
@@ -108,8 +105,26 @@ class IngestionSystemOrchestrator:
                 print("[INGESTION SYSTEM] Failed to send Raw session to preparation system")
 
 
+    def create_raw_session(self, label=None):
+        records = self.records_buffer.get_records()
+        uuid = self.next_raw_session_uuid
+        self.next_raw_session_uuid += 1
 
+        raw_session = {
+            "uuid": uuid,
+            "applianceRecords": records["appliance"],
+            "environmentalRecords": records["environmental"],
+            "occupancyRecords": records["occupancy"],
+            "expertRecord": label
+        }
+        return raw_session
 
+    def mark_missing_samples(self, raw_session):
+        missing_samples = 0
+        attributes = ["applianceRecords", "environmentalRecords", "occupancyRecords"]
+        for key in attributes:
+            for sample in raw_session[key]:
+                if sample is None:
+                    missing_samples += 1
 
-    def create_raw_session(self):
-        return self.records_buffer.get_records()
+        return missing_samples
