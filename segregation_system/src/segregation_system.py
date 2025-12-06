@@ -48,14 +48,14 @@ class SegregationSystem:
 
         print(f"[SEGREGATION SYSTEM] Configuration loaded")
 
-        current_state = self.read_state()
-
         jsonIO = JsonIO.get_instance()
         listener = Thread(target=jsonIO.listener,
                           args=(self.segregation_system_config["segregation_system"]["ip"],
                                 self.segregation_system_config["segregation_system"]["port"]))
         listener.setDaemon(True)
         listener.start()
+
+        current_state = self.read_state()
 
         while True:
 
