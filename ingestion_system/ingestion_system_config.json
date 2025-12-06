@@ -11,7 +11,7 @@
   },
   "evaluation_system":
   {
-    "ip": "127.0.0.1",
+    "ip": "25.16.136.221",
     "port": 5006
   },
   "messaging_system":
@@ -22,5 +22,7 @@
   "currentPhase": "evaluation",
   "minimumRecords": 10,
   "missingSamplesThreshold": 3,
-  "recordsCollectionPeriodSeconds": 1
+  "recordsCollectionPeriodSeconds": 1,
+  "preparationSystemEndpoint": "???",
+  "evaluationSystemEndpoint": "label/expert"
 }

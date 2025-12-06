@@ -24,16 +24,16 @@ class OccupancyClientSystem:
         data = self.simulate_missing_samples({
             "uuid": uuid,
             "timestamp": datetime.datetime.now().isoformat(),
-            "people_number": row["occupancy"]
+            "occupancy": int(row["occupancy"])
         })
         record = OccupancyRecord()
         record.uuid = data["uuid"]
         record.timestamp = data["timestamp"]
-        record.people_number = data["people_number"]
+        record.occupancy = data["occupancy"]
         return record
 
     def simulate_missing_samples(self, record) -> dict:
-        missing_probability = 0.05
+        missing_probability = 0.01
         for key in record:
             if key == "uuid" or key == "timestamp":
                 continue

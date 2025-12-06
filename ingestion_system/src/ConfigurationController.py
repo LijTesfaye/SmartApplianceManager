@@ -30,3 +30,9 @@ class ConfigurationController:
 
     def get_records_collection_period_seconds(self):
         return self.current_config["recordsCollectionPeriodSeconds"]
+
+    def get_preparation_system_endpoint(self):
+        return self.current_config["preparationSystemEndpoint"]
+
+    def get_evaluation_system_endpoint(self):
+        return self.current_config["evaluationSystemEndpoint"]
