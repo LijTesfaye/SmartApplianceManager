@@ -10,7 +10,8 @@ class Label:
         "type": "object",
         "properties": {
             "uuid": {"type": "string"},
-            "type": {"type": "string", "enum": ["none", "electrical", "overheating"]}
+            "type": {"type": "string", "enum": ["none", "electrical", "overheating"]},
+            "timestamp": {"type": "string"}  # optional
         },
         "required": ["uuid", "type"],
         "additionalProperties": False

@@ -1,14 +1,24 @@
 """ Evaluation System main class"""
 
 import json
-import jsonschema
 from pathlib import Path
 from threading import Thread
+import jsonschema
 
+from evaluation_system.model.label import Label
 from evaluation_system.messaging.msg_json import MessagingJsonController
 from evaluation_system.repository.database_manager import DatabaseManager
-from evaluation_system.model.label import Label
-from evaluation_system.model.label_source import LabelSource
+from evaluation_system.reporting.evaluation_report_controller import EvaluationReportController
+from test_system.deployment import GET_IP
+
+
+PRINT_ENABLED = True
+
+_builtin_print = print
+def print(s):
+    """ Redefinition of print """
+    if PRINT_ENABLED:
+        _builtin_print(f"[EVALUATION SYSTEM] {s}")
 
 
 class EvaluationSystem:
@@ -19,13 +29,12 @@ class EvaluationSystem:
         self.database_manager = None
         self.evaluation_system_config = None
         self.msg_controller = None
+        self.eval_report_controller = None
 
     def import_cfg(self, file_name = "system_config.json"):
         """ Import configuration file"""
 
-        current_dir = Path(__file__).parent  # A/Y
-        config_dir = current_dir.parent / "config"
-        config_filepath = current_dir.parent / "config" / file_name
+        config_filepath = Path(__file__).parent.parent / "config" / file_name
 
         try:
             with open(config_filepath, 'r', encoding='utf-8') as f:
@@ -39,8 +48,9 @@ class EvaluationSystem:
         """ Setup database """
         self.database_manager = DatabaseManager()
 
-        # Create the tables
-        self.database_manager.create_tables()
+        # Create the tables (clearing previous database)
+        self.database_manager.create_tables(clear_if_exists = True)
+        print("Tables created")
 
     def setup_listener(self, ip, port):
         """ Setup listener thread """
@@ -53,6 +63,13 @@ class EvaluationSystem:
         listener.setDaemon(True)
         listener.start()
 
+    def setup_evaluation_report_controller(self, file_name = "system_config.json"):
+        """ Setup evaluation report controller """
+
+        self.eval_report_controller = EvaluationReportController()
+
+        self.eval_report_controller.setup(file_name)
+
     def setup(self):
         """ Setup system """
 
@@ -62,13 +79,25 @@ class EvaluationSystem:
         # Setup database
         self.setup_database()
 
-        # Setup listener
+        # Setup evaluation report controller
+        self.setup_evaluation_report_controller()
+
+        # TODO togli, metti solo prendere da file (quello tra "")
         self.setup_listener(
-            ip=self.evaluation_system_config["evaluation_system"]["ip"],
-            port=self.evaluation_system_config["evaluation_system"]["port"],
+            ip=GET_IP(),
+            port=self.evaluation_system_config["addresses"]["evaluation_system"]["port"],
         )
 
-        print("[EVALUATION SYSTEM] Setup completed")
+        # Setup listener
+        """
+        self.setup_listener(
+            ip=self.evaluation_system_config["addresses"]["evaluation_system"]["ip"],
+            port=self.evaluation_system_config["addresses"]["evaluation_system"]["port"],
+        )
+        """
+
+
+        print("Setup completed")
 
     def run(self):
         """ Main loop """
@@ -85,24 +114,46 @@ class EvaluationSystem:
             try:
                 # Convert to Label Object
                 label = Label.from_json(received_label_json)
+                print("[EVALUATION SYSTEM]: " +
+                      "LABEL [{str(label.get_label_type()):<12}" +
+                      " | {str(label_source):<12} " +
+                      "| {label.get_uuid()}]")
 
                 # Add to database
                 self.database_manager.store_label(label, label_source)
 
-                tot_rec = self.database_manager.get_total_record_count()
-                tot_pairs = self.database_manager.get_complete_labels_count()
-                print(f"[EVALUATION SYSTEM] Total records: {tot_rec}")
-                print(f"[EVALUATION SYSTEM] Total pairs: {tot_pairs}")
+                print(f" Current labels: {self.database_manager.get_count_pairs()} \
+                (complete pairs) / {self.database_manager.get_count_all()} (total)")
 
-                # TODO check number of completed pairs AGAINST the configuration
+                # TODO decide what to do with not complete labels
 
-                # TODO generate evaluation report
+                # TODO include timestamp, order label pairs by timestamp
+                #  (NEEDED FOR CONSECUTIVE ERRORS)
+                #  Decide how to handle different timestamps (Expert/Classifier)
 
-                # TODO view evaluation report
+                # If there are enough label pairs
+                if self.eval_report_controller.is_evaluation_possible():
+                    print("==========================")
+                    print("Starting evaluation report")
 
-                # TODO ask for ok/not ok
+                    # Generate evaluation report
+                    self.eval_report_controller.generate_report()
+                    # this also deletes used labels
 
-                # TODO module to simulate ok/not ok
+                    # Save report
+                    self.eval_report_controller.save_report()
+
+                    # View evaluation report
+                    self.eval_report_controller.visualize_report()
+
+                    # Ask for OK / NOT OK
+                    evaluation_result = EvaluationReportController.get_report_evaluation()
+
+                    # TODO fai qualcosa con il risultato
+
+                    self.eval_report_controller.close_report()
+
+
 
             except jsonschema.exceptions.ValidationError:
                 print(f"Validation error: {received_label_json}")
