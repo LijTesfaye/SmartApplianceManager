@@ -3,13 +3,28 @@ import sqlite3
 from ingestion_system.src.records.ApplianceRecord import ApplianceRecord
 from ingestion_system.src.records.EnvironmentalRecord import EnvironmentalRecord
 from ingestion_system.src.records.OccupancyRecord import OccupancyRecord
+from ingestion_system.src.records.Record import Record
 
 
 class RecordsBuffer:
+    """
+    RecordsBuffer will provide necessary apis between the orchestrator and the records database
+    """
+
     db_name: str
+    """
+    The name of the database file
+    """
+
     stored_records: int
+    """
+    Number of stored records
+    """
 
     def __init__(self):
+        """
+        Constructor
+        """
         self.db_name = "recordsBuffer.db"
         self.stored_records = -1
         conn = sqlite3.connect(self.db_name)
@@ -47,7 +62,12 @@ class RecordsBuffer:
         conn.close()
         self.stored_records = self.get_records_count()
 
-    def store_record(self, record):
+    def store_record(self, record: Record):
+        """
+        Stores the specified record in the database
+        :param record: Record
+        :return: None
+        """
         if isinstance(record, ApplianceRecord):
             self.store_appliance(record)
         elif isinstance(record, EnvironmentalRecord):
@@ -58,6 +78,11 @@ class RecordsBuffer:
 
 
     def store_appliance(self, record: ApplianceRecord):
+        """
+        Stores the appliance record in the database
+        :param record: ApplianceRecord
+        :return: None
+        """
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
         cursor.execute(
@@ -68,6 +93,11 @@ class RecordsBuffer:
         conn.close()
 
     def store_environmental(self, record: EnvironmentalRecord):
+        """
+        Stores the environmental record in the database
+        :param record: EnvironmentalRecord
+        :return: None
+        """
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
         cursor.execute(
@@ -78,6 +108,11 @@ class RecordsBuffer:
         conn.close()
 
     def store_occupancy(self, record: OccupancyRecord):
+        """
+        Stores the occupancy record in the database
+        :param record: OccupancyRecord
+        :return: None
+        """
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
         cursor.execute(
@@ -88,6 +123,10 @@ class RecordsBuffer:
         conn.close()
 
     def get_records(self) -> dict:
+        """
+        Get all buffered records
+        :return: dict
+        """
         ret = {
             "appliance": [],
             "environmental": [],
@@ -134,7 +173,11 @@ class RecordsBuffer:
         return ret
 
 
-    def get_records_count(self):
+    def get_records_count(self) -> int:
+        """
+        Get the number of buffered records
+        :return: int
+        """
         if self.stored_records >= 0:
             return self.stored_records
         self.stored_records = 0
@@ -149,6 +192,10 @@ class RecordsBuffer:
         return self.stored_records
 
     def delete_records(self):
+        """
+        Delete all buffered records
+        :return: None
+        """
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
         cursor.execute("DELETE FROM ApplianceRecord")
