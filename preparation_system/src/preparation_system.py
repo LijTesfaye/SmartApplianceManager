@@ -1,8 +1,9 @@
 import json
 from pathlib import Path
-import time
 from threading import Thread
 from preparation_system.src.json_io import JsonIO
+from preparation_system.src.cleaner import Cleaner
+from preparation_system.src.extractor import Extractor
 
 
 class PreparationSystem:
@@ -36,4 +37,36 @@ class PreparationSystem:
         listener.start()
 
         while True:
-            time.sleep(1)
+
+            raw_session = JsonIO.get_instance().receive()
+            print("[PREPARATION SYSTEM] Raw session received.")
+
+            # TODO raw session validation using schema
+
+            cleaner = Cleaner(self.preparation_system_config["limits"])
+
+            raw_session = cleaner.correct_missing_samples(raw_session)
+            print("[PREPARATION SYSTEM] Raw session missing samples corrected.")
+
+            raw_session = cleaner.correct_outliers(raw_session)
+            print("[PREPARATION SYSTEM] Raw session outliers corrected.")
+
+            extractor = Extractor(raw_session)
+            prepared_session = extractor.extract()
+            print("[PREPARATION SYSTEM] Prepared session extracted from raw session.")
+
+            is_development_phase = bool(self.preparation_system_config['development_phase'])
+
+            next_system = 'development_system'
+            if is_development_phase:
+                next_system = 'segregation_system'
+
+            print("[PREPARATION SYSTEM] Prepared")
+            print(prepared_session)
+            exit(0)
+"""
+            JsonIO.get_instance().send(self.preparation_system_config[next_system]["ip"],
+                                       self.preparation_system_config[next_system]["port"],
+                                       "/prepared_session",
+                                       prepared_session)
+"""
