@@ -58,7 +58,9 @@ class IngestionSystemOrchestrator:
         occupancy_client = OccupancyClientSystem("data/occupancy.csv")
         expert_client = ExpertClientSystem("data/expert.csv")
         evaluation_system_address = self.configuration_controller.get_evaluation_system_address()
+        evaluation_system_endpoint = self.configuration_controller.get_evaluation_system_endpoint()
         preparation_system_address = self.configuration_controller.get_preparation_system_address()
+        preparation_system_endpoint = self.configuration_controller.get_preparation_system_endpoint()
         period = self.configuration_controller.get_records_collection_period_seconds()
         threshold = self.configuration_controller.get_minimum_records()
         current_phase = self.configuration_controller.get_current_phase()
@@ -67,11 +69,11 @@ class IngestionSystemOrchestrator:
         while True:
             while True:
                 # records collection from client side systems
-                self.records_buffer.store_record(appliance_client.get_record(), "appliance")
+                self.records_buffer.store_record(appliance_client.get_record())
                 print("[INFO] Received Appliance record")
-                self.records_buffer.store_record(environmental_client.get_record(), "environmental")
+                self.records_buffer.store_record(environmental_client.get_record())
                 print("[INFO] Received Environmental record")
-                self.records_buffer.store_record(occupancy_client.get_record(), "occupancy")
+                self.records_buffer.store_record(occupancy_client.get_record())
                 print("[INFO] Received Occupancy record")
                 if self.records_buffer.get_records_count() >= threshold:
                     break
@@ -106,18 +108,18 @@ class IngestionSystemOrchestrator:
                 label_msg.dst_address = evaluation_system_address["ip"]
                 label_msg.dst_port = evaluation_system_address["port"]
                 label_msg.expert_record = label_record
-                result = message_controller.send(label_msg, "receive/expert")
+                result = message_controller.send(label_msg, evaluation_system_endpoint)
                 if result:
                     print("[INFO] Sent label to evaluation system")
                 else:
                     print("[ERR] Failed to send label to evaluation system")
 
-            #print(json.dumps(raw_session, indent=4))
+            # print(json.dumps(raw_session.to_dict(), indent=4))
             raw_session_msg = RawSessionMessage()
             raw_session_msg.dst_address = preparation_system_address["ip"]
             raw_session_msg.dst_port = preparation_system_address["port"]
             raw_session_msg.raw_session = raw_session
-            result = message_controller.send(raw_session_msg, "???")
+            result = message_controller.send(raw_session_msg, preparation_system_endpoint)
             if result:
                 print("[INFO] Sent Raw session to preparation system")
             else:
