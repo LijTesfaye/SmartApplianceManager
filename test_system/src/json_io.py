@@ -70,6 +70,12 @@ def start_sending_process():
     JsonIO.get_instance().put_json_into_queue("START")
     return {}, 200
 
+@app.route('/pairs')
+def start_sending_pairs():
+    print("[INFO] PAIRS")
+    JsonIO.get_instance().put_json_into_queue("START_PAIRS")
+    return {}, 200
+
 
 @app.route('/stop')
 def stop_sending_process():
@@ -77,7 +83,43 @@ def stop_sending_process():
     JsonIO.get_instance().put_json_into_queue("STOP")
     return {}, 200
 
-
 @app.route("/")
 def home():
-    return "Test System online!"
+    return """
+    <h1>Endpoints:</h1>
+    <ul>
+        <li>/start</li>
+        <li>/pairs</li>
+        <li>/stop</li>
+    </ul>
+
+    <button onclick="sendCommand('/start')">START</button>
+    <button onclick="sendCommand('/pairs')">START_PAIRS</button>
+    <button onclick="sendCommand('/stop')">STOP</button>
+
+    <br><br>
+    <textarea id="log" rows="20" cols="80" readonly style="overflow-y: scroll;"></textarea>
+
+    <script>
+        function sendCommand(endpoint) {
+            fetch(endpoint)
+                .then(response => {
+                    let log = document.getElementById('log');
+                    let timestamp = new Date().toLocaleTimeString();
+                    if (response.ok) {
+                        log.value += '[' + timestamp + '] ' + endpoint + ' command sent\\n';
+                    } else {
+                        log.value += '[' + timestamp + '] Error sending command to ' + endpoint + '\\n';
+                    }
+                    log.scrollTop = log.scrollHeight;
+                })
+                .catch(error => {
+                    let log = document.getElementById('log');
+                    let timestamp = new Date().toLocaleTimeString();
+                    log.value += '[' + timestamp + '] Request failed: ' + error + '\\n';
+                    log.scrollTop = log.scrollHeight;
+                });
+        }
+    </script>
+    """
+

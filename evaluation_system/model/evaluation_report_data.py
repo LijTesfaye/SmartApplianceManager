@@ -5,19 +5,34 @@ from evaluation_system.model.label_pair import LabelPair
 class EvaluationReportData:
     """Class for handling the evaluation report data"""
 
-    def __init__(
-        self,
-        label_pairs: List[LabelPair] = None,
-        errors: int = None,
-        errors_max: int = None,
-        consecutive_errors: int = None,
-        consecutive_errors_max: int = None,
-    ):
-        self._label_pairs = label_pairs if label_pairs is not None else []
-        self._errors = errors
-        self._errors_max = errors_max
-        self._consecutive_errors = consecutive_errors
-        self._consecutive_errors_max = consecutive_errors_max
+    def __init__(self):
+        self._label_pairs = None
+        self._errors = None
+        self._errors_max = None
+        self._consecutive_errors = None
+        self._consecutive_errors_max = None
+        self._errors_threshold_satisfied = None
+        self._consecutive_errors_threshold_satisfied = None
+
+    def to_dict(self):
+        """ Convert the evaluation report data to a dictionary """
+        return {
+            "label_pairs": [
+                {
+                    "uuid": p.get_uuid(),
+                    "label_expert": str(p.get_label_expert()),
+                    "label_classifier": str(p.get_label_classifier())
+                }
+                for p in (self.get_label_pairs() or [])
+            ],
+            "errors": self.get_errors(),
+            "errors_max": self.get_errors_max(),
+            "consecutive_errors": self.get_consecutive_errors(),
+            "consecutive_errors_max": self.get_consecutive_errors_max(),
+            "errors_threshold_satisfied": self.get_errors_threshold_satisfied(),
+            "consecutive_errors_threshold_satisfied":
+                self.get_consecutive_errors_threshold_satisfied()
+        }
 
     def get_label_pairs(self) -> List[LabelPair]:
         """Gets label pairs"""
@@ -58,3 +73,19 @@ class EvaluationReportData:
     def set_consecutive_errors_max(self, value: int):
         """Sets maximum consecutive errors"""
         self._consecutive_errors_max = value
+
+    def get_errors_threshold_satisfied(self) -> bool:
+        """Gets errors threshold satisfied"""
+        return self._errors_threshold_satisfied
+
+    def set_errors_threshold_satisfied(self, value: bool):
+        """Sets errors threshold satisfied"""
+        self._errors_threshold_satisfied = value
+
+    def get_consecutive_errors_threshold_satisfied(self) -> bool:
+        """Gets consecutive errors threshold satisfied"""
+        return self._consecutive_errors_threshold_satisfied
+
+    def set_consecutive_errors_threshold_satisfied(self, value: bool):
+        """Sets consecutive errors threshold satisfied"""
+        self._consecutive_errors_threshold_satisfied = value

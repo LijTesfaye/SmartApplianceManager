@@ -4,6 +4,7 @@ import time
 from threading import Thread
 
 from evaluation_system.model.label_source import LabelSource
+from test_system.deployment import GET_IP
 from test_system.src.json_io import JsonIO
 import random
 import uuid
@@ -61,7 +62,7 @@ class TestSystem:
 
     def start_listener(self):
         jsonIO = JsonIO.get_instance()
-        listener = Thread(target=jsonIO.listener, args=("127.0.0.1", 5100))
+        listener = Thread(target=jsonIO.listener, args=(GET_IP(), 5100))
 
         listener.setDaemon(True)
         listener.start()
@@ -69,14 +70,14 @@ class TestSystem:
 
 
     def run(self):
-        file_path = Path(__file__).parent.parent / "ingestion_system_config.json"
+        file_path = Path(__file__).parent.parent / "test_sys_config.json"
         self.import_cfg(file_path)
         self.start_listener()
 
         if self.ingestion_system_config is None:
             raise ValueError("Configuration not imported. Call import_cfg(file_path) first.")
 
-        print(f"[INGESTION SYSTEM] Configuration loaded")
+        print(f"[TEST SYSTEM] Configuration loaded")
 
         last_cmd = "STOP"
         cmd = "x"
@@ -95,7 +96,7 @@ class TestSystem:
                 if last_cmd == "STOP":
                     cmd = JsonIO.get_instance().receive(block=True, timeout=None)
                 else:
-                    cmd = JsonIO.get_instance().receive(block=True, timeout=0.75)
+                    cmd = JsonIO.get_instance().receive(block=True, timeout=1)
 
             except Exception as e:
                 if e.__class__.__name__ == "Empty":
@@ -104,15 +105,37 @@ class TestSystem:
                     print(f"[TEST] Unexpected receive error: {e}")
                     cmd = None
 
-            print(f"[TEST] Cmd received = {cmd}")
+            if cmd is not None:
+                print(f"[TEST] Cmd received = {cmd}")
 
-            if cmd == "START" or cmd == "STOP":
+            if cmd in ("START", "STOP", "START_PAIRS"):
                 last_cmd = cmd
 
             if last_cmd == "START":
                 JsonIO.get_instance().send(
-                    "127.0.0.1", 5006,
-                    f"receive/{random_source}",
+                    GET_IP(), 5006,
+                    f"label/{random_source}",
                     random_label.to_json()
                 )
                 print(f"[TEST] {random_source} label sent")
+
+            elif last_cmd == "START_PAIRS":
+                # Coppia expert/classifier con stesso UUID
+                shared_uuid = str(uuid.uuid4())
+
+                expert_label = Label(uuid=shared_uuid, label_type=random.choice(types))
+                classifier_label = Label(uuid=shared_uuid, label_type=random.choice(types))
+
+                JsonIO.get_instance().send(
+                    GET_IP(), 5006,
+                    "label/expert",
+                    expert_label.to_json()
+                )
+                print("[TEST] expert label sent")
+
+                JsonIO.get_instance().send(
+                    GET_IP(), 5006,
+                    "label/classifier",
+                    classifier_label.to_json()
+                )
+                print("[TEST] classifier label sent")

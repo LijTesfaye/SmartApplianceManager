@@ -1,6 +1,7 @@
 """ Module for message send/receive. Implemented via Singleton """
 
 import queue
+import logging
 from flask import Flask, request
 from requests import post, exceptions
 from evaluation_system.model.label_source import LabelSource
@@ -15,7 +16,7 @@ class MessagingJsonController:
         # Flask instance to receive data
         self._app = Flask(__name__)
         # a thread-safe queue to buffer the received json message
-        self._received_json_queue = queue.Queue()
+        self._msg_to_controller_queue = queue.Queue()
 
     @staticmethod
     def get_instance():
@@ -26,6 +27,10 @@ class MessagingJsonController:
 
     def listener(self, ip, port):
         """ Listener """
+        # Disable the default logging
+        log = logging.getLogger('werkzeug')
+        log.setLevel(logging.ERROR)
+
         # execute the listening server, for each message received, it will be handled by a thread
         self._app.run(host=ip, port=port, debug=False, threaded=True)
 
@@ -33,18 +38,20 @@ class MessagingJsonController:
         return self._app
 
     def send_to_main(self):
-        self._received_json_queue.put(True, block=True)
+        self._msg_to_controller_queue.put(True, block=True)
 
     def get_queue(self):
-        return self._received_json_queue
+        """ Get queue """
+        return self._msg_to_controller_queue
 
     def receive(self, block = True, timeout = None):
         """ Return message from queue """
-        return self._received_json_queue.get(block=block, timeout=timeout)
+        return self._msg_to_controller_queue.get(block=block, timeout=timeout)
 
-    def put_json_into_queue(self, received_json):
+    def put_object_into_queue(self, data):
+        """ Put received json into queue """
         # save received message into queue
-        self._received_json_queue.put(received_json)
+        self._msg_to_controller_queue.put(data)
 
     def send(self, ip, port, endpoint, data):
         url = f'http://{ip}:{port}/' + endpoint
@@ -67,9 +74,10 @@ class MessagingJsonController:
 
 app = MessagingJsonController.get_instance().get_app()
 
-
+# TODO Delete this (or maybe not)
 @app.route("/")
 def home():
+    """ home endpoint"""
     html = """
     <div>
       <h3>Endpoints</h3>
@@ -94,40 +102,35 @@ def home():
     return html
 
 
-@app.post("/receive/classifier")
+@app.post("/label/classifier")
 def receive_classifier_label():
     """ Receive label from classifier """
 
     # Extract JSON payload
     received_label = request.json
 
-    print(f"[RECEIVED CLASSIFIER LABEL]: {received_label}")
-
     # Add source info
     label_data = (received_label, LabelSource.CLASSIFIER)
 
     # Put into queue
-    MessagingJsonController.get_instance().put_json_into_queue(label_data)
+    MessagingJsonController.get_instance().put_object_into_queue(label_data)
 
     # Return ok
     return {}, 200
 
 
-@app.post("/receive/expert")
+@app.post("/label/expert")
 def receive_expert_label():
     """ Receive label from expert """
 
     # Extract JSON payload
     received_label = request.json
 
-    print(f"[RECEIVED EXPERT LABEL]: {received_label}")
-
     # Add source info
     label_data = (received_label, LabelSource.EXPERT)
 
     # Put into queue
-    MessagingJsonController.get_instance().put_json_into_queue(label_data)
+    MessagingJsonController.get_instance().put_object_into_queue(label_data)
 
     # Return ok
     return {}, 200
-

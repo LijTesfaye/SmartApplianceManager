@@ -2,6 +2,9 @@
 import os
 import sys
 import sqlite3
+import threading
+from typing import List
+
 from evaluation_system.model.label import Label
 from evaluation_system.model.label_pair import LabelPair
 from evaluation_system.model.label_source import LabelSource
@@ -15,55 +18,59 @@ class DatabaseManager:
 
         # Database path
         db_path = os.path.expanduser('~/evaluation_db.db')
+        self._lock = threading.Lock()
 
         # Connect with SQLite
         try:
-            self._conn = sqlite3.connect(db_path)
+            self._conn = sqlite3.connect(db_path, check_same_thread=False)
         except sqlite3.Error as e:
             print(f'[EVALUATION SYSTEM] SQL Connection Error [{e}]')
             sys.exit(1)
 
     def _run_query(self, query: str, params: tuple = None):
         """ Runs a query and returns the result """
-        cursor = self._conn.cursor()
+        with self._lock:
+            cursor = self._conn.cursor()
+            try:
+                if params is not None:
+                    cursor.execute(query, params)
+                else:
+                    cursor.execute(query)
 
-        try:
-            if params is not None:
-                cursor.execute(query, params)
-            else:
-                cursor.execute(query)
+                self._conn.commit()
+                return cursor
+            except sqlite3.Error as e:
+                print(f'[EVALUATION SYSTEM] Sqlite Execution Error [{e}]')
+                return None
 
-            self._conn.commit()
-            return cursor
-        except sqlite3.Error as e:
-            print(f'[EVALUATION SYSTEM] Sqlite Execution Error [{e}]')
-            return None
+    # Table management
 
-    def create_tables(self):
+    def create_tables(self, clear_if_exists=True):
         """ Creates the tables """
-        print("[EVALUATION SYSTEM] Creating tables")
+        if clear_if_exists:
+            self.clear_tables()
+
         query = "CREATE TABLE if not exists labels" \
                 "(uuid TEXT PRIMARY KEY UNIQUE, label_classifier TEXT, label_expert TEXT)"
         self._run_query(query)
 
     def clear_tables(self):
         """ Clears the tables """
-        print("[EVALUATION SYSTEM] Clearing tables")
         query = "DROP TABLE IF EXISTS labels;"
         self._run_query(query)
 
-    def get_complete_labels(self):
+    # Read operation
+
+    def get_label_pairs(self, limit: int):
         """ Returns the complete labels as LabelPair instances"""
-        query = "   SELECT * \
+        query = "  SELECT * \
                     FROM labels \
                     WHERE label_classifier IS NOT NULL \
-                        AND label_expert IS NOT NULL;"
-        cursor  = self._run_query(query)
+                        AND label_expert IS NOT NULL \
+                    LIMIT ?"
+        cursor  = self._run_query(query, (limit,))
 
-        # print labels
         rows = cursor.fetchall()
-        for row in rows:
-            print(row)
 
         label_pairs = []
         for uuid, label_expert, label_classifier in rows:
@@ -80,7 +87,7 @@ class DatabaseManager:
 
         return label_pairs
 
-    def get_complete_labels_count(self):
+    def get_count_pairs(self):
         """ Returns the number of complete labels """
         query = "   SELECT COUNT(*) \
                     FROM labels \
@@ -88,10 +95,9 @@ class DatabaseManager:
                         AND label_expert IS NOT NULL;"
         cursor = self._run_query(query)
         rows = cursor.fetchall()
-        print(f"[EVALUATION SYSTEM] Complete label pairs: {rows[0][0]}")
         return rows[0][0]
 
-    def get_total_record_count(self):
+    def get_count_all(self):
         """ Returns the number of complete labels """
         query = "   SELECT COUNT(*) \
                     FROM labels"
@@ -99,6 +105,8 @@ class DatabaseManager:
         rows = cursor.fetchall()
 
         return rows[0][0]
+
+    # Create / Update records
 
     def store_label(self, label: Label, label_source: LabelSource):
         """
@@ -140,3 +148,20 @@ class DatabaseManager:
 
         # Stores label object
         self.store_label(label, label_source)
+
+    # Delete operation
+
+    def delete_label_pairs(self, label_pairs: List[LabelPair]):
+        """ Delete label pairs"""
+
+        if not label_pairs:
+            return
+
+        # List of UUIDs
+        uuids = [pair.get_uuid() for pair in label_pairs]
+
+        # values array
+        placeholders = ",".join(["?"] * len(uuids))
+        query = f"DELETE FROM labels WHERE uuid IN ({placeholders});"
+
+        self._run_query(query, tuple(uuids))
