@@ -17,11 +17,29 @@ from ingestion_system.src.records.ExpertRecord import ExpertRecord
 
 
 class IngestionSystemOrchestrator:
+    """
+    Orchestrator for ingestion system, provides the main application logic
+    """
+
     configuration_controller: ConfigurationController
+    """
+    Controller for gathering configuration
+    """
+
     records_buffer: RecordsBuffer
+    """
+    Buffer for storing the gathered records
+    """
+
     next_raw_session_uuid: int
+    """
+    Keeps track of the next raw session UUID
+    """
 
     def __init__(self):
+        """
+        Constructor
+        """
         self.configuration_controller = None
         self.records_buffer = None
         self.next_raw_session_uuid = 0
@@ -38,6 +56,10 @@ class IngestionSystemOrchestrator:
             print(f"Error: file {file_path} is not in JSON format.")
 
     def run(self):
+        """
+        Main entry point
+        :return: None
+        """
         file_path = Path(__file__).parent.parent / "ingestion_system_config.json"
         self.import_cfg(file_path)
 
@@ -127,6 +149,11 @@ class IngestionSystemOrchestrator:
 
 
     def create_raw_session(self, label: ExpertRecord) -> RawSession:
+        """
+        Creates a new raw session
+        :param label: ExpertRecord
+        :return: RawSession
+        """
         records = self.records_buffer.get_records()
         uuid = self.next_raw_session_uuid
         self.next_raw_session_uuid += 1
@@ -140,6 +167,11 @@ class IngestionSystemOrchestrator:
         return raw_session
 
     def mark_missing_samples(self, raw_session: RawSession) -> int:
+        """
+        Counts the number of samples missing from the raw session
+        :param raw_session: RawSession
+        :return: int
+        """
         missing_samples = 0
         records_types = [raw_session.appliance_records, raw_session.environmental_records, raw_session.occupancy_records]
         for records in records_types:

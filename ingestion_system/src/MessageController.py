@@ -7,6 +7,10 @@ from ingestion_system.src.messages import Message
 
 
 class MessageController:
+    """
+    Provides primitives for messaging between systems
+    """
+
     _instance = None
 
     def __init__(self):
@@ -44,6 +48,13 @@ class MessageController:
         self._received_json_queue.put(received_json)
 
     def send(self, message: Message, endpoint):
+        """
+        Sends a message to an endpoint using the address in the message.
+        Returns if the message was successfully sent
+        :param message: Message
+        :param endpoint: str
+        :return: boolean
+        """
         url = f'http://{message.dst_address}:{message.dst_port}/' + endpoint
         response = None
         try:
