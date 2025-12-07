@@ -3,6 +3,8 @@ from pathlib import Path
 import time
 from threading import Thread
 
+from pip._internal.exceptions import ConfigurationError
+
 from ingestion_system.src.RawSession import RawSession
 from ingestion_system.src.client_side_systems.ApplianceClientSystem import ApplianceClientSystem
 from ingestion_system.src.ConfigurationController import ConfigurationController
@@ -60,6 +62,9 @@ class IngestionSystemOrchestrator:
         except json.JSONDecodeError:
             self.configuration_controller = None
             print(f"Error: file {file_path} is not in JSON format.")
+        except ConfigurationError as e:
+            print(f"Error: {e}")
+            exit(1)
 
     def run(self):
         """
