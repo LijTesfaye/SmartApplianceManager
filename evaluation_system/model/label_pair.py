@@ -1,7 +1,7 @@
 """ Module for defining label pairs """
 
-from evaluation_system.model.label import Label
-from evaluation_system.model.label_source import LabelSource
+from model.label import Label
+from model.label_source import LabelSource
 
 class LabelPair:
     """ Class for managing label pairs """

@@ -1,10 +1,11 @@
 """ Module for message send/receive. Implemented via Singleton """
-
+import os
+import json
 import queue
 import logging
+from datetime import datetime
 from flask import Flask, request
-from requests import post, exceptions
-from evaluation_system.model.label_source import LabelSource
+from model.label_source import LabelSource
 
 
 class MessagingJsonController:
@@ -35,10 +36,8 @@ class MessagingJsonController:
         self._app.run(host=ip, port=port, debug=False, threaded=True)
 
     def get_app(self):
+        """ Get app reference """
         return self._app
-
-    def send_to_main(self):
-        self._msg_to_controller_queue.put(True, block=True)
 
     def get_queue(self):
         """ Get queue """
@@ -53,28 +52,24 @@ class MessagingJsonController:
         # save received message into queue
         self._msg_to_controller_queue.put(data)
 
-    def send(self, ip, port, endpoint, data):
-        url = f'http://{ip}:{port}/' + endpoint
-        response = None
-        try:
-            response = post(url, json=data, timeout=10.0)
-        except exceptions.RequestException:
-            print("Endpoint system unreachable")
-            return False
+    @staticmethod
+    def send_messaging_system(data):
+        """ Send message to msg system (saves to file) """
 
-        if response.status_code != 200:
-            res = response.json()
-            error_message = 'unknown'
-            if 'error' in res:
-                error_message = res['error']
-            print(f'Sending Error: {error_message}')
-            return False
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        messages_dir = os.path.join(current_dir, "..", "messaging", "messages")
+        os.makedirs(messages_dir, exist_ok=True)
 
-        return True
+        timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+        filename = f"msg_sys_{timestamp}.json"
+
+        filepath = os.path.join(messages_dir, filename)
+
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
 
 app = MessagingJsonController.get_instance().get_app()
 
-# TODO Delete this (or maybe not)
 @app.route("/")
 def home():
     """ home endpoint"""

@@ -5,10 +5,10 @@ import sqlite3
 import threading
 from typing import List
 
-from evaluation_system.model.label import Label
-from evaluation_system.model.label_pair import LabelPair
-from evaluation_system.model.label_source import LabelSource
-from evaluation_system.model.label_type import LabelType
+from model.label import Label
+from model.label_pair import LabelPair
+from model.label_source import LabelSource
+from model.label_type import LabelType
 
 
 class DatabaseManager:

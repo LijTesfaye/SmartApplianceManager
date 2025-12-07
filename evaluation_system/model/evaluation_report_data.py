@@ -1,6 +1,6 @@
 """ Module for defining the evaluation report data """
 from typing import List
-from evaluation_system.model.label_pair import LabelPair
+from model.label_pair import LabelPair
 
 class EvaluationReportData:
     """Class for handling the evaluation report data"""
