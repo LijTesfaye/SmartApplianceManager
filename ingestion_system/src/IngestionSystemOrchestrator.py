@@ -1,3 +1,4 @@
+import datetime
 import json
 from pathlib import Path
 import time
@@ -51,6 +52,7 @@ class IngestionSystemOrchestrator:
         self.records_buffer = None
         self.next_raw_session_uuid = 0
         self.sessions_completed = 0
+        self.test_results = []
 
     def import_cfg(self, file_path):
         self.configuration_controller = ConfigurationController(file_path)
@@ -95,12 +97,15 @@ class IngestionSystemOrchestrator:
         preparation_system_address = self.configuration_controller.get_preparation_system_address()
         preparation_system_endpoint = self.configuration_controller.get_preparation_system_endpoint()
         period = self.configuration_controller.get_records_collection_period_seconds()
-        threshold = self.configuration_controller.get_minimum_records()
+        min_records = self.configuration_controller.get_minimum_records()
+        threshold = self.configuration_controller.get_missing_samples_threshold()
         current_phase = self.configuration_controller.get_current_phase()
         self.records_buffer = RecordsBuffer()
 
         production_sessions = self.configuration_controller.get_production_sessions()
         evaluation_sessions = self.configuration_controller.get_evaluation_sessions()
+
+        is_test = self.configuration_controller.is_test()
 
         while True:
             while True:
@@ -111,7 +116,7 @@ class IngestionSystemOrchestrator:
                 print("[INFO] Received Environmental record")
                 self.records_buffer.store_record(occupancy_client.get_record())
                 print("[INFO] Received Occupancy record")
-                if self.records_buffer.get_records_count() >= threshold:
+                if self.records_buffer.get_records_count() >= min_records:
                     break
                 time.sleep(period)
 
@@ -160,6 +165,9 @@ class IngestionSystemOrchestrator:
                 print("[INFO] Sent Raw session to preparation system")
                 self.sessions_completed += 1
 
+                if is_test:
+                    self.handle_test(message_controller)
+
                 if self.sessions_completed >= production_sessions and current_phase == "production":
                     current_phase = "production"
                     self.sessions_completed = 0
@@ -205,3 +213,12 @@ class IngestionSystemOrchestrator:
                     missing_samples += 1
 
         return missing_samples
+
+
+    def handle_test(self, message_controller):
+        test_start = datetime.datetime.now()
+        message_controller.receive()
+        test_end = datetime.datetime.now()
+        difference = test_end - test_start
+        with open("test.csv", "a") as f:
+            f.write(f"{test_start.isoformat()},{test_end.isoformat()},{difference.total_seconds()}\n")
