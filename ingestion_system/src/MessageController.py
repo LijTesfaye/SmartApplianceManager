@@ -88,3 +88,10 @@ def start_app():
 @app.route("/")
 def home():
     return "Ingestion System online!"
+
+@app.post("/test_stop")
+def test_stop():
+    print("[TEST] response arrived")
+    receive_thread = Thread(target=MessageController.get_instance().send_to_main)
+    receive_thread.start()
+    return {}, 200

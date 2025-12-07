@@ -20,11 +20,12 @@
     "port": 5007
   },
   "currentPhase": "evaluation",
-  "minimumRecords": 10,
+  "minimumRecords": 5,
   "missingSamplesThreshold": 3,
   "recordsCollectionPeriodSeconds": 1,
   "preparationSystemEndpoint": "???",
   "evaluationSystemEndpoint": "label/expert",
   "productionSessions": 20,
-  "evaluationSessions": 20
+  "evaluationSessions": 20,
+  "test": true
 }

@@ -148,3 +148,6 @@ class ConfigurationController:
         :return: int
         """
         return self.current_config["evaluationSessions"]
+
+    def is_test(self):
+        return self.current_config["test"]
