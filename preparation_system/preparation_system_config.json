@@ -1,6 +1,6 @@
 {
   "preparation_system": {
-    "ip": "127.0.0.1",
+    "ip": "25.11.231.246",
     "port": 5001
   },
   "ingestion_system": {
@@ -16,11 +16,11 @@
     "port": 5004
   },
   "production_system": {
-    "ip": "127.0.0.1",
+    "ip": "25.16.136.221",
     "port": 5005
   },
   "evaluation_system": {
-    "ip": "127.0.0.1",
+    "ip": "25.16.136.221",
     "port": 5006
   },
   "messaging_system": {
