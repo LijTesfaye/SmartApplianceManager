@@ -1,5 +1,7 @@
+""" Evaluation system starting module """
+
 import sys
-from evaluation_system.controller.evaluation_system import EvaluationSystem
+from controller.evaluation_system import EvaluationSystem
 
 if __name__ == '__main__':
 

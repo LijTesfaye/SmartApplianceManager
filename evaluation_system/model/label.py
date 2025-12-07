@@ -1,6 +1,6 @@
 """ Module for defining labels """
 import jsonschema
-from evaluation_system.model.label_type import LabelType
+from model.label_type import LabelType
 
 
 class Label:
@@ -9,7 +9,7 @@ class Label:
     RECEIVED_LABEL_SCHEMA = {
         "type": "object",
         "properties": {
-            "uuid": {"type": "string"},
+            "uuid": {"type": ["string", "number"]},
             "type": {"type": "string", "enum": ["none", "electrical", "overheating"]},
             "timestamp": {"type": "string"}  # optional
         },

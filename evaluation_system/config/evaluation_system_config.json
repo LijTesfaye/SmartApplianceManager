@@ -20,7 +20,7 @@
     }
   },
   "evaluation_parameters" : {
-    "label_pairs" : 7,
+    "label_pairs" : 10,
     "max_errors": 3,
     "max_consecutive_errors": 2
   }

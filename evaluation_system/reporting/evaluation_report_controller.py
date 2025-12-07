@@ -5,9 +5,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import List
 
-from evaluation_system.model.label_pair import LabelPair
-from evaluation_system.repository.database_manager import DatabaseManager
-from evaluation_system.model.evaluation_report_data import EvaluationReportData
+from model.label_pair import LabelPair
+from model.evaluation_report_data import EvaluationReportData
+from repository.database_manager import DatabaseManager
 
 
 def calculate_errors(label_pairs: List[LabelPair]) -> int:
@@ -47,7 +47,7 @@ class EvaluationReportController:
         self._evaluation_config_json = None
         self._current_report = None
 
-    def setup(self, config_filename = "system_config.json"):
+    def setup(self, config_filename = "evaluation_system_config.json"):
         """ Set up the controller """
         self._database_manager = DatabaseManager()
 
