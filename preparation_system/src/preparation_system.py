@@ -4,12 +4,14 @@ from threading import Thread
 from preparation_system.src.json_io import JsonIO
 from preparation_system.src.cleaner import Cleaner
 from preparation_system.src.extractor import Extractor
+from preparation_system.src.raw_session_schema_verifier import RawSessionSchemaVerifier
 
 
 class PreparationSystem:
 
     def __init__(self):
         self.preparation_system_config = None
+        self.raw_session_schema_verifier = RawSessionSchemaVerifier()
 
     def import_cfg(self, file_path):
         try:
@@ -41,7 +43,8 @@ class PreparationSystem:
             raw_session = JsonIO.get_instance().receive()
             print("[PREPARATION SYSTEM] Raw session received.")
 
-            # TODO raw session validation using schema
+            if not self.raw_session_schema_verifier.verify(raw_session):
+                print("[PREPARATION SYSTEM] Raw session received is invalid.")
 
             cleaner = Cleaner(self.preparation_system_config["limits"])
 
@@ -57,16 +60,14 @@ class PreparationSystem:
 
             is_development_phase = bool(self.preparation_system_config['development_phase'])
 
-            next_system = 'development_system'
+            next_system = 'production_system'
             if is_development_phase:
                 next_system = 'segregation_system'
 
             print("[PREPARATION SYSTEM] Prepared")
             print(prepared_session)
-            exit(0)
-"""
+
             JsonIO.get_instance().send(self.preparation_system_config[next_system]["ip"],
                                        self.preparation_system_config[next_system]["port"],
                                        "/prepared_session",
                                        prepared_session)
-"""
