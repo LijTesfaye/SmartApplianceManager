@@ -1,5 +1,7 @@
 import json
 
+from pip._internal.exceptions import ConfigurationError
+
 
 class ConfigurationController:
     """
@@ -32,6 +34,43 @@ class ConfigurationController:
         """
         with open(self.file_path, 'r') as f:
             self.current_config = json.load(f)
+        mandatory_fields = [
+            "preparation_system",
+            "ingestion_system",
+            "evaluation_system",
+            "currentPhase",
+            "minimumRecords",
+            "missingSamplesThreshold",
+            "recordsCollectionPeriodSeconds",
+            "preparationSystemEndpoint",
+            "evaluationSystemEndpoint",
+            "productionSessions",
+            "evaluationSessions"
+        ]
+        for field in mandatory_fields:
+            if field not in self.current_config:
+                raise ConfigurationError(f"Missing mandatory field {field} in configuration file")
+
+        fields_types = [
+            dict,
+            dict,
+            dict,
+            str,
+            int,
+            int,
+            int,
+            str,
+            str,
+            int,
+            int
+        ]
+        for i in range(len(mandatory_fields)):
+            if not isinstance(self.current_config[mandatory_fields[i]], fields_types[i]):
+                raise ConfigurationError(f"Wrong type for field {mandatory_fields[i]} in configuration file, expected {fields_types[i]}")
+            if fields_types[i] == dict and "port" not in self.current_config[mandatory_fields[i]] and "ip" not in self.current_config[mandatory_fields[i]]:
+                raise ConfigurationError(f"Missing ip or field in field {mandatory_fields[i]} in configuration file")
+
+
 
     def get_ingestion_system_address(self) -> dict:
         """
