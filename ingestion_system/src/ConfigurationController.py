@@ -95,3 +95,17 @@ class ConfigurationController:
         :return: str
         """
         return self.current_config["evaluationSystemEndpoint"]
+
+    def get_production_sessions(self) -> int:
+        """
+        Gets the number of production sessions to complete before switching to evaluation phase
+        :return: int
+        """
+        return self.current_config["productionSessions"]
+
+    def get_evaluation_sessions(self) -> list:
+        """
+        Gets the number of evaluation sessions to complete before switching to production phase
+        :return: int
+        """
+        return self.current_config["evaluationSessions"]

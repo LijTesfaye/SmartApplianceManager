@@ -36,6 +36,11 @@ class IngestionSystemOrchestrator:
     Keeps track of the next raw session UUID
     """
 
+    sessions_completed: int
+    """
+    Counter for the completed sessions in the current phase
+    """
+
     def __init__(self):
         """
         Constructor
@@ -43,6 +48,7 @@ class IngestionSystemOrchestrator:
         self.configuration_controller = None
         self.records_buffer = None
         self.next_raw_session_uuid = 0
+        self.sessions_completed = 0
 
     def import_cfg(self, file_path):
         self.configuration_controller = ConfigurationController(file_path)
@@ -87,6 +93,9 @@ class IngestionSystemOrchestrator:
         threshold = self.configuration_controller.get_minimum_records()
         current_phase = self.configuration_controller.get_current_phase()
         self.records_buffer = RecordsBuffer()
+
+        production_sessions = self.configuration_controller.get_production_sessions()
+        evaluation_sessions = self.configuration_controller.get_evaluation_sessions()
 
         while True:
             while True:
@@ -144,6 +153,17 @@ class IngestionSystemOrchestrator:
             result = message_controller.send(raw_session_msg, preparation_system_endpoint)
             if result:
                 print("[INFO] Sent Raw session to preparation system")
+                self.sessions_completed += 1
+
+                if self.sessions_completed >= production_sessions and current_phase == "production":
+                    current_phase = "production"
+                    self.sessions_completed = 0
+                    print("[INFO] Finished production phase, starting evaluation phase...")
+                elif self.sessions_completed >= evaluation_sessions and current_phase == "evaluation":
+                    current_phase = "production"
+                    self.sessions_completed = 0
+                    print("[INFO] Finished production phase, starting evaluation phase...")
+
             else:
                 print("[ERR] Failed to send Raw session to preparation system")
 
