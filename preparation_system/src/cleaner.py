@@ -1,24 +1,25 @@
 import numpy as np
 
 
+def _interpolate_list_of_values(values):
+    ts = np.array(values, dtype=float)
+    valid = ~np.isnan(ts)
+    invalid = np.isnan(ts)
+
+    if valid.sum() == 0:
+        return ts.tolist()
+
+    ts[invalid] = np.interp(
+        x=np.flatnonzero(invalid),
+        xp=np.flatnonzero(valid),
+        fp=ts[valid]
+    )
+    return ts.tolist()
+
+
 class Cleaner:
     def __init__(self, limits: dict):
         self.limits = limits
-
-    def _interpolate_list_of_values(self, values):
-        ts = np.array(values, dtype=float)
-        valid = ~np.isnan(ts)
-        invalid = np.isnan(ts)
-
-        if valid.sum() == 0:
-            return ts.tolist()
-
-        ts[invalid] = np.interp(
-            x=np.flatnonzero(invalid),
-            xp=np.flatnonzero(valid),
-            fp=ts[valid]
-        )
-        return ts.tolist()
 
     def correct_missing_samples(self, session: dict):
         corrected = session.copy()
@@ -30,7 +31,7 @@ class Cleaner:
                     v = rec.get(field)
                     values.append(np.nan if v is None else float(v))
 
-                interpolated = self._interpolate_list_of_values(values)
+                interpolated = _interpolate_list_of_values(values)
 
                 for rec, new_val in zip(corrected["applianceRecords"], interpolated):
                     rec[field] = new_val
@@ -42,7 +43,7 @@ class Cleaner:
                     v = rec.get(field)
                     values.append(np.nan if v is None else float(v))
 
-                interpolated = self._interpolate_list_of_values(values)
+                interpolated = _interpolate_list_of_values(values)
 
                 for rec, new_val in zip(corrected["environmentalRecords"], interpolated):
                     rec[field] = new_val
@@ -53,7 +54,7 @@ class Cleaner:
                 v = rec.get("people_number")
                 values.append(np.nan if v is None else float(v))
 
-            interpolated = self._interpolate_list_of_values(values)
+            interpolated = _interpolate_list_of_values(values)
 
             for rec, new_val in zip(corrected["occupancyRecords"], interpolated):
                 rec["people_number"] = new_val
@@ -76,7 +77,7 @@ class Cleaner:
                         v = np.nan
                     values.append(v)
 
-                interpolated = self._interpolate_list_of_values(values)
+                interpolated = _interpolate_list_of_values(values)
 
                 for rec, new_val in zip(records, interpolated):
                     rec[field_json_name] = new_val
