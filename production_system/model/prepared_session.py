@@ -4,8 +4,8 @@ import jsonschema
 class PreparedSession:
     """ Class for managing a prepared session """
 
-    def __init__(self, uuid, cur, vol, temp, e_t, e_h, occ):
-        self._uuid = uuid
+    def __init__(self, UUID, cur, vol, temp, e_t, e_h, occ):
+        self._UUID = UUID
         self._mean_current = cur
         self._mean_voltage = vol
         self._mean_temperature = temp
@@ -16,7 +16,7 @@ class PreparedSession:
     PREPARED_SESSION_SCHEMA = {
         "type": "object",
         "properties": {
-            "uuid": {"type": ["string", "number"]},
+            "UUID": {"type": ["string", "number"]},
             "mean_current": {"type": "number"},
             "mean_voltage": {"type": "number"},
             "mean_temperature": {"type": "number"},
@@ -27,7 +27,7 @@ class PreparedSession:
             "label": {"type": "string"}  # optional
         },
         "required": [
-            "uuid",
+            "UUID",
             "mean_current",
             "mean_voltage",
             "mean_temperature",
@@ -44,11 +44,16 @@ class PreparedSession:
         Creates a new prepared session from the given JSON data.
         Performs a validation against the preset JSON schema (PREPARED_SESSION_SCHEMA)
         """
-
-        jsonschema.validate(instance=data, schema=PreparedSession.PREPARED_SESSION_SCHEMA)
+        try:
+            jsonschema.validate(instance=data, schema=PreparedSession.PREPARED_SESSION_SCHEMA)
+        except jsonschema.exceptions.ValidationError as e:
+            raise jsonschema.exceptions.ValidationError(
+                f"Invalid PreparedSession JSON\nSchema: \
+                {PreparedSession.PREPARED_SESSION_SCHEMA};\nreceived: {data}"
+            ) from e
 
         return PreparedSession(
-            uuid=data["uuid"],
+            UUID=data["UUID"],
             cur=data["mean_current"],
             vol=data["mean_voltage"],
             temp=data["mean_temperature"],
@@ -58,7 +63,7 @@ class PreparedSession:
         )
 
     def to_tuple(self):
-        """ Converts the prepared session to a tuple. Excludes the uuid """
+        """ Converts the prepared session to a tuple. Excludes the UUID """
         return (
             self._mean_current,
             self._mean_voltage,
@@ -68,6 +73,6 @@ class PreparedSession:
             self._mean_occupancy
         )
 
-    def get_uuid(self):
+    def get_UUID(self):
         """ Gets the UUID of the prepared session """
-        return self._uuid
+        return self._UUID

@@ -1,10 +1,9 @@
 """ Classification System main class"""
 
-import json
-from pathlib import Path
 from threading import Thread
 import jsonschema
 
+from config.configuration_controller import ConfigurationController
 from classifier.classifier import Classifier
 from messaging.msg_json import MessagingJsonController
 from model.prepared_session import PreparedSession
@@ -18,8 +17,7 @@ class ClassificationSystem:
 
     def __init__(self):
         """ Constructor """
-        self._system_config = None
-        self._addresses = None
+        self._conf = None
         self._msg_controller = None
         self._classifier = None
         self._session_counter = None
@@ -27,20 +25,10 @@ class ClassificationSystem:
         self._error_logger = None
         self._test_service_flag = True
 
-    def import_cfg(self, file_name = "classification_system_config.json"):
-        """ Import configuration file"""
-
-        config_filepath = Path(__file__).parent.parent / "config" / file_name
-
-        try:
-            with open(config_filepath, 'r', encoding='utf-8') as f:
-                config = json.load(f)
-                self._system_config = config["system_parameters"]
-                self._addresses = config["addresses"]
-        except FileNotFoundError:
-            print(f"Error: file {config_filepath} does not exist.")
-        except json.JSONDecodeError:
-            print(f"Error: file {config_filepath} is not in JSON format.")
+    def setup_configuration_controller(self):
+        """ Setup configuration controller """
+        self._conf = ConfigurationController()
+        self._conf.import_config()
 
     def setup_listener(self, ip, port):
         """ Setup listener thread """
@@ -56,7 +44,7 @@ class ClassificationSystem:
     def setup_classifier(self):
         """ Setup classifier """
         # If not in development phase, setup classifier
-        if not self._system_config["development_phase"]:
+        if not self._conf.get_sys_params()["development_phase"]:
             self._classifier = Classifier()
             self._classifier.load_from_file()
 
@@ -69,21 +57,21 @@ class ClassificationSystem:
         """ Setup system """
 
         # Import configuration
-        self.import_cfg()
+        self.setup_configuration_controller()
 
         # Setup classifier
         self.setup_classifier()
 
         # Setup listener
         self.setup_listener(
-            ip=self._addresses["classification_system"]["ip"],
-            port=self._addresses["classification_system"]["port"],
+            ip=self._conf.get_addresses()["classification_system"]["ip"],
+            port=self._conf.get_addresses()["classification_system"]["port"],
         )
 
         # setup logger
         self.setup_logger()
 
-        if not self._system_config["development_phase"]:
+        if not self._conf.get_sys_params()["development_phase"]:
             self._session_counter = 0
             self._current_session = self.PHASE_EVALUATION
         else:
@@ -95,7 +83,7 @@ class ClassificationSystem:
         """ Updates the system current phase """
 
         # No automatic switch from dev phase
-        if self._system_config["development_phase"]:
+        if self._conf.get_sys_params()["development_phase"]:
             return
 
         if self._session_counter is None:
@@ -106,13 +94,13 @@ class ClassificationSystem:
 
         # Switch session
         if self._current_session == self.PHASE_PRODUCTION:
-            if self._session_counter >= self._system_config["production_sessions"]:
+            if self._session_counter >= self._conf.get_sys_params()["production_sessions"]:
                 self._current_session = self.PHASE_EVALUATION
                 self._session_counter = 0
                 print("[CLASSIFICATION SYSTEM] Switched to evaluation phase")
 
         elif self._current_session == self.PHASE_EVALUATION:
-            if self._session_counter >= self._system_config["evaluation_sessions"]:
+            if self._session_counter >= self._conf.get_sys_params()["evaluation_sessions"]:
                 self._current_session = self.PHASE_PRODUCTION
                 self._session_counter = 0
                 print("[CLASSIFICATION SYSTEM] Switched to production phase")
@@ -127,7 +115,7 @@ class ClassificationSystem:
         while True:
 
             # Depending on which phase (dev or not)
-            dev_phase = self._system_config["development_phase"]
+            dev_phase = self._conf.get_sys_params()["development_phase"]
 
             # While in development phase
             if dev_phase:
@@ -146,8 +134,21 @@ class ClassificationSystem:
                     self._classifier.store()
 
                     # Send message (end of development, reconfigure systems)
-                    msg = {"deployment" : "done"}
-                    MessagingJsonController.send_messaging_system(msg)
+
+                    msg = {"deployment": "done"}
+                    if not self._test_service_flag:
+                        MessagingJsonController.send_messaging_system(msg)
+                    else:
+                        print("(TEST) SENDING classifier TO INGESTION")
+                        ip = self._conf.get_addresses()["ingestion_system"]["ip"]
+                        port = self._conf.get_addresses()["ingestion_system"]["port"]
+                        MessagingJsonController.send(
+                            self._conf.get_addresses()["ingestion_system"]["ip"],
+                            self._conf.get_addresses()["ingestion_system"]["port"],
+                            "/test_stop",
+                            msg
+                        )
+
 
                     print("[CLASSIFICATION SYSTEM] Deployment completed")
 
@@ -173,44 +174,44 @@ class ClassificationSystem:
 
                     # Differentiate between Production / Evaluation phase
 
+                    # In evaluation phase send label to Evaluation System
                     if self._current_session == self.PHASE_EVALUATION:
                         # Send label
                         MessagingJsonController.send(
-                            self._addresses["evaluation_system"]["ip"],
-                            self._addresses["evaluation_system"]["port"],
+                            self._conf.get_addresses()["evaluation_system"]["ip"],
+                            self._conf.get_addresses()["evaluation_system"]["port"],
                             "/label/classifier",
                             label.to_dict()
                         )
 
-                    elif self._current_session == self.PHASE_PRODUCTION:
-                        # Send message to final client
-                        if not self._test_service_flag:
-                            MessagingJsonController.send(
-                                self._addresses["client_side_system"]["ip"],
-                                self._addresses["client_side_system"]["port"],
-                                "/fault_risk",
-                                label.to_dict()
-                            )
-                        else:
-                            print(f"(TEST) SENDING TO INGESTION:\n{label.to_dict()}")
-                            ip = self._addresses["ingestion_system"]["ip"]
-                            port = self._addresses["ingestion_system"]["port"]
-                            print(f"TO [{ip}:{port}]")
-                            MessagingJsonController.send(
-                                self._addresses["ingestion_system"]["ip"],
-                                self._addresses["ingestion_system"]["port"],
-                                "/test_stop",
-                                label.to_dict()
-                            )
+                    # Always send to final client
+                    if not self._test_service_flag:
+                        MessagingJsonController.send(
+                            self._conf.get_addresses()["client_side_system"]["ip"],
+                            self._conf.get_addresses()["client_side_system"]["port"],
+                            "/fault_risk",
+                            label.to_dict()
+                        )
+                    else:
+                        print(f"(TEST) SENDING TO INGESTION:\n{label.to_dict()}")
+                        ip = self._conf.get_addresses()["ingestion_system"]["ip"]
+                        port = self._conf.get_addresses()["ingestion_system"]["port"]
+                        msg = {'uuid': label.get_UUID()}
+                        print(f"TO [{ip}:{port}]: {msg}")
+                        MessagingJsonController.send(
+                            self._conf.get_addresses()["ingestion_system"]["ip"],
+                            self._conf.get_addresses()["ingestion_system"]["port"],
+                            "/test_stop",
+                            msg
+                        )
 
                     # Update session
                     self.update_phase()
 
                 # Discard any other type of message
-                except jsonschema.exceptions.ValidationError:
-                    print("[CLASSIFICATION SYSTEM] [PROD/EVAL] Validation error")
-                    self._error_logger.log(
-                        f"[PROD/EVAL] json validation error: {prepared_session_json}")
+                except jsonschema.exceptions.ValidationError as v:
+                    print(f"[CLASSIFICATION SYSTEM] [PROD/EVAL] Validation error: {v}")
+                    self._error_logger.log(f"[PROD/EVAL] json validation error: {v}")
 
                 except Exception as e:
                     print(f"General error: {e}")

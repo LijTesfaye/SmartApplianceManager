@@ -51,7 +51,7 @@ class DatabaseManager:
             self.clear_tables()
 
         query = "CREATE TABLE if not exists labels" \
-                "(uuid TEXT PRIMARY KEY UNIQUE, label_classifier TEXT, label_expert TEXT)"
+                "(UUID TEXT PRIMARY KEY UNIQUE, label_classifier TEXT, label_expert TEXT)"
         self._run_query(query)
 
     def clear_tables(self):
@@ -73,16 +73,16 @@ class DatabaseManager:
         rows = cursor.fetchall()
 
         label_pairs = []
-        for uuid, label_expert, label_classifier in rows:
+        for UUID, label_expert, label_classifier in rows:
             expert_label = Label(
-                uuid=uuid,
+                UUID=UUID,
                 label_type=LabelType.from_string(label_expert)
             )
             classifier_label = Label(
-                uuid=uuid,
+                UUID=UUID,
                 label_type=LabelType.from_string(label_classifier)
             )
-            pair = LabelPair(uuid, expert_label, classifier_label)
+            pair = LabelPair(UUID, expert_label, classifier_label)
             label_pairs.append(pair)
 
         return label_pairs
@@ -118,21 +118,21 @@ class DatabaseManager:
 
         if label_source == LabelSource.CLASSIFIER:
             query = """
-                INSERT INTO labels (uuid, label_classifier)
+                INSERT INTO labels (UUID, label_classifier)
                 VALUES (?, ?)
-                ON CONFLICT(uuid) DO UPDATE SET
+                ON CONFLICT(UUID) DO UPDATE SET
                     label_classifier = COALESCE(labels.label_classifier, excluded.label_classifier);
             """
-            label_data = (label.get_uuid(), label_type)
+            label_data = (label.get_UUID(), label_type)
 
         elif label_source == LabelSource.EXPERT:
             query = """
-                INSERT INTO labels (uuid, label_expert)
+                INSERT INTO labels (UUID, label_expert)
                 VALUES (?, ?)
-                ON CONFLICT(uuid) DO UPDATE SET
+                ON CONFLICT(UUID) DO UPDATE SET
                     label_expert = COALESCE(labels.label_expert, excluded.label_expert);
             """
-            label_data = (label.get_uuid(), label_type)
+            label_data = (label.get_UUID(), label_type)
 
         else:
             raise ValueError("Invalid LabelSource")
@@ -158,10 +158,10 @@ class DatabaseManager:
             return
 
         # List of UUIDs
-        uuids = [pair.get_uuid() for pair in label_pairs]
+        UUIDs = [pair.get_UUID() for pair in label_pairs]
 
         # values array
-        placeholders = ",".join(["?"] * len(uuids))
-        query = f"DELETE FROM labels WHERE uuid IN ({placeholders});"
+        placeholders = ",".join(["?"] * len(UUIDs))
+        query = f"DELETE FROM labels WHERE UUID IN ({placeholders});"
 
-        self._run_query(query, tuple(uuids))
+        self._run_query(query, tuple(UUIDs))

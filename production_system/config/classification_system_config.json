@@ -24,13 +24,13 @@
     },
     "ingestion_system":
     {
-      "ip": "25.18.213.203",
+      "ip": "127.0.0.1",
       "port": 5002
     }
   },
   "system_parameters" : {
     "development_phase" : false,
-    "production_sessions" : 50,
-    "evaluation_sessions" : 0
+    "production_sessions" : 1000000,
+    "evaluation_sessions" : 1
   }
 }

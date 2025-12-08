@@ -32,7 +32,7 @@ class ApplianceClientSystem:
         self.index = (self.index + 1) % len(self.df)
         # simulate delay
         delay = random.uniform(0, 1)
-        time.sleep(delay)
+        #time.sleep(delay)
         data = self.simulate_missing_samples({
             "uuid": uuid,
             "timestamp": datetime.datetime.now().isoformat(),

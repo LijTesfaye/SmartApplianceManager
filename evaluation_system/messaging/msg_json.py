@@ -2,7 +2,6 @@
 import os
 import json
 import queue
-import logging
 from datetime import datetime
 from flask import Flask, request
 from model.label_source import LabelSource
@@ -29,8 +28,8 @@ class MessagingJsonController:
     def listener(self, ip, port):
         """ Listener """
         # Disable the default logging
-        log = logging.getLogger('werkzeug')
-        log.setLevel(logging.ERROR)
+        # log = logging.getLogger('werkzeug')
+        # log.setLevel(logging.ERROR)
 
         # execute the listening server, for each message received, it will be handled by a thread
         self._app.run(host=ip, port=port, debug=False, threaded=True)
@@ -80,14 +79,14 @@ def home():
         <li>
           <strong>Classifier label structure:</strong>
           <pre><code>{
-                uuid = &lt;UUID&gt;,
+                UUID = &lt;UUID&gt;,
                 type = [ none | overheating | electrical ],
             }</code></pre>
         </li>
         <li>
           <strong>Expert label structure:</strong>
           <pre><code>{
-                uuid = &lt;UUID&gt;,
+                UUID = &lt;UUID&gt;,
                 type = [ none | overheating | electrical ],
             }</code></pre>
         </li>
