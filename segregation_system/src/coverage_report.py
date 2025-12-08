@@ -8,61 +8,67 @@ class CoverageReport:
         self.fig = None
 
     def generate_coverage_report(self, dataset):
-        """
-        Generates a coverage report radar chart based on feature distributions.
 
-        Parameters:
-        - dataset: list of tuples or dicts containing the features:
-            mean_current, mean_voltage, mean_temperature, mean_external_temperature,
-            mean_external_humidity, mean_occupancy
-        - output_file: filename to save the PNG chart.
-        """
         features = [
             "mean_current",
             "mean_voltage",
             "mean_temperature",
-            "mean_external_temperature",
-            "mean_external_humidity",
+            "mean_ex_temperature",
+            "mean_ex_humidity",
             "mean_occupancy"
         ]
 
-        # Initialize sums
+        # Ranges definiti manualmente (domini naturali delle feature)
+        feature_ranges = {
+            "mean_current": (4, 25),
+            "mean_voltage": (190, 230),
+            "mean_temperature": (20, 70),
+            "mean_ex_temperature": (0, 80),
+            "mean_ex_humidity": (0, 100),
+            "mean_occupancy": (0, 1)
+        }
+
+        def normalize(value, min_v, max_v):
+            if max_v == min_v:
+                return 0
+            return (value - min_v) / (max_v - min_v)
+
         feature_sums = {f: 0 for f in features}
         n = len(dataset)
-        if n == 0:
-            print("[WARNING] Dataset is empty. No chart will be generated.")
-            return
 
-        # Aggregate values
         for row in dataset:
             for i, f in enumerate(features):
                 value = row[i + 1] if isinstance(row, tuple) else row[f]
                 feature_sums[f] += value
 
-        # Compute averages
-        feature_avg = [feature_sums[f] / n for f in features]
+        feature_avg = {f: feature_sums[f] / n for f in features}
 
-        # Create radar chart
+        normalized_avg = [
+            normalize(feature_avg[f], *feature_ranges[f])
+            for f in features
+        ]
+
+        # Radar chart
         fig = go.Figure()
 
         fig.add_trace(go.Scatterpolar(
-            r=feature_avg,
+            r=normalized_avg,
             theta=features,
             fill='toself',
+            mode="lines+markers",
             name='Average Feature Values',
             line=dict(color='royalblue')
         ))
 
-        # Layout
         fig.update_layout(
             polar=dict(
                 radialaxis=dict(
                     visible=True,
-                    # optional: automatically scale
+                    range=[0, 1]
                 )
             ),
             showlegend=True,
-            title="Coverage Report (Radar Chart)",
+            title="Coverage Report (Normalized Radar Chart)",
             template="plotly_white"
         )
 

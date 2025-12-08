@@ -48,7 +48,7 @@ class BalancingReport:
             x=classes,
             y=[tol_lower] * len(classes),
             mode='lines',
-            line=dict(color='green', dash='dash'),
+            line=dict(color='black', dash='dash'),
             name='Tolerance Lower'
         ))
 
