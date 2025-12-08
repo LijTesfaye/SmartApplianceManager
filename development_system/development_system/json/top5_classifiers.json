@@ -1,65 +1,61 @@
 [
     {
-        "uuid": "NN6",
-        "train_error": 0.2916666666666667,
+        "uuid": "NN0",
+        "train_error": 0.0,
         "validation_error": 0.0,
-        "layers": 2,
-        "neurons": 256,
+        "layers": 1,
+        "neurons": 128,
         "hidden_layers_structure": [
-            128,
             128
         ],
-        "error_difference": 0.2916666666666667,
+        "error_difference": 0.0,
         "overfitting_threshold": 0.25
     },
     {
-        "uuid": "NN11",
+        "uuid": "NN1",
         "train_error": 0.2916666666666667,
         "validation_error": 0.0,
-        "layers": 2,
-        "neurons": 132,
+        "layers": 1,
+        "neurons": 64,
         "hidden_layers_structure": [
-            128,
-            4
+            64
         ],
         "error_difference": 0.2916666666666667,
         "overfitting_threshold": 0.25
     },
     {
-        "uuid": "NN13",
+        "uuid": "NN3",
         "train_error": 0.2916666666666667,
         "validation_error": 0.0,
-        "layers": 2,
-        "neurons": 96,
+        "layers": 1,
+        "neurons": 16,
         "hidden_layers_structure": [
-            64,
-            32
-        ],
-        "error_difference": 0.2916666666666667,
-        "overfitting_threshold": 0.25
-    },
-    {
-        "uuid": "NN21",
-        "train_error": 0.2916666666666667,
-        "validation_error": 0.0,
-        "layers": 2,
-        "neurons": 32,
-        "hidden_layers_structure": [
-            16,
             16
         ],
         "error_difference": 0.2916666666666667,
         "overfitting_threshold": 0.25
     },
     {
-        "uuid": "NN26",
+        "uuid": "NN5",
+        "train_error": 0.2916666666666667,
+        "validation_error": 0.0,
+        "layers": 1,
+        "neurons": 4,
+        "hidden_layers_structure": [
+            4
+        ],
+        "error_difference": 0.2916666666666667,
+        "overfitting_threshold": 0.25
+    },
+    {
+        "uuid": "NN9",
         "train_error": 0.2916666666666667,
         "validation_error": 0.0,
         "layers": 2,
-        "neurons": 8,
+        "neurons": 144,
         "hidden_layers_structure": [
-            4,
-            4
+            128,
+            16
         ],
         "error_difference": 0.2916666666666667,
         "overfitting_threshold": 0.25

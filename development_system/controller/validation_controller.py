@@ -1,5 +1,6 @@
 from development_system.model.validation_manager import ValidationManager
 
+
 class ValidationController:
     def __init__(self):
         self._validation_manager = ValidationManager()
@@ -7,7 +8,7 @@ class ValidationController:
     def get_classifiers(self):
         self._validation_manager.get_candidate_classifiers()
 
-    def get_the_winner_classifier(self,uuid):
+    def get_the_winner_classifier(self, uuid):
         self._validation_manager.winner_classifier(uuid)
 
     def get_validation_report(self):

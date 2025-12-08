@@ -174,7 +174,16 @@ class SegregationSystem:
                 learning_sets = self.learning_sets.generate_learning_sets(dataset)
                 logging.info(f"Learning sets generated: {learning_sets}")
 
+                JsonIO.get_instance().send(self.segregation_system_config['development_system']['ip'],
+                                           self.segregation_system_config['development_system']['port'],
+                                           "/learning_sets",
+                                           learning_sets)
+                logging.info(f"Learning sent to Development System")
+
+                self.write_state("BALANCING")
+                current_state = "BALANCING"
+                exit(0)
+
                 logging.info("Learning finished → Store state starting")
-                self.write_state("STORE")
-                current_state = "STORE"
+
                 continue

@@ -2,6 +2,10 @@ import math
 import os
 from itertools import product
 from operator import itemgetter
+
+from dotenv import load_dotenv
+from pathlib import Path
+
 import shutil
 
 from development_system.generator.report_generator import ReportGenerator
@@ -14,12 +18,26 @@ from development_system.utility.json_read_write import JsonReadWrite
 class ValidationManager:
     def __init__(self):
         self._smart_classifier = SmartClassifier()
-        self._train_data = LearningDataSet.get_data("train")
+        self._train_data = LearningDataSet.get_data("training")
         self._validation_data = LearningDataSet.get_data("validation")
         self._candidate_classifiers = []
 
+        env_path = Path(__file__).resolve().parents[2] / "dev_sys.env"
+        load_dotenv(env_path)
+        config_path_from_root = os.getenv("HYPER_PARAMS_FILE_PATH")
+        self.config_path = Path(__file__).resolve().parents[2] / config_path_from_root
+
+        top5_classifiers_from_root = os.getenv("TOP5_CLASSIFIER_PATH")
+        self.top5_classifiers_path = Path(__file__).resolve().parents[2] / top5_classifiers_from_root
+
+        winner_from_root = os.getenv("WINNER_PATH")
+        self.winner_path = Path(__file__).resolve().parents[2] / winner_from_root
+
+        winner_joblib_from_root = os.getenv("WINNER_JOBLIB_PATH")
+        self.winner_joblib_path = Path(__file__).resolve().parents[2] / winner_joblib_from_root
+
     def generate_hyperparameter_options(self):
-        read_result , file_content = JsonReadWrite.read_json_file(os.getenv("HYPER_PARAMS_FILE_PATH"))
+        read_result, file_content = JsonReadWrite.read_json_file(self.config_path)
         if not read_result:
             print("No HYPER_PARAMS_FILE_PATH file found")
             return [], None, None
@@ -44,12 +62,9 @@ class ValidationManager:
                 )
                 if is_decreasing:
                     hidden_layer_sizes_options.append(combination)
-        return hidden_layer_sizes_options , num_iterations , overfitting_threshold
-
+        return hidden_layer_sizes_options, num_iterations, overfitting_threshold
 
     def get_candidate_classifiers(self):
-
-
 
         grid_search_result, iterations_number, overfitting_threshold = self.generate_hyperparameter_options()
 
@@ -58,21 +73,21 @@ class ValidationManager:
             return
 
         for index, setting in enumerate(grid_search_result):
-            new_config = SMARTClassifierConfig(iterations_number ,setting)
+            new_config = SMARTClassifierConfig(iterations_number, setting)
 
             self._smart_classifier.update_classifier_config(new_config)
 
-            self._smart_classifier.train_model(self._train_data["data"] , self._train_data["labels"])
+            self._smart_classifier.train_model(self._train_data["data"], self._train_data["labels"])
 
             train_error = self._smart_classifier.get_error(
-                                self._train_data["data"],
-                                self._train_data["labels"]
-                            )
+                self._train_data["data"],
+                self._train_data["labels"]
+            )
 
             validation_error = self._smart_classifier.get_error(
-                                    self._validation_data["data"],
-                                    self._validation_data["labels"]
-                                )
+                self._validation_data["data"],
+                self._validation_data["labels"]
+            )
 
             if (validation_error - train_error) > overfitting_threshold:
                 continue
@@ -82,13 +97,13 @@ class ValidationManager:
             neurons = sum(setting)
 
             model = {
-                "uuid" : "NN" + str(index),
-                "train_error" : train_error,
-                "validation_error" : validation_error,
-                "layers" : len(setting),
+                "uuid": "NN" + str(index),
+                "train_error": train_error,
+                "validation_error": validation_error,
+                "layers": len(setting),
                 "neurons": neurons,
-                "hidden_layers_structure" : setting,
-                "error_difference" : abs(validation_error - train_error),
+                "hidden_layers_structure": setting,
+                "error_difference": abs(validation_error - train_error),
                 "overfitting_threshold": overfitting_threshold
             }
 
@@ -104,19 +119,15 @@ class ValidationManager:
 
         # The top-5  candidate classifiers are saved into JSON here
         self.save_top5_classifiers_json()
-        print("[DEBUG] THE BEST 5 CLASSIFIERS  : " , self._candidate_classifiers)
-
+        print("[DEBUG] THE BEST 5 CLASSIFIERS  : ", self._candidate_classifiers)
 
     def save_top5_classifiers_json(self):
-        json_dir = os.getenv("JSON_PATH")
-        os.makedirs(json_dir, exist_ok=True)
-        file_path = os.path.join(json_dir, "top5_classifiers.json")
-        JsonReadWrite.write_json_file(file_path, self._candidate_classifiers)
-        print(f"[INFO] Saved top 5 classifier metadata at {file_path}")
+        JsonReadWrite.write_json_file(self.top5_classifiers_path, self._candidate_classifiers)
+        print(f"[INFO] Saved top 5 classifier metadata at {self.top5_classifiers_path}")
 
     def winner_classifier(self, uuid):
         # Read the top5 classifiers JSON
-        read_result, file_content = JsonReadWrite.read_json_file( os.path.join(os.getenv("JSON_PATH"), "top5_classifiers.json"))
+        read_result, file_content = JsonReadWrite.read_json_file(self.top5_classifiers_path)
         if not read_result:
             print("[ERROR] winner_classifier not found")
             return
@@ -127,29 +138,25 @@ class ValidationManager:
             print(f"[WARN] No classifier with UUID {uuid} found in top5_classifiers.json")
             return
 
-        winner_json_path = os.path.join(os.getenv("JSON_PATH"), "winner_classifier.json")
-        JsonReadWrite.write_json_file(winner_json_path,winner)
-        print(f"[INFO] Winner classifier metadata saved at {winner_json_path}")
+        JsonReadWrite.write_json_file(self.winner_path, winner)
+        print(f"[INFO] Winner classifier metadata saved at {self.winner_path}")
 
         # Clean up the candidate directory (keep only the winner joblib)
         self.classifier_dir_archiver(uuid)
 
     def classifier_dir_archiver(self, uuid):
-        base_dir = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
         winner_file = uuid + ".joblib"
-        for filename in os.listdir(base_dir):
+        for filename in os.listdir(self.winner_joblib_path):
+            file_path = os.path.join(self.winner_joblib_path, filename)
             if filename == winner_file:
                 continue
             if not filename.endswith(".joblib"):
-                continue  # ignore non-model files
-            os.remove(os.path.join(base_dir, filename))
+                continue
+            if os.path.isfile(file_path):
+                os.remove(file_path)
 
     def generate_validation_result(self):
-        #self.save_top5_classifiers_json()
+        self.save_top5_classifiers_json()
         report_generator = ReportGenerator(report_type="validation",
                                            best_classifiers=self._candidate_classifiers)
         report_generator.generate_report()
-
-
-
-
