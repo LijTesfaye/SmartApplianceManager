@@ -1,8 +1,6 @@
 """ Evaluation System main class"""
 
-import json
 import random
-from pathlib import Path
 from threading import Thread
 import jsonschema
 
@@ -11,6 +9,7 @@ from messaging.msg_json import MessagingJsonController
 from repository.database_manager import DatabaseManager
 from reporting.evaluation_report_controller import EvaluationReportController
 from errorlog.error_logger import ErrorLogger
+from config.configuration_controller import ConfigurationController
 
 
 class EvaluationSystem:
@@ -18,25 +17,17 @@ class EvaluationSystem:
 
     def __init__(self):
         """ Constructor """
+        self._conf = None
         self._database_manager = None
-        self._evaluation_system_config = None
         self._msg_controller = None
         self._eval_report_controller = None
         self._error_logger = None
         self._test_service_flag = True
 
-    def import_cfg(self, file_name = "evaluation_system_config.json"):
-        """ Import configuration file"""
-
-        config_filepath = Path(__file__).parent.parent / "config" / file_name
-
-        try:
-            with open(config_filepath, 'r', encoding='utf-8') as f:
-                self._evaluation_system_config = json.load(f)
-        except FileNotFoundError:
-            print(f"Error: file {config_filepath} does not exist.")
-        except json.JSONDecodeError:
-            print(f"Error: file {config_filepath} is not in JSON format.")
+    def setup_configuration_controller(self):
+        """ Setup configuration controller """
+        self._conf = ConfigurationController()
+        self._conf.import_config()
 
     def setup_database(self):
         """ Setup database """
@@ -73,18 +64,18 @@ class EvaluationSystem:
         """ Setup system """
 
         # Import configuration
-        self.import_cfg()
+        self.setup_configuration_controller()
 
         # Setup database
         self.setup_database()
 
         # Setup evaluation report controller
-        self.setup_evaluation_report_controller()
+        self.setup_evaluation_report_controller(self._conf.get_eval_params())
 
         # Setup listener
         self.setup_listener(
-            ip=self._evaluation_system_config["addresses"]["evaluation_system"]["ip"],
-            port=self._evaluation_system_config["addresses"]["evaluation_system"]["port"],
+            ip=self._conf.get_addresses()["evaluation_system"]["ip"],
+            port=self._conf.get_addresses()["evaluation_system"]["port"],
         )
 
         # Setup logger
@@ -139,8 +130,9 @@ class EvaluationSystem:
                         # 1/0 (OK/NOT OK) percentage: 80/20
                         evaluation_positive = random.choices(
                             [True, False],
-                            weights=[0, 100],
+                            weights=[100, 0],
                             k=1)[0]
+                        print("Simulated result:" + evaluation_positive)
 
                     if not evaluation_positive:
                         msg = {"evaluation" : "not passed"}

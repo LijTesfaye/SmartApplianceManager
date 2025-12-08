@@ -9,11 +9,11 @@ class Label:
     RECEIVED_LABEL_SCHEMA = {
         "type": "object",
         "properties": {
-            "uuid": {"type": ["string", "number"]},
-            "type": {"type": "string", "enum": ["none", "electrical", "overheating"]},
+            "UUID": {"type": ["string", "number"]},
+            "label": {"type": "string", "enum": ["none", "electrical", "overheating"]},
             "timestamp": {"type": "string"}  # optional
         },
-        "required": ["uuid", "type"],
+        "required": ["UUID", "label"],
         "additionalProperties": False
     }
 
@@ -28,10 +28,10 @@ class Label:
         jsonschema.validate(instance=data, schema=Label.RECEIVED_LABEL_SCHEMA)
 
         # Mapping case-insensitive
-        label_type_enum = LabelType.from_string(data["type"])
+        label_type_enum = LabelType.from_string(data["label"])
 
         return Label(
-            uuid=data["uuid"],
+            uuid=data["UUID"],
             label_type=label_type_enum
         )
 

@@ -2,7 +2,6 @@
 import os
 import json
 from datetime import datetime
-from pathlib import Path
 from typing import List
 
 from model.label_pair import LabelPair
@@ -42,40 +41,25 @@ class EvaluationReportController:
     def __init__(self):
         """ Initialise the controller """
         self._database_manager = None
-        self._config_filepath = None
         self._reports_directory = None
         self._evaluation_config_json = None
         self._current_report = None
 
-    def setup(self, config_filename = "evaluation_system_config.json"):
+    def setup(self, json_config):
         """ Set up the controller """
         self._database_manager = DatabaseManager()
 
-        self._config_filepath = Path(__file__).parent.parent / "config" / config_filename
-        self._reports_directory = Path(__file__).parent.parent / "evaluation_reports"
+        self.load_config(json_config)
 
-        self.load_config()
-
-    def load_config(self):
+    def load_config(self, json_config):
         """ Load configuration file """
-        try:
-            with open(self._config_filepath, 'r', encoding='utf-8') as f:
-                full_config = json.load(f)
-                self._evaluation_config_json = full_config["evaluation_parameters"]
-
-        except FileNotFoundError:
-            print(f"Error: file {self._config_filepath} does not exist.")
-        except json.JSONDecodeError:
-            print(f"Error: file {self._config_filepath} is not in JSON format.")
+        self._evaluation_config_json = json_config
 
     def is_evaluation_possible(self):
         """
         Check if the evaluation report is possible.
         It checks if there are enough complete label pairs in the database
         """
-
-        # In case of modified configuration file
-        self.load_config()
 
         # Get number of complete pairs
         current_pairs = self._database_manager.get_count_pairs()
@@ -91,9 +75,6 @@ class EvaluationReportController:
         3) Calculates error counts (total and consecutive)
         4) Deletes used labels from database
         """
-
-        # Load configuration
-        self.load_config()
 
         # Number of pairs
         pairs_count = self._evaluation_config_json["label_pairs"]
