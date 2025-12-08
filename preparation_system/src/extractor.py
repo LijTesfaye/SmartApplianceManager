@@ -17,10 +17,10 @@ class Extractor:
         mean_temperature = _mean([x.get("temperature") for x in appliance])
         mean_external_temperature = _mean([x.get("temperature") for x in env])
         mean_external_humidity = _mean([x.get("humidity") for x in env])
-        mean_occupancy = _mean([x.get("people_number") for x in occ])
+        mean_occupancy = _mean([x.get("occupancy") for x in occ])
 
         return {
-            "uuid": self.raw.get("uuid"),
+            "UUID": self.raw.get("UUID"),
             "label": expert.get("label"),
             "mean_current": mean_current,
             "mean_voltage": mean_voltage,
