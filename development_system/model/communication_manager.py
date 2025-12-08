@@ -75,6 +75,7 @@ class CommunicationManager:
 
 
 
+# This method is to do a python test on the orchestrator in an automated mode.
     def send_classifier_joblib(self , uuid):
 
         ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
@@ -82,7 +83,7 @@ class CommunicationManager:
         url = f"http://{ip_classification_system}:{port_classification_system}/"+ end_point
 
         # Grab the winner classifier in joblib  format
-        file_path = os.getenv("CLASSIFIER_DIRECTORY_PATH") + uuid + ".joblib"
+        file_path = os.getenv("TEST_WINNER_JOBlib") + uuid + ".joblib"
         if not os.path.exists(file_path):
             raise ValueError("[ERROR] File not found")
 
@@ -98,6 +99,33 @@ class CommunicationManager:
         except TimeoutError:
             print("[ERROR] Timeout")
             raise TimeoutError
+
+
+
+    def send_classifier_joblib_automated(self , uuid):
+        print("[INFO] send_classifier_joblib_automated ")
+        ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
+        end_point = "deploy"
+        url = f"http://{ip_classification_system}:{port_classification_system}/"+ end_point
+
+        # Grab the winner classifier in joblib  format
+        file_path = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH") + uuid + ".joblib"
+        if not os.path.exists(file_path):
+            raise ValueError("[ERROR] File not found")
+
+        file = {'file': open(file_path,'rb')}
+        try:
+            response = requests.post(url, files=file , timeout=3)
+            if response.status_code == 200:
+                print("[INFO] WinnerClassifier deployed successfully.")
+                return True
+            else:
+                print(f"[ERROR] Deployment failed — status {response.status_code}: {response.text}")
+                return False
+        except TimeoutError:
+            print("[ERROR] Timeout")
+            raise TimeoutError
+
 
 app = CommunicationManager.get_instance().get_app()
 
