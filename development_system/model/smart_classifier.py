@@ -4,9 +4,6 @@ import os
 import pandas as pd
 import joblib
 
-import shutil
-
-
 from development_system.utility.json_read_write import JsonReadWrite
 from development_system.model.smart_classifier_config import SMARTClassifierConfig
 
