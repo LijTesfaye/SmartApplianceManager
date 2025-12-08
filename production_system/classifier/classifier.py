@@ -1,7 +1,7 @@
 """ Module for defining the classifier """
-import joblib
 import io
 import os
+import joblib
 
 from production_system.model.label import Label
 from production_system.model.label_type import LabelType
@@ -20,7 +20,9 @@ class Classifier:
         """ Loads the classifier from a file """
         self.filename = filename
 
-        # TODO uncomment
+        # TODO
+        #  uncomment.
+        #  Tieni salvato un modello random, anche solo per test
         # self.model = joblib.load(filename)
 
     def load_from_bytes(self, raw_bytes: bytes):
@@ -45,6 +47,7 @@ class Classifier:
     def infer(self, prepared_session):
         """Run inference."""
         # TODO delete
+        #  metti la prediciton vera
         return Label(
             uuid = prepared_session.get_uuid(),
             label_type = LabelType.from_string("none")

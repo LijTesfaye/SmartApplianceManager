@@ -2,16 +2,16 @@
   "addresses": {
     "ingestion_system":
     {
-      "ip": "127.0.0.1",
+      "ip": "X",
       "port": 5002
     },
     "classification_system":
     {
-      "ip": "127.0.0.1",
+      "ip": "X",
       "port": 5005
     },
     "evaluation_system": {
-      "ip": "127.0.0.1",
+      "ip": "25.16.136.221",
       "port": 5006
     },
     "messaging_system": {
@@ -20,8 +20,8 @@
     }
   },
   "evaluation_parameters" : {
-    "label_pairs" : 10,
-    "max_errors": 3,
-    "max_consecutive_errors": 2
+    "label_pairs" : 20,
+    "max_errors": 1,
+    "max_consecutive_errors": 1
   }
 }

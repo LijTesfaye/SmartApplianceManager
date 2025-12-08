@@ -91,7 +91,7 @@ class MessagingJsonController:
 
 app = MessagingJsonController.get_instance().get_app()
 
-@app.post("/classifier")
+@app.post("/deploy")
 def receive_classifier():
     """Receive developed classifier via uploaded joblib file"""
 
@@ -103,18 +103,17 @@ def receive_classifier():
     if uploaded_file.filename == "":
         return {"error": "No selected file"}, 400
 
-    # Legge i bytes direttamente
+    # Read bytes
     file_bytes = uploaded_file.read()
 
-    # Crea il classifier e carica dai bytes
+    # Create classifier, load via passed bytes
     clf = Classifier()
     clf.load_from_bytes(file_bytes)
 
-    # Metti nella coda
+    # Enqueue to main controller
     MessagingJsonController.get_instance().enqueue(clf)
 
     return {}, 200
-
 
 @app.post("/prepared_session")
 def receive_prepared_session():

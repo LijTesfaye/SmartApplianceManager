@@ -2,20 +2,20 @@
   "addresses": {
     "development_system":
     {
-      "ip": "127.0.0.1",
+      "ip": "X",
       "port": 5004
     },
     "classification_system":
     {
-      "ip": "127.0.0.1",
+      "ip": "25.16.136.221",
       "port": 5005
     },
     "evaluation_system": {
-      "ip": "127.0.0.1",
+      "ip": "25.16.136.221",
       "port": 5006
     },
     "messaging_system": {
-      "ip": "127.0.0.1",
+      "ip": "X",
       "port": 5007
     },
     "client_side_system": {
@@ -30,7 +30,7 @@
   },
   "system_parameters" : {
     "development_phase" : false,
-    "production_sessions" : 50,
-    "evaluation_sessions" : 0
+    "production_sessions" : 20,
+    "evaluation_sessions" : 20
   }
 }
