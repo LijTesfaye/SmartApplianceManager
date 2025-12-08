@@ -58,7 +58,7 @@ class ApplianceClientSystem:
         """
         missing_probability = 0.01
         for key in record:
-            if key == "uuid" or key == "timestamp":
+            if key == "uuid" or key == "timestamp" or key == "appliance_type":
                 continue
             if random.uniform(0, 1) <= missing_probability:
                 record[key] = None
