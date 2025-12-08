@@ -1,7 +1,9 @@
 [
     {
-        "key": "value",
-        "key2": "value",
-        "key3": "value"
+        "uuid": "NN282",
+        "test_error": 0.225,
+        "validation_error": 0.325,
+        "difference": 0.1,
+        "generalization_tolerance": 0.3
     }
 ]

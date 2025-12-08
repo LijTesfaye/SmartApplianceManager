@@ -17,6 +17,7 @@ class ReportGenerator:
     best_classifiers: Optional[list] = None           # used by the validation report
     test_result: Optional[Dict] = None                # needed to do  test report
 
+
     def __post_init__(self):
         if self.report_type not in ("training", "validation", "test"):
             raise ValueError(f"Invalid report_type: {self.report_type}")

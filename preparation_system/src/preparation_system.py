@@ -49,10 +49,12 @@ class PreparationSystem:
         while True:
 
             raw_session = JsonIO.get_instance().receive()
-            logging.info("Raw session received")
+            logging.info(f"Raw session received: {raw_session}")
 
-            if not self.raw_session_schema_verifier.verify(raw_session):
-                logging.error("Raw session received is invalid")
+            try:
+                self.raw_session_schema_verifier.verify(raw_session)
+            except ValueError as e:
+                logging.error(f"Raw session validation failed: {e}")
                 continue
 
             cleaner = Cleaner(self.preparation_system_config["limits"])

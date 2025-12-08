@@ -71,7 +71,7 @@ class DevelopmentSystemOrchestrator:
           # 3️ Ask for number of iterations
           if self.system_conf.stage == "set_num_iters":
               if automated:
-                  inserted_iterations = 150
+                  inserted_iterations = 5
               else:
                   try:
                       print("")
@@ -110,13 +110,16 @@ class DevelopmentSystemOrchestrator:
               validation_controller = ValidationController()
               validation_controller.get_classifiers()  # runs grid search
               validation_controller.get_validation_report()
-
-              self.winner_uuid = input("[HUMAN] Insert the UUID of the winner classifier: ").strip()
-              if not self.winner_uuid:
-                  self.update_stage("set_avg_hyp")
-              else:
-                  validation_controller.get_the_winner_classifier(self.winner_uuid)
+              if automated: # used for python test of the classifier
+                  self.winner_uuid = "NN50"
                   self.update_stage("gen_test_report")
+              else:
+                self.winner_uuid = input("[HUMAN] Insert the UUID of the winner classifier: ").strip()
+                if not self.winner_uuid:
+                    self.update_stage("set_avg_hyp")
+                else:
+                    validation_controller.get_the_winner_classifier(self.winner_uuid)
+                    self.update_stage("gen_test_report")
 
          # 7️ Test Phase
           if self.system_conf.stage == "gen_test_report":
@@ -149,8 +152,12 @@ class DevelopmentSystemOrchestrator:
           if self.system_conf.stage == "send_classifier":
                 print("[INFO] Sending classifier to production system...")
                 try:
-                    CommunicationManager.get_instance().send_classifier_joblib(self.winner_uuid)
-                    self.update_stage("waiting")
+                    if automated:
+                        CommunicationManager.get_instance().send_classifier_joblib_automated(self.winner_uuid)
+                        self.update_stage("waiting")
+                    else:
+                        CommunicationManager.get_instance().send_classifier_joblib(self.winner_uuid)
+                        self.update_stage("waiting")
                 except Exception as e:
                     print(f"[ERROR] Failed to send classifier: {str(e)}")
                     print("[WARN] The Development system shuts Down.Bye!")

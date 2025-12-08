@@ -31,7 +31,7 @@ class OccupancyClientSystem:
         uuid = self.uuid
         self.uuid += 1
         # simulate delay
-        delay = random.uniform(1, 5)
+        delay = random.uniform(0, 1)
         time.sleep(delay)
         data = self.simulate_missing_samples({
             "uuid": uuid,
