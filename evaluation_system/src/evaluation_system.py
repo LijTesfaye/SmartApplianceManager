@@ -4,7 +4,6 @@ import time
 from threading import Thread
 from evaluation_system.src.json_io import JsonIO
 
-
 class EvaluationSystem:
 
     def __init__(self):
