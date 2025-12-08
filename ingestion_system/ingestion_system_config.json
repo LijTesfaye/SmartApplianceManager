@@ -1,7 +1,7 @@
 {
   "preparation_system":
   {
-    "ip": "127.0.0.1",
+    "ip": "25.11.231.246",
     "port": 5001
   },
   "ingestion_system":
@@ -20,12 +20,12 @@
     "port": 5007
   },
   "currentPhase": "evaluation",
-  "minimumRecords": 5,
-  "missingSamplesThreshold": 3,
+  "minimumRecords": 20,
+  "missingSamplesThreshold": 5,
   "recordsCollectionPeriodSeconds": 1,
-  "preparationSystemEndpoint": "???",
+  "preparationSystemEndpoint": "raw_session",
   "evaluationSystemEndpoint": "label/expert",
   "productionSessions": 20,
   "evaluationSessions": 20,
-  "test": true
+  "test": false
 }
