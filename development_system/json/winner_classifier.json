@@ -1,0 +1,16 @@
+{
+    "uuid": "NN282",
+    "train_error": 0.45,
+    "validation_error": 0.15,
+    "layers": 5,
+    "neurons": 264,
+    "hidden_layers_structure": [
+        128,
+        64,
+        32,
+        32,
+        8
+    ],
+    "error_difference": 0.30000000000000004,
+    "overfitting_threshold": 0.25
+}

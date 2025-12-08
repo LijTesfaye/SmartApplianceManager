@@ -1,0 +1,142 @@
+import queue
+import os
+from fileinput import filename
+from threading import Thread
+
+import requests
+from flask import Flask, request
+from requests import post, exceptions
+
+from development_system.model.communication_config import CommunicationConfig
+from development_system.utility.json_read_write import JsonReadWrite
+
+
+class CommunicationManager:
+    _instance = None
+
+    def __init__(self):
+        # Flask instance to receive data
+
+        self._app = Flask(__name__)
+        # a thread-safe queue to buffer the received json message
+        self._received_json_queue = queue.Queue()
+        """"
+        # ******** Needed by the Development System *******
+        """
+        self.communication_config = CommunicationConfig()
+        self._winner_uuid = None
+        """"
+        # ******** Needed by the Development System *******
+        """
+    @staticmethod
+    def get_instance():
+        if CommunicationManager._instance is None:
+            CommunicationManager._instance = CommunicationManager()
+        return CommunicationManager._instance
+
+    def listener(self, ip, port):
+        # execute the listening server, for each message received, it will be handled by a thread
+        self._app.run(host=ip, port=port, debug=False, threaded=True)
+
+    def get_app(self):
+        return self._app
+
+    def send_to_main(self):
+        self._received_json_queue.put(True, block=True)
+
+    def get_queue(self):
+        return self._received_json_queue
+
+    def receive(self):
+        # get json message from the queue
+        # if the queue is empty the thread is blocked
+        return self._received_json_queue.get(block=True)
+
+    def put_json_into_queue(self, received_json):
+        # save received message into queue
+        self._received_json_queue.put(received_json)
+
+    def send(self, ip, port, endpoint, data):
+        url = f'http://{ip}:{port}/' + endpoint
+        response = None
+        try:
+            response = post(url, json=data, timeout=10.0)
+        except exceptions.RequestException:
+            print("Endpoint system unreachable")
+            return False
+        if response.status_code != 200:
+            res = response.json()
+            error_message = 'unknown'
+            if 'error' in res:
+                error_message = res['error']
+            print(f'Sending Error: {error_message}')
+            return False
+        return True
+
+
+
+# This method is to do a python test on the orchestrator in an automated mode.
+    def send_classifier_joblib(self , uuid):
+
+        ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
+        end_point = "deploy"
+        url = f"http://{ip_classification_system}:{port_classification_system}/"+ end_point
+
+        # Grab the winner classifier in joblib  format
+        file_path = os.getenv("TEST_WINNER_JOBlib") + uuid + ".joblib"
+        if not os.path.exists(file_path):
+            raise ValueError("[ERROR] File not found")
+
+        file = {'file': open(file_path,'rb')}
+        try:
+            response = requests.post(url, files=file , timeout=3)
+            if response.status_code == 200:
+                print("[INFO] WinnerClassifier deployed successfully.")
+                return True
+            else:
+                print(f"[ERROR] Deployment failed — status {response.status_code}: {response.text}")
+                return False
+        except TimeoutError:
+            print("[ERROR] Timeout")
+            raise TimeoutError
+
+
+
+    def send_classifier_joblib_automated(self , uuid):
+        print("[INFO] send_classifier_joblib_automated ")
+        ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
+        end_point = "deploy"
+        url = f"http://{ip_classification_system}:{port_classification_system}/"+ end_point
+
+        # Grab the winner classifier in joblib  format
+        file_path = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH") + uuid + ".joblib"
+        if not os.path.exists(file_path):
+            raise ValueError("[ERROR] File not found")
+
+        file = {'file': open(file_path,'rb')}
+        try:
+            response = requests.post(url, files=file , timeout=3)
+            if response.status_code == 200:
+                print("[INFO] WinnerClassifier deployed successfully.")
+                return True
+            else:
+                print(f"[ERROR] Deployment failed — status {response.status_code}: {response.text}")
+                return False
+        except TimeoutError:
+            print("[ERROR] Timeout")
+            raise TimeoutError
+
+
+app = CommunicationManager.get_instance().get_app()
+
+@app.get('/start')
+def start_app():
+    print("[INFO] Start msg received")
+    receive_thread = Thread(target=CommunicationManager.get_instance().send_to_main)
+    receive_thread.start()
+    return {}, 200
+
+
+@app.route("/")
+def home():
+    return "Development System online!"

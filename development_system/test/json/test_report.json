@@ -1,0 +1,10 @@
+[
+    {
+        "uuid": "NN50",
+        "test_error": 0.275,
+        "validation_error": 0.1,
+        "difference": 0.17500000000000002,
+        "generalization_tolerance": 0.3
+    }
+]
+

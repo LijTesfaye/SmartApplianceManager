@@ -1,0 +1,27 @@
+{
+  "training": [
+    {"features": [10.2, 221.3, 29.5, 20.1, 51.8, 0.2], "label": "none"},
+    {"features": [9.8, 222.5, 30.2, 21.0, 52.0, 0.3], "label": "none"},
+    {"features": [25.0, 215.2, 44.8, 26.8, 63.5, 0.8], "label": "overheating"},
+    {"features": [24.2, 217.0, 46.1, 27.3, 65.0, 0.9], "label": "overheating"},
+    {"features": [16.1, 230.8, 33.2, 22.5, 49.3, 0.4], "label": "electrical"},
+    {"features": [17.4, 229.9, 34.1, 23.0, 48.6, 0.5], "label": "electrical"},
+    {"features": [23.7, 214.5, 42.0, 25.8, 61.0, 0.7], "label": "overheating"},
+    {"features": [14.9, 226.2, 32.1, 21.8, 54.1, 0.3], "label": "electrical"},
+    {"features": [12.0, 222.8, 30.5, 20.5, 50.0, 0.2], "label": "none"},
+    {"features": [26.3, 216.9, 46.9, 27.2, 66.0, 0.9], "label": "overheating"}
+  ],
+  "validation": [
+    {"features": [11.5, 223.1, 29.9, 20.3, 52.5, 0.2], "label": "none"},
+    {"features": [25.5, 214.8, 45.2, 27.1, 64.3, 0.8], "label": "overheating"},
+    {"features": [15.8, 231.4, 32.8, 22.6, 47.5, 0.4], "label": "electrical"},
+    {"features": [23.8, 215.0, 44.2, 26.6, 63.2, 0.8], "label": "overheating"},
+    {"features": [13.1, 224.2, 30.1, 21.1, 51.0, 0.2], "label": "none"}
+  ],
+  "test": [
+    {"features": [10.8, 222.0, 29.8, 20.2, 51.5, 0.2], "label": "none"},
+    {"features": [16.9, 229.1, 33.9, 22.4, 49.0, 0.5], "label": "electrical"},
+    {"features": [25.7, 214.9, 45.1, 26.9, 64.1, 0.8], "label": "overheating"},
+    {"features": [12.4, 223.3, 30.3, 20.7, 52.2, 0.3], "label": "none"}
+  ]
+}
