@@ -33,7 +33,7 @@ class ValidationManager:
         winner_from_root = os.getenv("WINNER_PATH")
         self.winner_path = Path(__file__).resolve().parents[2] / winner_from_root
 
-        winner_joblib_from_root = os.getenv("WINNER_JOBLIB_PATH")
+        winner_joblib_from_root = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
         self.winner_joblib_path = Path(__file__).resolve().parents[2] / winner_joblib_from_root
 
     def generate_hyperparameter_options(self):
@@ -147,11 +147,11 @@ class ValidationManager:
     def classifier_dir_archiver(self, uuid):
         winner_file = uuid + ".joblib"
         for filename in os.listdir(self.winner_joblib_path):
-            file_path = os.path.join(self.winner_joblib_path, filename)
-            if filename == winner_file:
-                continue
             if not filename.endswith(".joblib"):
                 continue
+            if filename == winner_file:
+                continue
+            file_path = os.path.join(self.winner_joblib_path, filename)
             if os.path.isfile(file_path):
                 os.remove(file_path)
 

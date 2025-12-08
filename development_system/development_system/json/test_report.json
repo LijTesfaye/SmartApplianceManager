@@ -1,9 +1,0 @@
-[
-    {
-        "uuid": "NN6",
-        "test_error": 0.0,
-        "validation_error": 0.0,
-        "difference": 0.0,
-        "generalization_tolerance": 0.3
-    }
-]

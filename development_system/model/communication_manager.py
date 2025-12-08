@@ -34,7 +34,7 @@ class CommunicationManager:
 
         env_path = Path(__file__).resolve().parents[2] / "dev_sys.env"
         load_dotenv(env_path)
-        winner_job_path_from_root = os.getenv("TEST_WINNER_JOBlib")
+        winner_job_path_from_root = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
         self.winner_job_path = Path(__file__).resolve().parents[2] / winner_job_path_from_root
 
     @staticmethod
@@ -91,7 +91,7 @@ class CommunicationManager:
         print(ip_classification_system)
         url = f"http://{ip_classification_system}:{port_classification_system}/" + end_point
 
-        file_path = Path(self.winner_job_path) / f"{uuid}.joblib"
+        file_path = Path(self.winner_job_path) / f"{str(uuid).upper()}.joblib"
         print(file_path)
         if not os.path.exists(file_path):
             raise ValueError("[ERROR] File not found")

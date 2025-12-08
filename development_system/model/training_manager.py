@@ -34,7 +34,7 @@ class TrainingManager:
         self._smart_classifier.update_classifier_config(new_config)
 
     def set_avg_hyperparameters(self):
-        read_result , file_content = JsonReadWrite.read_json_file(os.getenv("HYPER_PARAMS_FILE_PATH"))
+        read_result , file_content = JsonReadWrite.read_json_file(self.config_path)
         if not read_result:
             return
         hidden_layer_size_range = file_content["hidden_layer_range"]
