@@ -4,7 +4,7 @@ import sys
 import pytest
 from flask.cli import load_dotenv
 
-load_dotenv()
+
 
 print("[DEBUG] COMMUNICATION_SYSTEM_CONFIG:", os.getenv("COMMUNICATION_SYSTEM_CONFIG"))
 
@@ -27,6 +27,7 @@ def dataset():
 
 @pytest.fixture
 def system():
+    print("************************************")
     print("2nd fixture")
     return DevelopmentSystemOrchestratorLocalhost() #DevelopmentSystemOrchestratorLocalhost
 
@@ -35,13 +36,13 @@ def test_chain(dataset , system):
     system.run(automated=True)
 
     # Learning phase
-    assert os.path.isfile("./images/learning_plot.png") is True
+    assert os.path.isfile(os.getenv("TEST_IMAGE_DIR")) is True
 
     # Validation phase
-    assert os.path.isfile("./json/validation_report.json") is True
+    assert os.path.isfile(os.getenv("VALIDATION_TEST_REPORT_PATH")) is True
 
     # Test Phase
-    assert os.path.isfile("./json/test_report.json") is True
+    assert os.path.isfile(os.getenv("TEST_REPORT_PATH")) is True
 
     # winner  classifier
-    assert os.path.isfile("./json/winner_classifier.json") is True
+    assert os.path.isfile(os.getenv("TEST_WINNER_CLASSIFIER")) is True
