@@ -142,7 +142,6 @@ class ClassificationSystem:
                         print("(TEST) SENDING classifier TO INGESTION")
                         ip = self._conf.get_addresses()["ingestion_system"]["ip"]
                         port = self._conf.get_addresses()["ingestion_system"]["port"]
-                        print(f"TO [{ip}:{port}]")
                         MessagingJsonController.send(
                             self._conf.get_addresses()["ingestion_system"]["ip"],
                             self._conf.get_addresses()["ingestion_system"]["port"],
@@ -197,22 +196,22 @@ class ClassificationSystem:
                         print(f"(TEST) SENDING TO INGESTION:\n{label.to_dict()}")
                         ip = self._conf.get_addresses()["ingestion_system"]["ip"]
                         port = self._conf.get_addresses()["ingestion_system"]["port"]
-                        print(f"TO [{ip}:{port}]")
+                        msg = {'uuid': label.get_UUID()}
+                        print(f"TO [{ip}:{port}]: {msg}")
                         MessagingJsonController.send(
                             self._conf.get_addresses()["ingestion_system"]["ip"],
                             self._conf.get_addresses()["ingestion_system"]["port"],
                             "/test_stop",
-                            label.to_dict()
+                            msg
                         )
 
                     # Update session
                     self.update_phase()
 
                 # Discard any other type of message
-                except jsonschema.exceptions.ValidationError:
-                    print("[CLASSIFICATION SYSTEM] [PROD/EVAL] Validation error")
-                    self._error_logger.log(
-                        f"[PROD/EVAL] json validation error: {prepared_session_json}")
+                except jsonschema.exceptions.ValidationError as v:
+                    print(f"[CLASSIFICATION SYSTEM] [PROD/EVAL] Validation error: {v}")
+                    self._error_logger.log(f"[PROD/EVAL] json validation error: {v}")
 
                 except Exception as e:
                     print(f"General error: {e}")

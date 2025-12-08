@@ -25,24 +25,31 @@ class Label:
         """
 
         # Schema validation
-        jsonschema.validate(instance=data, schema=Label.RECEIVED_LABEL_SCHEMA)
+        try:
+            jsonschema.validate(instance=data, schema=Label.RECEIVED_LABEL_SCHEMA)
+        except jsonschema.exceptions.ValidationError as e:
+            raise jsonschema.exceptions.ValidationError(
+                f"Invalid Label JSON \
+                \n Schema:   {Label.RECEIVED_LABEL_SCHEMA};\
+                \n Received: {data}"
+            ) from e
 
         # Mapping case-insensitive
         label_type_enum = LabelType.from_string(data["label"])
 
         return Label(
-            uuid=data["UUID"],
+            UUID=data["UUID"],
             label_type=label_type_enum
         )
 
-    def __init__(self, uuid, label_type):
-        self._uuid = uuid
+    def __init__(self, UUID, label_type):
+        self._UUID = UUID
         self._label_type = label_type
 
     def get_label_type(self):
         """ Returns the label type """
         return self._label_type
 
-    def get_uuid(self):
-        """ Returns the uuid """
-        return self._uuid
+    def get_UUID(self):
+        """ Returns the UUID """
+        return self._UUID

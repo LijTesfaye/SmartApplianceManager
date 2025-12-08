@@ -49,7 +49,7 @@ class Classifier:
         # TODO delete
         #  metti la prediciton vera
         return Label(
-            uuid = prepared_session.get_uuid(),
+            UUID = prepared_session.get_UUID(),
             label_type = LabelType.from_string("none")
         )
 
@@ -60,6 +60,6 @@ class Classifier:
         pred = self.model.predict([features])[0]
 
         return Label(
-            uuid=prepared_session.get_uuid(),
+            UUID=prepared_session.get_UUID(),
             label_type=LabelType.from_string(str(pred))
         )

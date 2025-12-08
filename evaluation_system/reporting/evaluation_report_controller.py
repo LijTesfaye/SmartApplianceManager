@@ -3,6 +3,7 @@ import os
 import json
 from datetime import datetime
 from typing import List
+from pathlib import Path
 
 from model.label_pair import LabelPair
 from model.evaluation_report_data import EvaluationReportData
@@ -49,7 +50,12 @@ class EvaluationReportController:
         """ Set up the controller """
         self._database_manager = DatabaseManager()
 
+        self._reports_directory = Path(__file__).parent / "evaluation_reports"
+
         self.load_config(json_config)
+
+        # todo delete
+        print(f"TODO delete\n{self._evaluation_config_json}")
 
     def load_config(self, json_config):
         """ Load configuration file """

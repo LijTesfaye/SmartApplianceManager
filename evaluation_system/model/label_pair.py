@@ -6,14 +6,14 @@ from model.label_source import LabelSource
 class LabelPair:
     """ Class for managing label pairs """
 
-    def __init__(self, uuid, label_expert: Label, label_classifier: Label):
-        self._uuid = uuid
+    def __init__(self, UUID, label_expert: Label, label_classifier: Label):
+        self._UUID = UUID
         self._label_expert = label_expert.get_label_type()
         self._label_classifier = label_classifier.get_label_type()
 
-    def get_uuid(self):
-        """ Get the uuid """
-        return self._uuid
+    def get_UUID(self):
+        """ Get the UUID """
+        return self._UUID
 
     def get_label_expert(self) -> LabelSource:
         """ Get the label expert """

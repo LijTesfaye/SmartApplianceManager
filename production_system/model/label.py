@@ -9,16 +9,16 @@ class Label:
     RECEIVED_LABEL_SCHEMA = {
         "type": "object",
         "properties": {
-            "uuid": {"type": ["string", "number"]},
+            "UUID": {"type": ["string", "number"]},
             "type": {"type": "string", "enum": ["none", "electrical", "overheating"]},
             "timestamp": {"type": "string"}  # optional
         },
-        "required": ["uuid", "type"],
+        "required": ["UUID", "type"],
         "additionalProperties": False
     }
 
-    def __init__(self, uuid, label_type):
-        self._uuid = uuid
+    def __init__(self, UUID, label_type):
+        self._UUID = UUID
         self._label_type = label_type
 
     @staticmethod
@@ -35,21 +35,21 @@ class Label:
         label_type_enum = LabelType.from_string(data["type"])
 
         return Label(
-            uuid=data["uuid"],
+            UUID=data["UUID"],
             label_type=label_type_enum
         )
 
     def to_dict(self):
         """ Returns a dictionary representation of the label """
         return {
-            "uuid": self._uuid,
-            "type": str(self._label_type)
+            "UUID": self._UUID,
+            "label": str(self._label_type)
         }
 
     def get_label_type(self):
         """ Returns the label type """
         return self._label_type
 
-    def get_uuid(self):
-        """ Returns the uuid """
-        return self._uuid
+    def get_UUID(self):
+        """ Returns the UUID """
+        return self._UUID
