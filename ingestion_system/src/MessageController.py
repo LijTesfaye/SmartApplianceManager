@@ -3,8 +3,14 @@ from threading import Thread
 from flask import Flask, request
 from requests import post, exceptions
 
+from ingestion_system.src.messages import Message
 
-class JsonIO:
+
+class MessageController:
+    """
+    Provides primitives for messaging between systems
+    """
+
     _instance = None
 
     def __init__(self):
@@ -15,9 +21,9 @@ class JsonIO:
 
     @staticmethod
     def get_instance():
-        if JsonIO._instance is None:
-            JsonIO._instance = JsonIO()
-        return JsonIO._instance
+        if MessageController._instance is None:
+            MessageController._instance = MessageController()
+        return MessageController._instance
 
     def listener(self, ip, port):
         # execute the listening server, for each message received, it will be handled by a thread
@@ -41,11 +47,18 @@ class JsonIO:
         # save received message into queue
         self._received_json_queue.put(received_json)
 
-    def send(self, ip, port, endpoint, data):
-        url = f'http://{ip}:{port}/' + endpoint
+    def send(self, message: Message, endpoint):
+        """
+        Sends a message to an endpoint using the address in the message.
+        Returns if the message was successfully sent
+        :param message: Message
+        :param endpoint: str
+        :return: boolean
+        """
+        url = f'http://{message.dst_address}:{message.dst_port}/' + endpoint
         response = None
         try:
-            response = post(url, json=data, timeout=10.0)
+            response = post(url, json=message.to_dict(), timeout=10.0)
         except exceptions.RequestException:
             print("Endpoint system unreachable")
             return False
@@ -61,13 +74,13 @@ class JsonIO:
         return True
 
 
-app = JsonIO.get_instance().get_app()
+app = MessageController.get_instance().get_app()
 
 
 @app.get('/start')
 def start_app():
     print("[INFO] Start msg received")
-    receive_thread = Thread(target=JsonIO.get_instance().send_to_main)
+    receive_thread = Thread(target=MessageController.get_instance().send_to_main)
     receive_thread.start()
     return {}, 200
 
@@ -75,3 +88,10 @@ def start_app():
 @app.route("/")
 def home():
     return "Ingestion System online!"
+
+@app.post("/test_stop")
+def test_stop():
+    print("[TEST] response arrived")
+    receive_thread = Thread(target=MessageController.get_instance().send_to_main)
+    receive_thread.start()
+    return {}, 200
