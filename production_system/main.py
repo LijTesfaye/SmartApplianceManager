@@ -1,11 +1,13 @@
+""" Production system starting module """
+
 import sys
-from production_system.src.production_system import ProductionSystem
+from controller.classification_system import ClassificationSystem
 
 if __name__ == '__main__':
 
-    production_system = ProductionSystem()
+    classification_system = ClassificationSystem()
     try:
-        production_system.run()
+        classification_system.run()
     except KeyboardInterrupt:
         print("Segregation App terminated")
         sys.exit(0)
