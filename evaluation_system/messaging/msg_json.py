@@ -79,14 +79,14 @@ def home():
         <li>
           <strong>Classifier label structure:</strong>
           <pre><code>{
-                uuid = &lt;UUID&gt;,
+                UUID = &lt;UUID&gt;,
                 type = [ none | overheating | electrical ],
             }</code></pre>
         </li>
         <li>
           <strong>Expert label structure:</strong>
           <pre><code>{
-                uuid = &lt;UUID&gt;,
+                UUID = &lt;UUID&gt;,
                 type = [ none | overheating | electrical ],
             }</code></pre>
         </li>

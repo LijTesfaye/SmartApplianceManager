@@ -101,7 +101,7 @@ class EvaluationSystem:
                 print("[EVALUATION SYSTEM]: " +
                       f"LABEL [{str(label.get_label_type()):<12}" +
                       f" | {str(label_source):<12} " +
-                      f"| {label.get_uuid()}]")
+                      f"| {label.get_UUID()}]")
 
                 # Add to database
                 self._database_manager.store_label(label, label_source)
@@ -130,9 +130,9 @@ class EvaluationSystem:
                         # 1/0 (OK/NOT OK) percentage: 80/20
                         evaluation_positive = random.choices(
                             [True, False],
-                            weights=[100, 0],
+                            weights=[50, 50],
                             k=1)[0]
-                        print("Simulated result:" + evaluation_positive)
+                        print("Simulated result:" + str(evaluation_positive))
 
                     if not evaluation_positive:
                         msg = {"evaluation" : "not passed"}
@@ -140,9 +140,9 @@ class EvaluationSystem:
 
                     self._eval_report_controller.close_report()
 
-            except jsonschema.exceptions.ValidationError:
-                print(f"Validation error: {received_label_json}")
-                self._error_logger.log(f"json validation error: {received_label_json}")
+            except jsonschema.exceptions.ValidationError as v:
+                print(f"Validation error: {v}")
+                self._error_logger.log(f"json validation error: {v}")
 
             except Exception as e:
                 print(f"General error: {e}")

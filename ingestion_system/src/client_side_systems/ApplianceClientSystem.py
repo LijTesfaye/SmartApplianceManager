@@ -31,8 +31,8 @@ class ApplianceClientSystem:
         self.uuid += 1
         self.index = (self.index + 1) % len(self.df)
         # simulate delay
-        delay = random.uniform(1, 5)
-        time.sleep(delay)
+        delay = random.uniform(0, 1)
+        #time.sleep(delay)
         data = self.simulate_missing_samples({
             "uuid": uuid,
             "timestamp": datetime.datetime.now().isoformat(),
@@ -56,9 +56,9 @@ class ApplianceClientSystem:
         :param record:
         :return:
         """
-        missing_probability = 0.05
+        missing_probability = 0.01
         for key in record:
-            if key == "uuid" or key == "timestamp":
+            if key == "uuid" or key == "timestamp" or key == "appliance_type":
                 continue
             if random.uniform(0, 1) <= missing_probability:
                 record[key] = None

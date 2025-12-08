@@ -1,10 +1,10 @@
 class RawSessionSchemaVerifier:
 
     def verify(self, data: dict):
-        self._require_keys(data, ["uuid", "applianceRecords", "environmentalRecords",
+        self._require_keys(data, ["UUID", "applianceRecords", "environmentalRecords",
                                   "occupancyRecords", "expertRecord"])
 
-        self._verify_uuid(data["uuid"])
+        self._verify_uuid(data["UUID"])
         self._verify_appliance_records(data["applianceRecords"])
         self._verify_environmental_records(data["environmentalRecords"])
         self._verify_occupancy_records(data["occupancyRecords"])
@@ -21,10 +21,10 @@ class RawSessionSchemaVerifier:
             raise ValueError("applianceRecords must be a list")
 
         for entry in items:
-            self._require_keys(entry, ["uuid", "timestamp", "current", "voltage",
+            self._require_keys(entry, ["UUID", "timestamp", "current", "voltage",
                                        "temperature", "appliance_type"])
 
-            self._verify_uuid(entry["uuid"])
+            self._verify_uuid(entry["UUID"])
             self._verify_string(entry["timestamp"])
             self._verify_float(entry["current"])
             self._verify_float(entry["voltage"])
@@ -36,9 +36,9 @@ class RawSessionSchemaVerifier:
             raise ValueError("environmentalRecords must be a list")
 
         for entry in items:
-            self._require_keys(entry, ["uuid", "timestamp", "temperature", "humidity"])
+            self._require_keys(entry, ["UUID", "timestamp", "temperature", "humidity"])
 
-            self._verify_uuid(entry["uuid"])
+            self._verify_uuid(entry["UUID"])
             self._verify_string(entry["timestamp"])
             self._verify_float(entry["temperature"])
             self._verify_float(entry["humidity"])
@@ -48,28 +48,28 @@ class RawSessionSchemaVerifier:
             raise ValueError("occupancyRecords must be a list")
 
         for entry in items:
-            self._require_keys(entry, ["uuid", "timestamp", "people_number"])
+            self._require_keys(entry, ["UUID", "timestamp", "occupancy"])
 
-            self._verify_uuid(entry["uuid"])
+            self._verify_uuid(entry["UUID"])
             self._verify_string(entry["timestamp"])
-            self._verify_float(entry["people_number"])
+            self._verify_float(entry["occupancy"])
 
     def _verify_expert_record(self, entry):
         if not isinstance(entry, dict):
             raise ValueError("expertRecord must be an object")
 
-        self._require_keys(entry, ["uuid", "timestamp", "label"])
+        self._require_keys(entry, ["UUID", "timestamp", "label"])
 
-        self._verify_uuid(entry["uuid"])
+        self._verify_uuid(entry["UUID"])
         self._verify_string(entry["timestamp"])
         self._verify_string(entry["label"])
 
     def _verify_string(self, value):
-        if not isinstance(value, str):
+        if value is not None and not isinstance(value, str):
             raise ValueError(f"String expected, found {type(value)}")
 
     def _verify_float(self, value):
-        if not isinstance(value, (int, float)):
+        if value is not None and not isinstance(value, (int, float)):
             raise ValueError(f"Number expected, found {type(value)}")
 
     def _require_keys(self, obj, required):

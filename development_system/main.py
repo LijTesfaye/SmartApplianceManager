@@ -1,9 +1,12 @@
 import sys
 from development_system.controller.development_system_localtest import DevelopmentSystemOrchestratorLocalhost
+from development_system.controller.development_system import DevelopmentSystemOrchestrator
 
 if __name__ == '__main__':
 
-    development_system = DevelopmentSystemOrchestratorLocalhost()
+    development_system = DevelopmentSystemOrchestratorLocalhost() # for local test ONLY
+    #development_system = DevelopmentSystemOrchestrator()
+
     try:
         # Fully automated mode
         development_system.run()

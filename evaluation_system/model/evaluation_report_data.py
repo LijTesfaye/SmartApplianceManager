@@ -19,7 +19,7 @@ class EvaluationReportData:
         return {
             "label_pairs": [
                 {
-                    "uuid": p.get_uuid(),
+                    "UUID": p.get_UUID(),
                     "label_expert": str(p.get_label_expert()),
                     "label_classifier": str(p.get_label_classifier())
                 }

@@ -13,7 +13,6 @@ class TestManager:
         self._validation_data = LearningDataSet.get_data("validation")
         self._test_data = LearningDataSet.get_data("test")
 
-
         base_dir = os.getenv("JSON_PATH")
         file_name ="winner_classifier.json"
         winner_json_path = os.path.join(base_dir, file_name)
@@ -34,7 +33,7 @@ class TestManager:
 
     # We do the test on the winner classifier
     def evaluate_test_result(self):
-        self._load_data()
+        #self._load_data()
         self._smart_classifier.load_classifier(self._winner_uuid)
         validation_error = self._smart_classifier.get_error(self._validation_data["data"],
                                                              self._validation_data["labels"])
@@ -49,7 +48,7 @@ class TestManager:
             "difference": abs(test_error - validation_error)
         }
 
-
+    # Generated the test report on winner classifier.
     def generate_test_report(self):
         read_result, file_content = JsonReadWrite.read_json_file(os.getenv("HYPER_PARAMS_FILE_PATH"))
         if not read_result:

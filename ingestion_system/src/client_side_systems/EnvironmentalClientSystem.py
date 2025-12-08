@@ -31,8 +31,8 @@ class EnvironmentalClientSystem:
         uuid = self.uuid
         self.uuid += 1
         # simulate delay
-        delay = random.uniform(0, 2)
-        time.sleep(delay)
+        delay = random.uniform(0, 1)
+        #time.sleep(delay)
         data = self.simulate_missing_samples({
             "uuid": uuid,
             "timestamp": datetime.datetime.now().isoformat(),
@@ -53,7 +53,7 @@ class EnvironmentalClientSystem:
         :param record: dict
         :return: dict
         """
-        missing_probability = 0.05
+        missing_probability = 0.01
         for key in record:
             if key == "uuid" or key == "timestamp":
                 continue
