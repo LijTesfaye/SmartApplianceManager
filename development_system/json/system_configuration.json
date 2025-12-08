@@ -1,5 +1,5 @@
 {
     "startup_mode": "waiting",
     "ongoing_validation": false,
-    "stage": "send_classifier"
+    "stage": "gen_test_report"
 }

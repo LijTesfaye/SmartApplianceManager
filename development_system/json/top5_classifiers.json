@@ -1,25 +1,26 @@
 [
     {
-        "uuid": "NN4",
-        "train_error": 0.2916666666666667,
+        "uuid": "NN6",
+        "train_error": 0.375,
         "validation_error": 0.0,
-        "layers": 1,
-        "neurons": 8,
+        "layers": 2,
+        "neurons": 256,
         "hidden_layers_structure": [
-            8
+            128,
+            128
         ],
-        "error_difference": 0.2916666666666667,
+        "error_difference": 0.375,
         "overfitting_threshold": 0.25
     },
     {
-        "uuid": "NN9",
+        "uuid": "NN10",
         "train_error": 0.2916666666666667,
         "validation_error": 0.0,
         "layers": 2,
-        "neurons": 144,
+        "neurons": 136,
         "hidden_layers_structure": [
             128,
-            16
+            8
         ],
         "error_difference": 0.2916666666666667,
         "overfitting_threshold": 0.25
@@ -38,26 +39,26 @@
         "overfitting_threshold": 0.25
     },
     {
-        "uuid": "NN12",
+        "uuid": "NN15",
         "train_error": 0.2916666666666667,
         "validation_error": 0.0,
         "layers": 2,
-        "neurons": 128,
+        "neurons": 72,
         "hidden_layers_structure": [
             64,
-            64
+            8
         ],
         "error_difference": 0.2916666666666667,
         "overfitting_threshold": 0.25
     },
     {
-        "uuid": "NN13",
+        "uuid": "NN17",
         "train_error": 0.2916666666666667,
         "validation_error": 0.0,
         "layers": 2,
-        "neurons": 96,
+        "neurons": 64,
         "hidden_layers_structure": [
-            64,
+            32,
             32
         ],
         "error_difference": 0.2916666666666667,
