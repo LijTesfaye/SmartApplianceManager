@@ -1,12 +1,3 @@
-/.venv/
-
-# Test systems
-/classification_test/
-/endclient_system/
-/test_system/
-
-# Systems not implemented
-/segregation_system/
-/preparation_system/
-/ingestion_system/
-/development_system/
+__pycache__/
+**/*.log
+.idea/
