@@ -6,8 +6,6 @@ from operator import itemgetter
 from dotenv import load_dotenv
 from pathlib import Path
 
-import shutil
-
 from development_system.generator.report_generator import ReportGenerator
 from development_system.model.learning_set_data import LearningDataSet
 from development_system.model.smart_classifier import SmartClassifier
@@ -33,8 +31,11 @@ class ValidationManager:
         winner_from_root = os.getenv("WINNER_PATH")
         self.winner_path = Path(__file__).resolve().parents[2] / winner_from_root
 
-        winner_joblib_from_root = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
+        winner_joblib_from_root = os.getenv("WINNER_CLASSIFIER_DIRECTORY_PATH")
         self.winner_joblib_path = Path(__file__).resolve().parents[2] / winner_joblib_from_root
+
+        candidates_path_from_root = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
+        self.candidate_paths = Path(__file__).resolve().parents[2] / candidates_path_from_root
 
     def generate_hyperparameter_options(self):
         read_result, file_content = JsonReadWrite.read_json_file(self.config_path)
@@ -146,12 +147,12 @@ class ValidationManager:
 
     def classifier_dir_archiver(self, uuid):
         winner_file = uuid + ".joblib"
-        for filename in os.listdir(self.winner_joblib_path):
+        for filename in os.listdir(self.candidate_paths):
             if not filename.endswith(".joblib"):
                 continue
             if filename == winner_file:
                 continue
-            file_path = os.path.join(self.winner_joblib_path, filename)
+            file_path = os.path.join(self.candidate_paths, filename)
             if os.path.isfile(file_path):
                 os.remove(file_path)
 
