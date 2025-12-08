@@ -116,11 +116,9 @@ class ValidationManager:
 
     def winner_classifier(self, uuid):
         # Read the top5 classifiers JSON
-        read_result, file_content = JsonReadWrite.read_json_file(
-            os.path.join(os.getenv("JSON_PATH"), "top5_classifiers.json")
-        )
+        read_result, file_content = JsonReadWrite.read_json_file( os.path.join(os.getenv("JSON_PATH"), "top5_classifiers.json"))
         if not read_result:
-            print("[ERROR] top5_classifiers.json not found")
+            print("[ERROR] winner_classifier not found")
             return
 
         # Locate the selected winner

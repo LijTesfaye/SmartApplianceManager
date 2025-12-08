@@ -9,6 +9,7 @@ from development_system.utility.json_read_write import JsonReadWrite
 
 class TrainingManager:
     def __init__(self):
+        print("INITIALIZING TRAINING MANAGER")
         self._smart_classifier = SmartClassifier()
         self._smart_classifier_config = None
         self._train_data = None
@@ -22,7 +23,6 @@ class TrainingManager:
             hidden_layer_sizes=self._hidden_layer_sizes)
         self._smart_classifier_config = new_config
         self._smart_classifier.update_classifier_config(new_config)
-
 
     def set_avg_hyperparameters(self):
         read_result , file_content = JsonReadWrite.read_json_file(os.getenv("HYPER_PARAMS_FILE_PATH"))
