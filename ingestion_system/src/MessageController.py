@@ -1,5 +1,6 @@
 import datetime
 import queue
+import threading
 from threading import Thread
 from flask import Flask, request
 from requests import post, exceptions
@@ -21,6 +22,7 @@ class MessageController:
         # a thread-safe queue to buffer the received json message
         self._received_json_queue = queue.Queue()
         self.test_data = {}
+        self.test_data_lock = threading.Lock()
 
     @staticmethod
     def get_instance():
@@ -75,7 +77,8 @@ class MessageController:
             return False
 
         if isinstance(message, RawSessionMessage):
-            self.test_data[message.raw_session.uuid] = datetime.datetime.now()
+            with self.test_data_lock:
+                self.test_data[message.raw_session.uuid] = datetime.datetime.now()
         return True
 
 
@@ -98,14 +101,15 @@ def home():
 def test_stop():
     print("[TEST] Test msg received")
     msg = request.get_json()
-    test_data = MessageController.get_instance().test_data
     end = datetime.datetime.now()
-    if msg["uuid"] not in test_data:
-        print("[ERR] invalid uuid received")
-        return {"error": "invalid uuid"}, 400
+    test_data = MessageController.get_instance().test_data
+    with MessageController.get_instance().test_data_lock:
+        if msg["uuid"] not in test_data:
+            print("[ERR] invalid uuid received")
+            return {"error": "invalid uuid"}, 400
 
-    start = test_data[msg["uuid"]]
-    del test_data[msg["uuid"]]
+        start = test_data[msg["uuid"]]
+        del test_data[msg["uuid"]]
     difference = end - start
     with open("test.csv", "a") as f:
         f.write(f"{start.isoformat()};{end.isoformat()};{difference.total_seconds()}\n")
