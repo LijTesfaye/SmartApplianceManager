@@ -1,3 +1,20 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+# Python cache
+__pycache__/
+*.pyc
+
+# UML and diagram outputs
+*.png
+*.svg
+*.dot
+
+# IDE & environment
+.idea/
+
+
+# Local dev/test scripts
+generate_uml.bat
+development_system_localtest.py

@@ -2,7 +2,6 @@ import os
 import sys
 import time
 from threading import Thread
-
 from development_system.controller.testing_controller import TestController
 from development_system.controller.training_controller import TrainingController
 from development_system.controller.validation_controller import ValidationController
@@ -12,7 +11,7 @@ from development_system.model.communication_manager import CommunicationManager
 from development_system.model.learning_set_data import LearningDataSet
 from development_system.model.smart_classifier import SmartClassifier
 from development_system.model.system_configuration import DevSystemConfig
-
+#
 STAGES = ["waiting" , "set_avg_hyp" , "set_num_iters", "train", "set_hyp",
           "gen_learn_report" ,
           "gen_vld_report" , "gen_test_report" , "config_sent" , "send_classifier"]
@@ -21,13 +20,12 @@ class DevelopmentSystemOrchestrator:
 
     def __init__(self):
         print("[INFO] STARTING THE DEVELOPMENT SYSTEM...")
-
         self.system_conf = DevSystemConfig()
         self.communication_config = CommunicationConfig()
         self.smart_classifier = SmartClassifier()
         self.training_controller = TrainingController()
         self.winner_uuid = None
-
+        #
     def update_stage(self , new_stage):
         self.system_conf.stage = new_stage
         self.system_conf.update_stage()
@@ -38,11 +36,11 @@ class DevelopmentSystemOrchestrator:
         :param automated==False ...  means  manual
         :return:
         """
-        # Grab the IP and port of the development system from the CommunicationConfig Class
+        # Grab the IP and Port of the development system from the CommunicationConfig Class.
         dev_system_ip, dev_system_port = self.communication_config.get_ip_port("development_system")
 
         if not automated:
-            # Start listener in background (simulates CommunicationManager)
+            # Start listener in Background (simulates CommunicationManager)
             run_thread = Thread(target=CommunicationManager.get_instance().listener,
                                 args=(dev_system_ip, dev_system_port))
             run_thread.daemon = True

@@ -1,0 +1,1814 @@
+{
+    "train": {
+        "features": [
+            {
+                "mean_current": 2.079,
+                "mean_voltage": 201.55,
+                "mean_temperature": 30.59,
+                "mean_external_temperature": 21.82,
+                "mean_external_humidity": 58.92,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 1.979,
+                "mean_voltage": 227.97,
+                "mean_temperature": 36.36,
+                "mean_external_temperature": 22.31,
+                "mean_external_humidity": 36.74,
+                "mean_occupancy": 4,
+                "label": 1
+            },
+            {
+                "mean_current": 1.031,
+                "mean_voltage": 233.22,
+                "mean_temperature": 22.25,
+                "mean_external_temperature": 24.27,
+                "mean_external_humidity": 52.85,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.198,
+                "mean_voltage": 238.94,
+                "mean_temperature": 23.18,
+                "mean_external_temperature": 29.51,
+                "mean_external_humidity": 51.72,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 0.992,
+                "mean_voltage": 223.41,
+                "mean_temperature": 21.46,
+                "mean_external_temperature": 29.12,
+                "mean_external_humidity": 59.37,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 0.981,
+                "mean_voltage": 237.6,
+                "mean_temperature": 24.09,
+                "mean_external_temperature": 16.07,
+                "mean_external_humidity": 51.47,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.484,
+                "mean_voltage": 239.66,
+                "mean_temperature": 24.5,
+                "mean_external_temperature": 28.52,
+                "mean_external_humidity": 62.58,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.156,
+                "mean_voltage": 234.78,
+                "mean_temperature": 24.9,
+                "mean_external_temperature": 16.82,
+                "mean_external_humidity": 49.65,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.492,
+                "mean_voltage": 227.46,
+                "mean_temperature": 22.58,
+                "mean_external_temperature": 24.2,
+                "mean_external_humidity": 41.68,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.019,
+                "mean_voltage": 223.5,
+                "mean_temperature": 19.61,
+                "mean_external_temperature": 26.41,
+                "mean_external_humidity": 48.78,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.091,
+                "mean_voltage": 222.37,
+                "mean_temperature": 24.38,
+                "mean_external_temperature": 18.35,
+                "mean_external_humidity": 69.25,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.173,
+                "mean_voltage": 228.88,
+                "mean_temperature": 22.98,
+                "mean_external_temperature": 16.55,
+                "mean_external_humidity": 54.03,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.259,
+                "mean_voltage": 230.33,
+                "mean_temperature": 20.04,
+                "mean_external_temperature": 24.93,
+                "mean_external_humidity": 61.93,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 2.0,
+                "mean_voltage": 218.26,
+                "mean_temperature": 31.4,
+                "mean_external_temperature": 20.81,
+                "mean_external_humidity": 56.18,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 1.397,
+                "mean_voltage": 235.84,
+                "mean_temperature": 21.48,
+                "mean_external_temperature": 23.39,
+                "mean_external_humidity": 68.38,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.209,
+                "mean_voltage": 218.38,
+                "mean_temperature": 32.68,
+                "mean_external_temperature": 32.66,
+                "mean_external_humidity": 30.91,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 2.373,
+                "mean_voltage": 179.72,
+                "mean_temperature": 28.8,
+                "mean_external_temperature": 12.6,
+                "mean_external_humidity": 62.27,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 0.845,
+                "mean_voltage": 234.05,
+                "mean_temperature": 21.79,
+                "mean_external_temperature": 29.65,
+                "mean_external_humidity": 49.33,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.055,
+                "mean_voltage": 231.71,
+                "mean_temperature": 18.8,
+                "mean_external_temperature": 26.75,
+                "mean_external_humidity": 65.34,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 0.921,
+                "mean_voltage": 233.13,
+                "mean_temperature": 18.94,
+                "mean_external_temperature": 29.36,
+                "mean_external_humidity": 55.61,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.077,
+                "mean_voltage": 232.69,
+                "mean_temperature": 18.01,
+                "mean_external_temperature": 21.16,
+                "mean_external_humidity": 57.88,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 2.97,
+                "mean_voltage": 177.69,
+                "mean_temperature": 28.48,
+                "mean_external_temperature": 15.8,
+                "mean_external_humidity": 58.71,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 1.42,
+                "mean_voltage": 235.99,
+                "mean_temperature": 20.74,
+                "mean_external_temperature": 21.82,
+                "mean_external_humidity": 54.99,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.307,
+                "mean_voltage": 229.68,
+                "mean_temperature": 21.88,
+                "mean_external_temperature": 24.86,
+                "mean_external_humidity": 54.44,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.252,
+                "mean_voltage": 222.29,
+                "mean_temperature": 23.16,
+                "mean_external_temperature": 18.77,
+                "mean_external_humidity": 51.37,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.848,
+                "mean_voltage": 215.47,
+                "mean_temperature": 38.95,
+                "mean_external_temperature": 28.37,
+                "mean_external_humidity": 45.42,
+                "mean_occupancy": 8,
+                "label": 1
+            },
+            {
+                "mean_current": 1.568,
+                "mean_voltage": 218.35,
+                "mean_temperature": 38.18,
+                "mean_external_temperature": 24.57,
+                "mean_external_humidity": 58.5,
+                "mean_occupancy": 8,
+                "label": 1
+            },
+            {
+                "mean_current": 1.17,
+                "mean_voltage": 236.49,
+                "mean_temperature": 19.61,
+                "mean_external_temperature": 18.52,
+                "mean_external_humidity": 48.15,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.769,
+                "mean_voltage": 228.13,
+                "mean_temperature": 30.2,
+                "mean_external_temperature": 33.07,
+                "mean_external_humidity": 48.07,
+                "mean_occupancy": 6,
+                "label": 1
+            },
+            {
+                "mean_current": 2.681,
+                "mean_voltage": 151.53,
+                "mean_temperature": 29.15,
+                "mean_external_temperature": 18.34,
+                "mean_external_humidity": 79.49,
+                "mean_occupancy": 2,
+                "label": 2
+            },
+            {
+                "mean_current": 1.35,
+                "mean_voltage": 233.04,
+                "mean_temperature": 42.44,
+                "mean_external_temperature": 32.05,
+                "mean_external_humidity": 49.2,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 1.385,
+                "mean_voltage": 220.06,
+                "mean_temperature": 19.65,
+                "mean_external_temperature": 26.49,
+                "mean_external_humidity": 63.34,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.299,
+                "mean_voltage": 232.78,
+                "mean_temperature": 18.8,
+                "mean_external_temperature": 27.62,
+                "mean_external_humidity": 45.74,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.785,
+                "mean_voltage": 225.53,
+                "mean_temperature": 41.07,
+                "mean_external_temperature": 28.62,
+                "mean_external_humidity": 52.57,
+                "mean_occupancy": 6,
+                "label": 1
+            },
+            {
+                "mean_current": 0.806,
+                "mean_voltage": 222.76,
+                "mean_temperature": 18.42,
+                "mean_external_temperature": 20.36,
+                "mean_external_humidity": 44.37,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.687,
+                "mean_voltage": 216.91,
+                "mean_temperature": 43.49,
+                "mean_external_temperature": 24.95,
+                "mean_external_humidity": 38.46,
+                "mean_occupancy": 8,
+                "label": 1
+            },
+            {
+                "mean_current": 1.294,
+                "mean_voltage": 230.27,
+                "mean_temperature": 20.04,
+                "mean_external_temperature": 29.83,
+                "mean_external_humidity": 62.86,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.543,
+                "mean_voltage": 230.32,
+                "mean_temperature": 30.79,
+                "mean_external_temperature": 21.37,
+                "mean_external_humidity": 33.47,
+                "mean_occupancy": 4,
+                "label": 1
+            },
+            {
+                "mean_current": 3.119,
+                "mean_voltage": 174.72,
+                "mean_temperature": 26.83,
+                "mean_external_temperature": 10.74,
+                "mean_external_humidity": 35.74,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 0.984,
+                "mean_voltage": 220.97,
+                "mean_temperature": 23.1,
+                "mean_external_temperature": 28.86,
+                "mean_external_humidity": 69.84,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.155,
+                "mean_voltage": 235.48,
+                "mean_temperature": 23.12,
+                "mean_external_temperature": 24.04,
+                "mean_external_humidity": 69.21,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 0.917,
+                "mean_voltage": 224.79,
+                "mean_temperature": 22.62,
+                "mean_external_temperature": 24.31,
+                "mean_external_humidity": 56.9,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.637,
+                "mean_voltage": 215.98,
+                "mean_temperature": 42.87,
+                "mean_external_temperature": 31.09,
+                "mean_external_humidity": 34.27,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 1.331,
+                "mean_voltage": 229.85,
+                "mean_temperature": 22.34,
+                "mean_external_temperature": 18.02,
+                "mean_external_humidity": 43.59,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 2.922,
+                "mean_voltage": 166.07,
+                "mean_temperature": 33.67,
+                "mean_external_temperature": 11.81,
+                "mean_external_humidity": 51.69,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 1.412,
+                "mean_voltage": 233.17,
+                "mean_temperature": 23.27,
+                "mean_external_temperature": 15.35,
+                "mean_external_humidity": 48.27,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.96,
+                "mean_voltage": 230.94,
+                "mean_temperature": 40.06,
+                "mean_external_temperature": 23.25,
+                "mean_external_humidity": 35.03,
+                "mean_occupancy": 4,
+                "label": 1
+            },
+            {
+                "mean_current": 1.448,
+                "mean_voltage": 224.0,
+                "mean_temperature": 21.13,
+                "mean_external_temperature": 28.24,
+                "mean_external_humidity": 53.7,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.25,
+                "mean_voltage": 224.81,
+                "mean_temperature": 22.24,
+                "mean_external_temperature": 27.59,
+                "mean_external_humidity": 45.38,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.625,
+                "mean_voltage": 215.24,
+                "mean_temperature": 31.39,
+                "mean_external_temperature": 20.75,
+                "mean_external_humidity": 54.76,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 1.258,
+                "mean_voltage": 231.23,
+                "mean_temperature": 23.36,
+                "mean_external_temperature": 26.19,
+                "mean_external_humidity": 47.65,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 2.645,
+                "mean_voltage": 180.5,
+                "mean_temperature": 29.97,
+                "mean_external_temperature": 22.52,
+                "mean_external_humidity": 57.26,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 1.132,
+                "mean_voltage": 225.24,
+                "mean_temperature": 24.0,
+                "mean_external_temperature": 18.12,
+                "mean_external_humidity": 57.24,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.038,
+                "mean_voltage": 237.88,
+                "mean_temperature": 22.4,
+                "mean_external_temperature": 15.77,
+                "mean_external_humidity": 63.77,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 0.993,
+                "mean_voltage": 234.13,
+                "mean_temperature": 20.77,
+                "mean_external_temperature": 28.85,
+                "mean_external_humidity": 49.19,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.467,
+                "mean_voltage": 220.14,
+                "mean_temperature": 20.14,
+                "mean_external_temperature": 25.27,
+                "mean_external_humidity": 61.16,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 0.997,
+                "mean_voltage": 225.86,
+                "mean_temperature": 22.68,
+                "mean_external_temperature": 29.87,
+                "mean_external_humidity": 52.26,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.202,
+                "mean_voltage": 237.76,
+                "mean_temperature": 18.68,
+                "mean_external_temperature": 27.64,
+                "mean_external_humidity": 44.13,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 0.934,
+                "mean_voltage": 232.61,
+                "mean_temperature": 24.96,
+                "mean_external_temperature": 17.04,
+                "mean_external_humidity": 64.4,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.123,
+                "mean_voltage": 223.79,
+                "mean_temperature": 20.66,
+                "mean_external_temperature": 16.3,
+                "mean_external_humidity": 61.34,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.011,
+                "mean_voltage": 232.02,
+                "mean_temperature": 20.23,
+                "mean_external_temperature": 17.09,
+                "mean_external_humidity": 41.06,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.436,
+                "mean_voltage": 223.94,
+                "mean_temperature": 19.89,
+                "mean_external_temperature": 28.82,
+                "mean_external_humidity": 42.49,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.73,
+                "mean_voltage": 234.9,
+                "mean_temperature": 34.71,
+                "mean_external_temperature": 29.6,
+                "mean_external_humidity": 35.55,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 1.094,
+                "mean_voltage": 222.63,
+                "mean_temperature": 19.72,
+                "mean_external_temperature": 17.11,
+                "mean_external_humidity": 64.41,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.949,
+                "mean_voltage": 227.48,
+                "mean_temperature": 30.79,
+                "mean_external_temperature": 22.11,
+                "mean_external_humidity": 54.87,
+                "mean_occupancy": 6,
+                "label": 1
+            },
+            {
+                "mean_current": 0.912,
+                "mean_voltage": 227.69,
+                "mean_temperature": 23.66,
+                "mean_external_temperature": 20.76,
+                "mean_external_humidity": 60.84,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.767,
+                "mean_voltage": 220.88,
+                "mean_temperature": 44.36,
+                "mean_external_temperature": 24.44,
+                "mean_external_humidity": 59.28,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 0.98,
+                "mean_voltage": 236.42,
+                "mean_temperature": 23.42,
+                "mean_external_temperature": 29.19,
+                "mean_external_humidity": 63.81,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.793,
+                "mean_voltage": 215.43,
+                "mean_temperature": 41.77,
+                "mean_external_temperature": 31.59,
+                "mean_external_humidity": 52.46,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 1.015,
+                "mean_voltage": 232.32,
+                "mean_temperature": 18.27,
+                "mean_external_temperature": 15.25,
+                "mean_external_humidity": 49.67,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 0.989,
+                "mean_voltage": 226.68,
+                "mean_temperature": 22.7,
+                "mean_external_temperature": 17.66,
+                "mean_external_humidity": 59.98,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 0.848,
+                "mean_voltage": 225.14,
+                "mean_temperature": 19.54,
+                "mean_external_temperature": 26.72,
+                "mean_external_humidity": 50.57,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.104,
+                "mean_voltage": 231.82,
+                "mean_temperature": 23.82,
+                "mean_external_temperature": 26.1,
+                "mean_external_humidity": 42.17,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.15,
+                "mean_voltage": 232.58,
+                "mean_temperature": 20.06,
+                "mean_external_temperature": 16.38,
+                "mean_external_humidity": 50.59,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.211,
+                "mean_voltage": 234.71,
+                "mean_temperature": 33.55,
+                "mean_external_temperature": 28.31,
+                "mean_external_humidity": 52.81,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 1.264,
+                "mean_voltage": 227.92,
+                "mean_temperature": 24.83,
+                "mean_external_temperature": 29.57,
+                "mean_external_humidity": 47.6,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.474,
+                "mean_voltage": 224.2,
+                "mean_temperature": 20.44,
+                "mean_external_temperature": 16.92,
+                "mean_external_humidity": 41.49,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 0.863,
+                "mean_voltage": 237.64,
+                "mean_temperature": 21.04,
+                "mean_external_temperature": 24.65,
+                "mean_external_humidity": 43.44,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 2.196,
+                "mean_voltage": 199.6,
+                "mean_temperature": 25.06,
+                "mean_external_temperature": 15.07,
+                "mean_external_humidity": 22.73,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 1.007,
+                "mean_voltage": 230.14,
+                "mean_temperature": 18.13,
+                "mean_external_temperature": 25.13,
+                "mean_external_humidity": 68.72,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 2.691,
+                "mean_voltage": 160.78,
+                "mean_temperature": 34.35,
+                "mean_external_temperature": 15.7,
+                "mean_external_humidity": 50.79,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 1.992,
+                "mean_voltage": 215.42,
+                "mean_temperature": 44.73,
+                "mean_external_temperature": 32.28,
+                "mean_external_humidity": 41.18,
+                "mean_occupancy": 4,
+                "label": 1
+            },
+            {
+                "mean_current": 2.878,
+                "mean_voltage": 178.18,
+                "mean_temperature": 28.38,
+                "mean_external_temperature": 14.62,
+                "mean_external_humidity": 45.06,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 1.229,
+                "mean_voltage": 223.77,
+                "mean_temperature": 39.66,
+                "mean_external_temperature": 29.57,
+                "mean_external_humidity": 57.4,
+                "mean_occupancy": 4,
+                "label": 1
+            },
+            {
+                "mean_current": 1.144,
+                "mean_voltage": 235.58,
+                "mean_temperature": 22.02,
+                "mean_external_temperature": 25.54,
+                "mean_external_humidity": 47.85,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.12,
+                "mean_voltage": 238.59,
+                "mean_temperature": 18.99,
+                "mean_external_temperature": 27.55,
+                "mean_external_humidity": 43.82,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.698,
+                "mean_voltage": 222.69,
+                "mean_temperature": 34.38,
+                "mean_external_temperature": 31.45,
+                "mean_external_humidity": 41.39,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 1.541,
+                "mean_voltage": 218.69,
+                "mean_temperature": 34.85,
+                "mean_external_temperature": 21.63,
+                "mean_external_humidity": 48.6,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 2.479,
+                "mean_voltage": 174.75,
+                "mean_temperature": 28.82,
+                "mean_external_temperature": 17.64,
+                "mean_external_humidity": 77.85,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 1.052,
+                "mean_voltage": 234.72,
+                "mean_temperature": 24.81,
+                "mean_external_temperature": 19.43,
+                "mean_external_humidity": 57.41,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.189,
+                "mean_voltage": 226.66,
+                "mean_temperature": 23.84,
+                "mean_external_temperature": 17.37,
+                "mean_external_humidity": 65.7,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.473,
+                "mean_voltage": 235.5,
+                "mean_temperature": 23.14,
+                "mean_external_temperature": 25.55,
+                "mean_external_humidity": 69.48,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.416,
+                "mean_voltage": 236.97,
+                "mean_temperature": 24.29,
+                "mean_external_temperature": 16.74,
+                "mean_external_humidity": 64.56,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.258,
+                "mean_voltage": 218.93,
+                "mean_temperature": 34.03,
+                "mean_external_temperature": 24.24,
+                "mean_external_humidity": 56.72,
+                "mean_occupancy": 2,
+                "label": 1
+            },
+            {
+                "mean_current": 2.097,
+                "mean_voltage": 183.33,
+                "mean_temperature": 29.94,
+                "mean_external_temperature": 21.18,
+                "mean_external_humidity": 41.27,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 0.943,
+                "mean_voltage": 234.36,
+                "mean_temperature": 22.09,
+                "mean_external_temperature": 29.4,
+                "mean_external_humidity": 49.0,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.441,
+                "mean_voltage": 220.02,
+                "mean_temperature": 22.66,
+                "mean_external_temperature": 22.51,
+                "mean_external_humidity": 67.94,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.577,
+                "mean_voltage": 231.4,
+                "mean_temperature": 44.31,
+                "mean_external_temperature": 26.27,
+                "mean_external_humidity": 58.62,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 0.932,
+                "mean_voltage": 226.35,
+                "mean_temperature": 24.81,
+                "mean_external_temperature": 22.0,
+                "mean_external_humidity": 59.89,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 0.928,
+                "mean_voltage": 232.21,
+                "mean_temperature": 23.62,
+                "mean_external_temperature": 19.62,
+                "mean_external_humidity": 42.73,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.86,
+                "mean_voltage": 222.53,
+                "mean_temperature": 32.36,
+                "mean_external_temperature": 21.78,
+                "mean_external_humidity": 31.89,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 1.164,
+                "mean_voltage": 238.74,
+                "mean_temperature": 22.59,
+                "mean_external_temperature": 29.14,
+                "mean_external_humidity": 69.61,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.429,
+                "mean_voltage": 221.42,
+                "mean_temperature": 22.32,
+                "mean_external_temperature": 29.76,
+                "mean_external_humidity": 57.11,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.115,
+                "mean_voltage": 226.06,
+                "mean_temperature": 19.9,
+                "mean_external_temperature": 23.28,
+                "mean_external_humidity": 53.74,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.108,
+                "mean_voltage": 236.75,
+                "mean_temperature": 22.07,
+                "mean_external_temperature": 28.48,
+                "mean_external_humidity": 67.14,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.336,
+                "mean_voltage": 230.03,
+                "mean_temperature": 22.52,
+                "mean_external_temperature": 29.38,
+                "mean_external_humidity": 45.6,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 2.062,
+                "mean_voltage": 179.05,
+                "mean_temperature": 30.39,
+                "mean_external_temperature": 19.65,
+                "mean_external_humidity": 29.77,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 1.495,
+                "mean_voltage": 230.88,
+                "mean_temperature": 20.14,
+                "mean_external_temperature": 23.46,
+                "mean_external_humidity": 58.77,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.081,
+                "mean_voltage": 226.63,
+                "mean_temperature": 20.03,
+                "mean_external_temperature": 29.58,
+                "mean_external_humidity": 51.07,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.103,
+                "mean_voltage": 220.82,
+                "mean_temperature": 21.48,
+                "mean_external_temperature": 16.35,
+                "mean_external_humidity": 67.29,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.199,
+                "mean_voltage": 223.76,
+                "mean_temperature": 19.7,
+                "mean_external_temperature": 20.07,
+                "mean_external_humidity": 52.67,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 2.629,
+                "mean_voltage": 193.76,
+                "mean_temperature": 26.07,
+                "mean_external_temperature": 22.33,
+                "mean_external_humidity": 22.95,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 2.483,
+                "mean_voltage": 158.3,
+                "mean_temperature": 28.04,
+                "mean_external_temperature": 10.06,
+                "mean_external_humidity": 44.71,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 1.371,
+                "mean_voltage": 239.23,
+                "mean_temperature": 18.42,
+                "mean_external_temperature": 16.77,
+                "mean_external_humidity": 51.28,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.237,
+                "mean_voltage": 228.3,
+                "mean_temperature": 18.32,
+                "mean_external_temperature": 23.14,
+                "mean_external_humidity": 66.31,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.005,
+                "mean_voltage": 224.42,
+                "mean_temperature": 19.63,
+                "mean_external_temperature": 16.85,
+                "mean_external_humidity": 57.41,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 3.126,
+                "mean_voltage": 166.96,
+                "mean_temperature": 29.17,
+                "mean_external_temperature": 16.56,
+                "mean_external_humidity": 42.44,
+                "mean_occupancy": 2,
+                "label": 2
+            },
+            {
+                "mean_current": 2.542,
+                "mean_voltage": 188.77,
+                "mean_temperature": 26.15,
+                "mean_external_temperature": 20.51,
+                "mean_external_humidity": 50.84,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 1.946,
+                "mean_voltage": 231.04,
+                "mean_temperature": 34.51,
+                "mean_external_temperature": 23.45,
+                "mean_external_humidity": 41.01,
+                "mean_occupancy": 2,
+                "label": 1
+            },
+            {
+                "mean_current": 1.131,
+                "mean_voltage": 235.66,
+                "mean_temperature": 24.29,
+                "mean_external_temperature": 19.17,
+                "mean_external_humidity": 42.61,
+                "mean_occupancy": 4,
+                "label": 0
+            }
+        ]
+    },
+    "validation": {
+        "features": [
+            {
+                "mean_current": 1.161,
+                "mean_voltage": 226.2,
+                "mean_temperature": 18.17,
+                "mean_external_temperature": 21.42,
+                "mean_external_humidity": 58.46,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.009,
+                "mean_voltage": 228.88,
+                "mean_temperature": 18.71,
+                "mean_external_temperature": 24.15,
+                "mean_external_humidity": 44.69,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.726,
+                "mean_voltage": 215.31,
+                "mean_temperature": 32.94,
+                "mean_external_temperature": 30.08,
+                "mean_external_humidity": 34.49,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 0.92,
+                "mean_voltage": 235.65,
+                "mean_temperature": 20.06,
+                "mean_external_temperature": 17.37,
+                "mean_external_humidity": 68.23,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.13,
+                "mean_voltage": 227.35,
+                "mean_temperature": 20.99,
+                "mean_external_temperature": 24.26,
+                "mean_external_humidity": 55.37,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.176,
+                "mean_voltage": 226.88,
+                "mean_temperature": 23.03,
+                "mean_external_temperature": 16.61,
+                "mean_external_humidity": 52.0,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.209,
+                "mean_voltage": 226.56,
+                "mean_temperature": 24.45,
+                "mean_external_temperature": 17.36,
+                "mean_external_humidity": 49.25,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.648,
+                "mean_voltage": 223.81,
+                "mean_temperature": 31.38,
+                "mean_external_temperature": 33.84,
+                "mean_external_humidity": 31.94,
+                "mean_occupancy": 2,
+                "label": 1
+            },
+            {
+                "mean_current": 1.805,
+                "mean_voltage": 234.0,
+                "mean_temperature": 41.18,
+                "mean_external_temperature": 32.66,
+                "mean_external_humidity": 55.52,
+                "mean_occupancy": 8,
+                "label": 1
+            },
+            {
+                "mean_current": 1.146,
+                "mean_voltage": 224.93,
+                "mean_temperature": 23.09,
+                "mean_external_temperature": 21.42,
+                "mean_external_humidity": 49.83,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 0.816,
+                "mean_voltage": 224.63,
+                "mean_temperature": 24.51,
+                "mean_external_temperature": 29.89,
+                "mean_external_humidity": 61.53,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.807,
+                "mean_voltage": 219.88,
+                "mean_temperature": 41.76,
+                "mean_external_temperature": 22.22,
+                "mean_external_humidity": 41.83,
+                "mean_occupancy": 8,
+                "label": 1
+            },
+            {
+                "mean_current": 2.716,
+                "mean_voltage": 151.07,
+                "mean_temperature": 27.24,
+                "mean_external_temperature": 18.7,
+                "mean_external_humidity": 30.62,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 1.433,
+                "mean_voltage": 234.84,
+                "mean_temperature": 42.37,
+                "mean_external_temperature": 30.77,
+                "mean_external_humidity": 44.23,
+                "mean_occupancy": 8,
+                "label": 1
+            },
+            {
+                "mean_current": 1.494,
+                "mean_voltage": 232.71,
+                "mean_temperature": 24.84,
+                "mean_external_temperature": 19.44,
+                "mean_external_humidity": 45.36,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.379,
+                "mean_voltage": 232.47,
+                "mean_temperature": 32.68,
+                "mean_external_temperature": 31.11,
+                "mean_external_humidity": 43.49,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 1.447,
+                "mean_voltage": 221.59,
+                "mean_temperature": 20.95,
+                "mean_external_temperature": 28.43,
+                "mean_external_humidity": 60.7,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.451,
+                "mean_voltage": 229.61,
+                "mean_temperature": 34.77,
+                "mean_external_temperature": 20.37,
+                "mean_external_humidity": 58.4,
+                "mean_occupancy": 6,
+                "label": 1
+            },
+            {
+                "mean_current": 1.023,
+                "mean_voltage": 235.01,
+                "mean_temperature": 24.82,
+                "mean_external_temperature": 21.75,
+                "mean_external_humidity": 62.31,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.789,
+                "mean_voltage": 225.64,
+                "mean_temperature": 40.97,
+                "mean_external_temperature": 22.93,
+                "mean_external_humidity": 40.24,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 1.41,
+                "mean_voltage": 228.79,
+                "mean_temperature": 22.32,
+                "mean_external_temperature": 26.06,
+                "mean_external_humidity": 62.62,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.288,
+                "mean_voltage": 230.58,
+                "mean_temperature": 22.28,
+                "mean_external_temperature": 24.84,
+                "mean_external_humidity": 62.09,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.398,
+                "mean_voltage": 222.77,
+                "mean_temperature": 31.47,
+                "mean_external_temperature": 20.06,
+                "mean_external_humidity": 35.69,
+                "mean_occupancy": 2,
+                "label": 1
+            },
+            {
+                "mean_current": 1.011,
+                "mean_voltage": 221.1,
+                "mean_temperature": 22.04,
+                "mean_external_temperature": 29.55,
+                "mean_external_humidity": 63.4,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.385,
+                "mean_voltage": 222.76,
+                "mean_temperature": 19.41,
+                "mean_external_temperature": 19.87,
+                "mean_external_humidity": 43.42,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.966,
+                "mean_voltage": 216.74,
+                "mean_temperature": 42.45,
+                "mean_external_temperature": 22.83,
+                "mean_external_humidity": 40.21,
+                "mean_occupancy": 4,
+                "label": 1
+            },
+            {
+                "mean_current": 1.235,
+                "mean_voltage": 229.97,
+                "mean_temperature": 23.52,
+                "mean_external_temperature": 26.7,
+                "mean_external_humidity": 41.54,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.486,
+                "mean_voltage": 238.13,
+                "mean_temperature": 18.91,
+                "mean_external_temperature": 22.61,
+                "mean_external_humidity": 52.53,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.387,
+                "mean_voltage": 234.21,
+                "mean_temperature": 19.78,
+                "mean_external_temperature": 21.95,
+                "mean_external_humidity": 43.08,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 3.42,
+                "mean_voltage": 206.56,
+                "mean_temperature": 29.71,
+                "mean_external_temperature": 17.12,
+                "mean_external_humidity": 63.97,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 1.421,
+                "mean_voltage": 234.91,
+                "mean_temperature": 21.76,
+                "mean_external_temperature": 18.95,
+                "mean_external_humidity": 43.8,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 2.491,
+                "mean_voltage": 209.67,
+                "mean_temperature": 32.74,
+                "mean_external_temperature": 21.32,
+                "mean_external_humidity": 62.79,
+                "mean_occupancy": 3,
+                "label": 2
+            },
+            {
+                "mean_current": 1.108,
+                "mean_voltage": 225.12,
+                "mean_temperature": 22.09,
+                "mean_external_temperature": 22.85,
+                "mean_external_humidity": 68.41,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.305,
+                "mean_voltage": 226.65,
+                "mean_temperature": 22.63,
+                "mean_external_temperature": 22.63,
+                "mean_external_humidity": 57.91,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 3.022,
+                "mean_voltage": 150.11,
+                "mean_temperature": 29.88,
+                "mean_external_temperature": 12.1,
+                "mean_external_humidity": 52.71,
+                "mean_occupancy": 2,
+                "label": 2
+            },
+            {
+                "mean_current": 1.261,
+                "mean_voltage": 224.39,
+                "mean_temperature": 20.66,
+                "mean_external_temperature": 21.33,
+                "mean_external_humidity": 41.09,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.306,
+                "mean_voltage": 223.08,
+                "mean_temperature": 24.05,
+                "mean_external_temperature": 17.4,
+                "mean_external_humidity": 42.87,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.219,
+                "mean_voltage": 217.48,
+                "mean_temperature": 43.15,
+                "mean_external_temperature": 27.65,
+                "mean_external_humidity": 38.25,
+                "mean_occupancy": 2,
+                "label": 1
+            },
+            {
+                "mean_current": 1.43,
+                "mean_voltage": 236.64,
+                "mean_temperature": 20.94,
+                "mean_external_temperature": 22.71,
+                "mean_external_humidity": 63.65,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 0.83,
+                "mean_voltage": 239.68,
+                "mean_temperature": 21.49,
+                "mean_external_temperature": 29.25,
+                "mean_external_humidity": 64.85,
+                "mean_occupancy": 5,
+                "label": 0
+            }
+        ]
+    },
+    "test": {
+        "features": [
+            {
+                "mean_current": 1.384,
+                "mean_voltage": 234.6,
+                "mean_temperature": 30.49,
+                "mean_external_temperature": 34.3,
+                "mean_external_humidity": 57.15,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 3.282,
+                "mean_voltage": 181.55,
+                "mean_temperature": 34.42,
+                "mean_external_temperature": 13.7,
+                "mean_external_humidity": 26.29,
+                "mean_occupancy": 3,
+                "label": 2
+            },
+            {
+                "mean_current": 1.288,
+                "mean_voltage": 227.41,
+                "mean_temperature": 19.74,
+                "mean_external_temperature": 17.21,
+                "mean_external_humidity": 54.37,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.318,
+                "mean_voltage": 224.12,
+                "mean_temperature": 24.48,
+                "mean_external_temperature": 21.0,
+                "mean_external_humidity": 56.98,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.466,
+                "mean_voltage": 219.06,
+                "mean_temperature": 40.31,
+                "mean_external_temperature": 33.33,
+                "mean_external_humidity": 35.98,
+                "mean_occupancy": 7,
+                "label": 1
+            },
+            {
+                "mean_current": 2.75,
+                "mean_voltage": 155.46,
+                "mean_temperature": 34.98,
+                "mean_external_temperature": 14.63,
+                "mean_external_humidity": 66.74,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 2.374,
+                "mean_voltage": 205.04,
+                "mean_temperature": 26.68,
+                "mean_external_temperature": 10.01,
+                "mean_external_humidity": 72.18,
+                "mean_occupancy": 1,
+                "label": 2
+            },
+            {
+                "mean_current": 2.916,
+                "mean_voltage": 183.72,
+                "mean_temperature": 30.09,
+                "mean_external_temperature": 15.65,
+                "mean_external_humidity": 56.87,
+                "mean_occupancy": 2,
+                "label": 2
+            },
+            {
+                "mean_current": 0.935,
+                "mean_voltage": 222.35,
+                "mean_temperature": 23.96,
+                "mean_external_temperature": 17.73,
+                "mean_external_humidity": 63.89,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.12,
+                "mean_voltage": 229.32,
+                "mean_temperature": 23.79,
+                "mean_external_temperature": 22.19,
+                "mean_external_humidity": 45.3,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 2.958,
+                "mean_voltage": 165.6,
+                "mean_temperature": 33.92,
+                "mean_external_temperature": 11.31,
+                "mean_external_humidity": 45.63,
+                "mean_occupancy": 0,
+                "label": 2
+            },
+            {
+                "mean_current": 1.138,
+                "mean_voltage": 223.1,
+                "mean_temperature": 21.5,
+                "mean_external_temperature": 17.88,
+                "mean_external_humidity": 64.22,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.194,
+                "mean_voltage": 231.62,
+                "mean_temperature": 20.74,
+                "mean_external_temperature": 15.95,
+                "mean_external_humidity": 51.87,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.409,
+                "mean_voltage": 225.64,
+                "mean_temperature": 22.58,
+                "mean_external_temperature": 20.41,
+                "mean_external_humidity": 67.62,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.041,
+                "mean_voltage": 227.77,
+                "mean_temperature": 24.45,
+                "mean_external_temperature": 17.07,
+                "mean_external_humidity": 45.48,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.799,
+                "mean_voltage": 223.98,
+                "mean_temperature": 30.32,
+                "mean_external_temperature": 31.57,
+                "mean_external_humidity": 35.12,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 1.92,
+                "mean_voltage": 223.67,
+                "mean_temperature": 44.08,
+                "mean_external_temperature": 24.44,
+                "mean_external_humidity": 44.44,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 1.88,
+                "mean_voltage": 217.34,
+                "mean_temperature": 41.3,
+                "mean_external_temperature": 33.96,
+                "mean_external_humidity": 56.52,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 1.211,
+                "mean_voltage": 221.69,
+                "mean_temperature": 19.22,
+                "mean_external_temperature": 17.57,
+                "mean_external_humidity": 61.3,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.095,
+                "mean_voltage": 231.49,
+                "mean_temperature": 22.84,
+                "mean_external_temperature": 24.81,
+                "mean_external_humidity": 42.17,
+                "mean_occupancy": 3,
+                "label": 0
+            },
+            {
+                "mean_current": 1.051,
+                "mean_voltage": 232.19,
+                "mean_temperature": 18.52,
+                "mean_external_temperature": 23.54,
+                "mean_external_humidity": 64.56,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.217,
+                "mean_voltage": 224.59,
+                "mean_temperature": 23.49,
+                "mean_external_temperature": 27.53,
+                "mean_external_humidity": 50.72,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.478,
+                "mean_voltage": 231.88,
+                "mean_temperature": 20.45,
+                "mean_external_temperature": 16.14,
+                "mean_external_humidity": 48.71,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.319,
+                "mean_voltage": 235.14,
+                "mean_temperature": 23.68,
+                "mean_external_temperature": 25.16,
+                "mean_external_humidity": 51.83,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.994,
+                "mean_voltage": 215.06,
+                "mean_temperature": 38.24,
+                "mean_external_temperature": 29.43,
+                "mean_external_humidity": 30.84,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 1.07,
+                "mean_voltage": 221.17,
+                "mean_temperature": 22.43,
+                "mean_external_temperature": 20.0,
+                "mean_external_humidity": 69.29,
+                "mean_occupancy": 6,
+                "label": 0
+            },
+            {
+                "mean_current": 1.465,
+                "mean_voltage": 220.57,
+                "mean_temperature": 23.37,
+                "mean_external_temperature": 25.51,
+                "mean_external_humidity": 53.54,
+                "mean_occupancy": 5,
+                "label": 0
+            },
+            {
+                "mean_current": 1.522,
+                "mean_voltage": 225.06,
+                "mean_temperature": 39.5,
+                "mean_external_temperature": 31.44,
+                "mean_external_humidity": 45.23,
+                "mean_occupancy": 5,
+                "label": 1
+            },
+            {
+                "mean_current": 3.368,
+                "mean_voltage": 180.87,
+                "mean_temperature": 33.25,
+                "mean_external_temperature": 13.67,
+                "mean_external_humidity": 77.66,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 1.513,
+                "mean_voltage": 225.9,
+                "mean_temperature": 43.87,
+                "mean_external_temperature": 33.18,
+                "mean_external_humidity": 56.97,
+                "mean_occupancy": 6,
+                "label": 1
+            },
+            {
+                "mean_current": 1.93,
+                "mean_voltage": 232.39,
+                "mean_temperature": 34.02,
+                "mean_external_temperature": 23.16,
+                "mean_external_humidity": 50.79,
+                "mean_occupancy": 3,
+                "label": 1
+            },
+            {
+                "mean_current": 2.867,
+                "mean_voltage": 185.91,
+                "mean_temperature": 25.83,
+                "mean_external_temperature": 21.65,
+                "mean_external_humidity": 42.36,
+                "mean_occupancy": 2,
+                "label": 2
+            },
+            {
+                "mean_current": 2.274,
+                "mean_voltage": 191.12,
+                "mean_temperature": 28.64,
+                "mean_external_temperature": 21.74,
+                "mean_external_humidity": 38.01,
+                "mean_occupancy": 4,
+                "label": 2
+            },
+            {
+                "mean_current": 0.834,
+                "mean_voltage": 236.78,
+                "mean_temperature": 22.94,
+                "mean_external_temperature": 16.97,
+                "mean_external_humidity": 68.56,
+                "mean_occupancy": 0,
+                "label": 0
+            },
+            {
+                "mean_current": 1.488,
+                "mean_voltage": 221.42,
+                "mean_temperature": 22.88,
+                "mean_external_temperature": 16.87,
+                "mean_external_humidity": 55.98,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.448,
+                "mean_voltage": 239.95,
+                "mean_temperature": 21.56,
+                "mean_external_temperature": 28.61,
+                "mean_external_humidity": 65.53,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.11,
+                "mean_voltage": 229.86,
+                "mean_temperature": 18.96,
+                "mean_external_temperature": 18.89,
+                "mean_external_humidity": 41.07,
+                "mean_occupancy": 2,
+                "label": 0
+            },
+            {
+                "mean_current": 1.223,
+                "mean_voltage": 233.48,
+                "mean_temperature": 19.13,
+                "mean_external_temperature": 21.45,
+                "mean_external_humidity": 43.84,
+                "mean_occupancy": 4,
+                "label": 0
+            },
+            {
+                "mean_current": 1.262,
+                "mean_voltage": 223.81,
+                "mean_temperature": 22.49,
+                "mean_external_temperature": 22.57,
+                "mean_external_humidity": 59.33,
+                "mean_occupancy": 1,
+                "label": 0
+            },
+            {
+                "mean_current": 1.227,
+                "mean_voltage": 225.53,
+                "mean_temperature": 40.47,
+                "mean_external_temperature": 33.93,
+                "mean_external_humidity": 52.0,
+                "mean_occupancy": 7,
+                "label": 1
+            }
+        ]
+    }
+}

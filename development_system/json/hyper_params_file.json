@@ -11,5 +11,5 @@
     "neuron_step": 2,
     "overfitting_tolerance": 0.25,
     "generalization_tolerance": 0.3,
-    "num_iterations": 44
+    "num_iterations": 5
 }
