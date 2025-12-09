@@ -24,7 +24,7 @@ class PreparedSession:
             "mean_external_humidity": {"type": "number"},
             "mean_occupancy": {"type": "number"},
             "session_id": {"type": "string"},  # optional
-            "label": {"type": "string"}  # optional
+            "label": {"type": ["string", 'null']}  # optional
         },
         "required": [
             "UUID",

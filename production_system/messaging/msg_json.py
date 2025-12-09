@@ -65,11 +65,15 @@ class MessagingJsonController:
             return False
 
         if response.status_code != 200:
-            res = response.json()
-            error_message = 'unknown'
-            if 'error' in res:
-                error_message = res['error']
-            print(f'Sending Error: {error_message}')
+            try:
+                res = response.json()
+                error_message = 'unknown'
+                if 'error' in res:
+                    error_message = res['error']
+                print(f'Sending Error: {error_message}')
+            except ValueError:
+                print(f'Non-JSON response: {response.text.strip()}')
+
             return False
         return True
 
