@@ -5,6 +5,7 @@ class TrainingController:
         print("[INFO] Set Average Hyperparameters")
         self._training_manager = TrainingManager()
 
+
     def set_avg_hyper_params(self):
         self._training_manager.set_avg_hyperparameters()
 
