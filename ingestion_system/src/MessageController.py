@@ -1,10 +1,11 @@
+import datetime
 import queue
-from datetime import datetime
 from threading import Thread
 from flask import Flask, request
 from requests import post, exceptions
 
 from ingestion_system.src.messages import Message
+from ingestion_system.src.messages.RawSessionMessage import RawSessionMessage
 
 
 class MessageController:
@@ -19,12 +20,7 @@ class MessageController:
         self._app = Flask(__name__)
         # a thread-safe queue to buffer the received json message
         self._received_json_queue = queue.Queue()
-
-        self.is_test = False
-        self.test_counter = 0
-        self.test_max = None
-        self.test_start = None
-        self.test_uuids = set()
+        self.test_data = {}
 
     @staticmethod
     def get_instance():
@@ -78,10 +74,11 @@ class MessageController:
             print(f'Sending Error: {error_message}')
             return False
 
+        if isinstance(message, RawSessionMessage):
+            self.test_data[message.raw_session.uuid] = datetime.datetime.now()
         return True
 
 
-msg_ctrl = MessageController.get_instance()
 app = MessageController.get_instance().get_app()
 
 
@@ -99,33 +96,17 @@ def home():
 
 @app.post("/test_stop")
 def test_stop():
-    info = request.json
-    uuid = info.get("uuid")
+    print("[TEST] Test msg received")
+    msg = request.get_json()
+    test_data = MessageController.get_instance().test_data
+    end = datetime.datetime.now()
+    if msg["uuid"] not in test_data:
+        print("[ERR] invalid uuid received")
+        return {"error": "invalid uuid"}, 400
 
-    if msg_ctrl.is_test:
-        # Increment counter
-        msg_ctrl.test_counter += 1
-        print(f"done: {uuid}, total = {msg_ctrl.test_counter}")
-
-        msg_ctrl.test_uuids.add(uuid)
-
-        # If threshold reached
-        if msg_ctrl.test_counter == msg_ctrl.test_max:
-
-            start = msg_ctrl.test_start
-            end = datetime.now()
-            diff = end - start
-
-            with open("test.csv", "a") as f:
-                f.write(f"{start.isoformat()},{end.isoformat()},{diff.total_seconds()},{msg_ctrl.test_max}\n")
-            with open("test_semicolon.csv", "a") as f:
-                f.write(f"{start.isoformat()};{end.isoformat()};{diff.total_seconds()};{msg_ctrl.test_max}\n")
-
-
-            print(f"\n ============= TIME DIFF: {diff.total_seconds()} sec =============\n")
-
-            # Unlock main
-            receive_thread = Thread(target=MessageController.get_instance().send_to_main)
-            receive_thread.start()
-
+    start = test_data[msg["uuid"]]
+    del test_data[msg["uuid"]]
+    difference = end - start
+    with open("test.csv", "a") as f:
+        f.write(f"{start.isoformat()};{end.isoformat()};{difference.total_seconds()}\n")
     return {}, 200

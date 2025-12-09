@@ -11,7 +11,7 @@
   },
   "evaluation_system":
   {
-    "ip": "127.0.0.1",
+    "ip": "25.16.136.221",
     "port": 5006
   },
   "messaging_system":
@@ -19,13 +19,16 @@
     "ip": "127.0.0.1",
     "port": 5007
   },
-  "currentPhase": "evaluation",
+  "currentPhase": "production",
   "minimumRecords": 20,
   "missingSamplesThreshold": 5,
-  "recordsCollectionPeriodSeconds": 1,
+  "recordsCollectionPeriodSeconds": 0,
   "preparationSystemEndpoint": "raw_session",
   "evaluationSystemEndpoint": "label/expert",
-  "productionSessions": 1000000,
-  "evaluationSessions": 1,
-  "test": true
+  "productionSessions": 20000000,
+  "evaluationSessions": 20000000,
+  "test": {
+    "isTest": true,
+    "rawSessions": 10000
+  }
 }
