@@ -8,7 +8,7 @@ if __name__ == '__main__':
     development_system = DevelopmentSystemOrchestrator()
 
     try:
-        # Fully automated mode
+        # Fully manual mode
         development_system.run()
         #Fully automated mode
         #development_system.run(productivity=True)
