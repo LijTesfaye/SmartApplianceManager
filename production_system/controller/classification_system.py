@@ -73,7 +73,7 @@ class ClassificationSystem:
 
         if not self._conf.get_sys_params()["development_phase"]:
             self._session_counter = 0
-            self._current_session = self.PHASE_EVALUATION
+            self._current_session = self.PHASE_PRODUCTION
         else:
             self._session_counter = None
 
