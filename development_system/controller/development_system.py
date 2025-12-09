@@ -1,5 +1,6 @@
 import os
 import sys
+import random
 import time
 from threading import Thread
 from development_system.controller.testing_controller import TestController
@@ -13,10 +14,9 @@ from development_system.model.smart_classifier import SmartClassifier
 from development_system.model.system_configuration import DevSystemConfig
 
 #
-STAGES = ["waiting" , "set_avg_hyp" , "set_num_iters", "train", "set_hyp",
-          "gen_learn_report" ,
-          "gen_vld_report" , "gen_test_report" , "config_sent" , "send_classifier"]
-
+STAGES = ["waiting", "set_avg_hyp", "set_num_iters", "train", "set_hyp",
+          "gen_learn_report",
+          "gen_vld_report", "gen_test_report", "config_sent", "send_classifier"]
 
 
 class DevelopmentSystemOrchestrator:
@@ -28,7 +28,6 @@ class DevelopmentSystemOrchestrator:
         self.smart_classifier = SmartClassifier()
         self.training_controller = TrainingController()
         self.winner_uuid = None
-
 
     def update_stage(self, new_stage):
         self.system_conf.stage = new_stage
@@ -49,15 +48,14 @@ class DevelopmentSystemOrchestrator:
 
         dev_system_ip, dev_system_port = self.communication_config.get_ip_port("development_system")
 
-        print("dev sys ip ",dev_system_ip)
-        print("dev sys port ",dev_system_port)
+        print("dev sys ip ", dev_system_ip)
+        print("dev sys port ", dev_system_port)
 
-        if not automated:
-            # Start listener in Background (simulates CommunicationManager)
-            run_thread = Thread(target=CommunicationManager.get_instance().listener,
-                                args=(dev_system_ip, dev_system_port))
-            run_thread.daemon = True
-            run_thread.start()
+        # Start listener in Background (simulates CommunicationManager)
+        run_thread = Thread(target=CommunicationManager.get_instance().listener,
+                            args=(dev_system_ip, dev_system_port))
+        run_thread.daemon = True
+        run_thread.start()
 
         while True:
             # From the Development system bpmn diagram a calibration set is arrived at the JsonIO end point. i.e the
@@ -84,7 +82,9 @@ class DevelopmentSystemOrchestrator:
                     inserted_iterations = 5
                 else:
                     try:
-                        inserted_iterations = int(input("[HUMAN] Insert number of iterations: "))
+                        # inserted_iterations = int(input("[HUMAN] Insert number of iterations: "))
+                        inserted_iterations = random.randint(5, 20)
+                        print(f"[HUMAN] Insert number of iterations: {inserted_iterations}")
                     except ValueError:
                         print("[WARN] Invalid input, using default 5.")
                         inserted_iterations = 40
@@ -105,7 +105,9 @@ class DevelopmentSystemOrchestrator:
                     learning_res = "y"
                 else:
                     print(" ")
-                    learning_res = input("[Human] Is the number of iterations fine? (Y/n): ")
+                    # learning_res = input("[Human] Is the number of iterations fine? (Y/n): ")
+                    learning_res = 'y' if random.random() < 0.9 else 'n'
+                    print(f"[HUMAN] Is the number of iterations fine? {learning_res}")
                 if learning_res.lower() == "y":
                     self.system_conf.ongoing_validation = False
                     self.update_stage("set_hyp")
@@ -116,13 +118,16 @@ class DevelopmentSystemOrchestrator:
             if self.system_conf.stage == "set_hyp":
                 print("[INFO] Starting validation phase...")
                 validation_controller = ValidationController()
-                validation_controller.get_classifiers()  # runs grid search
+                candidate_classifiers = validation_controller.get_classifiers()  # runs grid search
                 validation_controller.get_validation_report()
                 if automated:  # used for python test of the classifier
-                    self.winner_uuid = "NN50" # local test
+                    self.winner_uuid = "NN50"  # local test
                     self.update_stage("gen_test_report")
                 else:
-                    self.winner_uuid = input("[HUMAN] Insert the UUID of the winner classifier: ").strip()
+                    winner_classifier = random.choice(candidate_classifiers)
+                    self.winner_uuid = winner_classifier["uuid"]
+                    # self.winner_uuid = input("[HUMAN] Insert the UUID of the winner classifier: ").strip()
+                    print(f"[HUMAN] Insert the UUID of the winner classifier: {self.winner_uuid}")
                     if not self.winner_uuid:
                         self.update_stage("set_avg_hyp")
                     else:
@@ -139,7 +144,9 @@ class DevelopmentSystemOrchestrator:
                 if automated:
                     test_res = "y"
                 else:
-                    test_res = input("[HUMAN] Is the test passed? (Y/n): ")
+                    # test_res = input("[HUMAN] Is the test passed? (Y/n): ")
+                    test_res = 'y' if random.random() < 0.9 else 'n'
+                    print(f"[HUMAN] Is the test passed? (Y/n): {test_res}")
                 if test_res.lower() == "y":
                     print("Test Passed!")
                     self.update_stage("send_classifier")

@@ -1,14 +1,4 @@
 {
-  "preparation_system":
-  {
-    "ip": "127.0.0.1",
-    "port": 5001
-  },
-  "ingestion_system":
-  {
-    "ip": "127.0.0.1",
-    "port": 5002
-  },
   "segregation_system":
   {
     "ip": "127.0.0.1",

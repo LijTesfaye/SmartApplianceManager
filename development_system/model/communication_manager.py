@@ -34,7 +34,7 @@ class CommunicationManager:
 
         env_path = Path(__file__).resolve().parents[2] / "dev_sys.env"
         load_dotenv(env_path)
-        winner_job_path_from_root = os.getenv("TEST_WINNER_AUTOMATED")
+        winner_job_path_from_root = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
         self.winner_job_path = Path(__file__).resolve().parents[2] / winner_job_path_from_root
 
     @staticmethod
@@ -113,7 +113,7 @@ class CommunicationManager:
         print("[INFO] send_classifier_joblib_automated")
         ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
         url = f"http://{ip_classification_system}:{port_classification_system}/deploy"
-        base_path = os.getenv("TEST_WINNER_AUTOMATED")
+        base_path = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
         file_path = os.path.join(base_path, f"{uuid}.joblib")
 
         if not os.path.exists(file_path):
