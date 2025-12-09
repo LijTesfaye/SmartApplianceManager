@@ -49,6 +49,9 @@ class DevelopmentSystemOrchestrator:
 
         dev_system_ip, dev_system_port = self.communication_config.get_ip_port("development_system")
 
+        print("dev sys ip ",dev_system_ip)
+        print("dev sys port ",dev_system_port)
+
         if not automated:
             # Start listener in Background (simulates CommunicationManager)
             run_thread = Thread(target=CommunicationManager.get_instance().listener,
@@ -116,7 +119,7 @@ class DevelopmentSystemOrchestrator:
                 validation_controller.get_classifiers()  # runs grid search
                 validation_controller.get_validation_report()
                 if automated:  # used for python test of the classifier
-                    self.winner_uuid = "NN50"
+                    self.winner_uuid = "NN50" # local test
                     self.update_stage("gen_test_report")
                 else:
                     self.winner_uuid = input("[HUMAN] Insert the UUID of the winner classifier: ").strip()
@@ -158,7 +161,8 @@ class DevelopmentSystemOrchestrator:
                 print("[INFO] Sending classifier to production system...")
                 try:
                     if automated:
-                        CommunicationManager.get_instance().send_classifier_joblib_automated(self.winner_uuid)
+                        self.winner_uuid = "NN50"
+                        CommunicationManager.get_instance().send_classifier_joblib(self.winner_uuid)
                         self.update_stage("waiting")
                     else:
                         CommunicationManager.get_instance().send_classifier_joblib(self.winner_uuid)
