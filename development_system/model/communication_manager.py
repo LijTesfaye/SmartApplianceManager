@@ -34,7 +34,7 @@ class CommunicationManager:
 
         env_path = Path(__file__).resolve().parents[2] / "dev_sys.env"
         load_dotenv(env_path)
-        winner_job_path_from_root = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH")
+        winner_job_path_from_root = os.getenv("TEST_WINNER_AUTOMATED")
         self.winner_job_path = Path(__file__).resolve().parents[2] / winner_job_path_from_root
 
     @staticmethod
@@ -82,57 +82,57 @@ class CommunicationManager:
             return False
         return True
 
-    # This method is to do a python test on the orchestrator in an automated mode.
+     # This method is to do a python test on the orchestrator in an automated mode.
     def send_classifier_joblib(self, uuid):
+        print("[INFO] send_classifier_joblib")
+        ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
+        url = f"http://{ip_classification_system}:{port_classification_system}/deploy"
 
-        ip_classification_system, port_classification_system = self.communication_config.get_ip_port(
-            "production_system")
-        end_point = "deploy"
-        print(ip_classification_system)
-        url = f"http://{ip_classification_system}:{port_classification_system}/" + end_point
+        file_path = self.winner_job_path / f"{str(uuid).upper()}.joblib"
+        print("[DEBUG] Uploading:", file_path)
 
-        file_path = Path(self.winner_job_path) / f"{str(uuid).upper()}.joblib"
-        print(file_path)
-        if not os.path.exists(file_path):
-            raise ValueError("[ERROR] File not found")
+        if not file_path.exists():
+            raise FileNotFoundError(f"[ERROR] File not found: {file_path}")
 
-        file = {'file': open(file_path, 'rb')}
         try:
-            response = requests.post(url, files=file, timeout=3)
+            with open(file_path, 'rb') as f:
+                response = requests.post(url, files={'file': f}, timeout=3)
+
             if response.status_code == 200:
                 print("[INFO] WinnerClassifier deployed successfully.")
                 return True
             else:
                 print(f"[ERROR] Deployment failed — status {response.status_code}: {response.text}")
                 return False
-        except TimeoutError:
-            print("[ERROR] Timeout")
-            raise TimeoutError
+        except requests.exceptions.RequestException as e:
+            print(f"[ERROR] Request failed: {e}")
+            return False
+
 
     def send_classifier_joblib_automated(self, uuid):
-        print("[INFO] send_classifier_joblib_automated ")
-        ip_classification_system, port_classification_system = self.communication_config.get_ip_port(
-            "production_system")
-        end_point = "deploy"
-        url = f"http://{ip_classification_system}:{port_classification_system}/" + end_point
+        print("[INFO] send_classifier_joblib_automated")
+        ip_classification_system, port_classification_system = self.communication_config.get_ip_port("production_system")
+        url = f"http://{ip_classification_system}:{port_classification_system}/deploy"
+        base_path = os.getenv("TEST_WINNER_AUTOMATED")
+        file_path = os.path.join(base_path, f"{uuid}.joblib")
 
-        # Grab the winner classifier in joblib  format
-        file_path = os.getenv("CANDIDATE_CLASSIFIERS_DIRECTORY_PATH") + uuid + ".joblib"
         if not os.path.exists(file_path):
-            raise ValueError("[ERROR] File not found")
+            raise FileNotFoundError(f"[ERROR] File not found: {file_path}")
 
-        file = {'file': open(file_path, 'rb')}
         try:
-            response = requests.post(url, files=file, timeout=3)
+            with open(file_path, 'rb') as f:
+                response = requests.post(url, files={'file': f}, timeout=5)
+
             if response.status_code == 200:
                 print("[INFO] WinnerClassifier deployed successfully.")
                 return True
             else:
-                print(f"[ERROR] Deployment failed — status {response.status_code}: {response.text}")
+                print(f"[ERROR] Deployment failed ({response.status_code}): {response.text}")
                 return False
-        except TimeoutError:
-            print("[ERROR] Timeout")
-            raise TimeoutError
+
+        except requests.exceptions.RequestException as e:
+            print(f"[ERROR] Request failed: {e}")
+            return False
 
 
 app = CommunicationManager.get_instance().get_app()
