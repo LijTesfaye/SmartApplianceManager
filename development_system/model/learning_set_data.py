@@ -31,7 +31,7 @@ class LearningDataSet:
     @staticmethod
     def set_data(data):
         LearningDataSet._instance = {
-            "train" : {
+            "training" : {
                 "data": {
                     "mean_current":[],
                     "mean_voltage":[],
@@ -66,18 +66,17 @@ class LearningDataSet:
             }
         }
 
-        categories = ["train" , "validation" , "test"]
+        categories = ["training", "validation", "test"]
         for category in categories:
-            for feature in data[category]["features"]:
-
+            for feature in data[category]:
                 label = feature["label"]
                 LearningDataSet._instance[category]["labels"].append(label)
-                LearningDataSet._instance[category]["data"]["mean_current"].append(feature["mean_current"])
-                LearningDataSet._instance[category]["data"]["mean_voltage"].append(feature["mean_voltage"])
-                LearningDataSet._instance[category]["data"]["mean_temperature"].append(feature["mean_temperature"])
-                LearningDataSet._instance[category]["data"]["mean_external_temperature"].append(feature["mean_external_temperature"])
-                LearningDataSet._instance[category]["data"]["mean_external_humidity"].append(feature["mean_external_humidity"])
-                LearningDataSet._instance[category]["data"]["mean_occupancy"].append(feature["mean_occupancy"])
+                LearningDataSet._instance[category]["data"]["mean_current"].append(feature["features"][0])
+                LearningDataSet._instance[category]["data"]["mean_voltage"].append(feature["features"][1])
+                LearningDataSet._instance[category]["data"]["mean_temperature"].append(feature["features"][2])
+                LearningDataSet._instance[category]["data"]["mean_external_temperature"].append(feature["features"][3])
+                LearningDataSet._instance[category]["data"]["mean_external_humidity"].append(feature["features"][4])
+                LearningDataSet._instance[category]["data"]["mean_occupancy"].append(feature["features"][5])
 
     @staticmethod
     def get_data(category):

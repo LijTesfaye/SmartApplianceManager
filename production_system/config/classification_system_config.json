@@ -1,0 +1,36 @@
+{
+  "addresses": {
+    "development_system":
+    {
+      "ip": "127.0.0.1",
+      "port": 5004
+    },
+    "classification_system":
+    {
+      "ip": "127.0.0.1",
+      "port": 5005
+    },
+    "evaluation_system": {
+      "ip": "127.0.0.1",
+      "port": 5006
+    },
+    "messaging_system": {
+      "ip": "127.0.0.1",
+      "port": 5007
+    },
+    "client_side_system": {
+      "ip": "127.0.0.1",
+      "port": 5008
+    },
+    "ingestion_system":
+    {
+      "ip": "127.0.0.1",
+      "port": 5002
+    }
+  },
+  "system_parameters" : {
+    "development_phase" : false,
+    "production_sessions" : 1000000,
+    "evaluation_sessions" : 1
+  }
+}

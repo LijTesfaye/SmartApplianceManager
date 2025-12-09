@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+from dotenv import load_dotenv
+from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional, List, Dict
 import plotly.graph_objects as go
@@ -21,9 +23,18 @@ class ReportGenerator:
     def __post_init__(self):
         if self.report_type not in ("training", "validation", "test"):
             raise ValueError(f"Invalid report_type: {self.report_type}")
-        json_dir = os.getenv("JSON_PATH")
-        if json_dir:
-            os.makedirs(json_dir, exist_ok=True)
+
+        env_path = Path(__file__).resolve().parents[2] / "dev_sys.env"
+        load_dotenv(env_path)
+
+        test_report_path_from_root = os.getenv("TEST_REPORT_PATH")
+        self.test_report_path = Path(__file__).resolve().parents[2] / test_report_path_from_root
+
+        validation_report_path_from_root = os.getenv("VALIDATION_TEST_REPORT_PATH")
+        self.validation_report_path = Path(__file__).resolve().parents[2] / validation_report_path_from_root
+
+        test_image_path_from_root = os.getenv("TEST_IMAGE_DIR")
+        self.test_image_path = Path(__file__).resolve().parents[2] / test_image_path_from_root
 
     def generate_report(self) -> None:
         if self.report_type == "training":
@@ -44,31 +55,26 @@ class ReportGenerator:
     def _generate_validation_report(self):
         if not self.best_classifiers:
             raise ValueError("Validation report requires best_classifiers")
-        path = os.getenv("VALIDATION_JSON_PATH")
+        path = self.validation_report_path
         if not path:
             raise ValueError("VALIDATION_JSON_PATH is not set in the environment.")
-        self._generate_json(self.best_classifiers,path)
+        self._generate_json(self.best_classifiers, path)
 
     def _generate_test_report(self):
         if not self.test_result:
             raise ValueError("Test report requires test_result value")
 
         data = [self.test_result]
-        json_path = os.getenv("TEST_JSON_PATH")
+        json_path = self.validation_report_path
         if json_path is not None:
             os.makedirs(os.path.dirname(json_path), exist_ok=True)
             self._generate_json(data, json_path)
 
-    def _generate_json(self, data, file_path: str):
+    def _generate_json(self, data, file_path):
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        JsonReadWrite.write_json_file(file_path,data)
+        JsonReadWrite.write_json_file(str(file_path), data)
 
     def _learning_plot(self) -> None:
-        img_dir = os.getenv("LEARNING_IMAGE_PATH")
-        if not img_dir:
-            raise ValueError("LEARNING_IMAGE_PATH is not set in the environment.")
-        os.makedirs(img_dir, exist_ok=True)
-
         fig = go.Figure(layout_title_text="MSE chart for classifier error")
         fig.add_trace(
             go.Scatter(
@@ -78,6 +84,5 @@ class ReportGenerator:
                 showlegend=True,
             )
         )
-        output_path = os.path.join(img_dir, "learning_plot.png")
-        fig.write_image(output_path)
-        print(f"[INFO] Learning plot saved at: {output_path}")
+        fig.write_image(self.test_image_path)
+        print(f"[INFO] Learning plot saved at: {self.test_image_path}")

@@ -32,8 +32,7 @@ class BalancingReport:
         fig.add_trace(go.Bar(
             x=classes,
             y=counts,
-            name="Class Counts",
-            marker_color=dict(color='streetblue')
+            name="Class Counts"
         ))
 
         # Add tolerance band
@@ -49,7 +48,7 @@ class BalancingReport:
             x=classes,
             y=[tol_lower] * len(classes),
             mode='lines',
-            line=dict(color='green', dash='dash'),
+            line=dict(color='black', dash='dash'),
             name='Tolerance Lower'
         ))
 

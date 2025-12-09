@@ -9,21 +9,6 @@
     "ip": "127.0.0.1",
     "port": 5002
   },
-  "segregation_system":
-  {
-    "ip": "127.0.0.1",
-    "port": 5003
-  },
-  "development_system":
-  {
-    "ip": "127.0.0.1",
-    "port": 5004
-  },
-  "production_system":
-  {
-    "ip": "127.0.0.1",
-    "port": 5005
-  },
   "evaluation_system":
   {
     "ip": "127.0.0.1",
@@ -33,5 +18,14 @@
   {
     "ip": "127.0.0.1",
     "port": 5007
-  }
+  },
+  "currentPhase": "evaluation",
+  "minimumRecords": 20,
+  "missingSamplesThreshold": 5,
+  "recordsCollectionPeriodSeconds": 1,
+  "preparationSystemEndpoint": "raw_session",
+  "evaluationSystemEndpoint": "label/expert",
+  "productionSessions": 1000000,
+  "evaluationSessions": 1,
+  "test": true
 }
