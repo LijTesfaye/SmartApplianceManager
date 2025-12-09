@@ -11,9 +11,9 @@ if __name__ == '__main__':
 
     try:
         # Fully manual mode
-        development_system.run()
+        #development_system.run()
         # Fully automated mode
-        # development_system.run(productivity=True)
+        development_system.run(automated=True)
     except KeyboardInterrupt:
         print("Development App terminated")
         sys.exit(0)
