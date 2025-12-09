@@ -122,6 +122,8 @@ class ValidationManager:
         self.save_top5_classifiers_json()
         print("[DEBUG] THE BEST 5 CLASSIFIERS  : ", self._candidate_classifiers)
 
+        return self._candidate_classifiers
+
     def save_top5_classifiers_json(self):
         JsonReadWrite.write_json_file(self.top5_classifiers_path, self._candidate_classifiers)
         print(f"[INFO] Saved top 5 classifier metadata at {self.top5_classifiers_path}")

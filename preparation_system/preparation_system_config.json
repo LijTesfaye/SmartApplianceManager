@@ -4,7 +4,7 @@
     "port": 5001
   },
   "segregation_system": {
-    "ip": "127.0.0.1",
+    "ip": "25.11.231.246",
     "port": 5003
   },
   "production_system": {
@@ -37,5 +37,5 @@
       "max": 7
     }
   },
-  "development_phase": false
+  "development_phase": true
 }

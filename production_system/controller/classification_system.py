@@ -140,11 +140,10 @@ class ClassificationSystem:
                         MessagingJsonController.send_messaging_system(msg)
                     else:
                         print("(TEST) SENDING classifier TO INGESTION")
-                        ip = self._conf.get_addresses()["ingestion_system"]["ip"]
-                        port = self._conf.get_addresses()["ingestion_system"]["port"]
+                        ing_sys = self._conf.get_addresses()["ingestion_system"]
                         MessagingJsonController.send(
-                            self._conf.get_addresses()["ingestion_system"]["ip"],
-                            self._conf.get_addresses()["ingestion_system"]["port"],
+                            ing_sys["ip"],
+                            ing_sys["port"],
                             "/test_stop",
                             msg
                         )
@@ -161,49 +160,56 @@ class ClassificationSystem:
 
                 # Wait for prepared session
                 prepared_session_json = self._msg_controller.receive()
+                print(f"[CLASSIFICATION SYSTEM] \
+                Prep. session: uuid={prepared_session_json['UUID']}")
 
                 try:
                     # Validate schema and create object
                     prep_session = PreparedSession.from_json(prepared_session_json)
 
-                    print("[CLASSIFICATION SYSTEM] Prepared session received")
+                    print("[CLASSIFICATION SYSTEM] Prepared session accepted")
 
                     # Infer classifier
                     label = self._classifier.infer(prep_session)
-                    print("[CLASSIFICATION SYSTEM] Label calculated")
+                    print(f"[CLASSIFICATION SYSTEM] \
+                    Label calculated: {str(label.get_label_type())}")
 
                     # Differentiate between Production / Evaluation phase
 
                     # In evaluation phase send label to Evaluation System
                     if self._current_session == self.PHASE_EVALUATION:
                         # Send label
+                        eval_sys = self._conf.get_addresses()["evaluation_system"]
                         MessagingJsonController.send(
-                            self._conf.get_addresses()["evaluation_system"]["ip"],
-                            self._conf.get_addresses()["evaluation_system"]["port"],
+                            eval_sys["ip"],
+                            eval_sys["port"],
                             "/label/classifier",
                             label.to_dict()
                         )
 
                     # Always send to final client
                     if not self._test_service_flag:
+                        cli_sys = self._conf.get_addresses()["client_side_system"]
                         MessagingJsonController.send(
-                            self._conf.get_addresses()["client_side_system"]["ip"],
-                            self._conf.get_addresses()["client_side_system"]["port"],
+                            cli_sys["ip"],
+                            cli_sys["port"],
                             "/fault_risk",
                             label.to_dict()
                         )
                     else:
                         print(f"(TEST) SENDING TO INGESTION:\n{label.to_dict()}")
-                        ip = self._conf.get_addresses()["ingestion_system"]["ip"]
-                        port = self._conf.get_addresses()["ingestion_system"]["port"]
+                        ing_sys = self._conf.get_addresses()["ingestion_system"]
                         msg = {'uuid': label.get_UUID()}
-                        print(f"TO [{ip}:{port}]: {msg}")
-                        MessagingJsonController.send(
-                            self._conf.get_addresses()["ingestion_system"]["ip"],
-                            self._conf.get_addresses()["ingestion_system"]["port"],
-                            "/test_stop",
-                            msg
-                        )
+
+                        try:
+                            MessagingJsonController.send(
+                                ing_sys["ip"],
+                                ing_sys["port"],
+                                "/test_stop",
+                                msg
+                            )
+                        except Exception as e:
+                            print(f"[TEST] Sending to ingestion: {e}")
 
                     # Update session
                     self.update_phase()

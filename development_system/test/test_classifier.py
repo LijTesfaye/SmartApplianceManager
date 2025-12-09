@@ -2,9 +2,6 @@
 import os
 import sys
 import pytest
-from flask.cli import load_dotenv
-
-
 
 print("[DEBUG] COMMUNICATION_SYSTEM_CONFIG:", os.getenv("COMMUNICATION_SYSTEM_CONFIG"))
 
@@ -14,7 +11,7 @@ print("[DEBUG] COMMUNICATION_SYSTEM_CONFIG:", os.getenv("COMMUNICATION_SYSTEM_CO
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from development_system.model.learning_set_data import LearningDataSet
 from development_system.utility.json_read_write import JsonReadWrite
-from development_system.controller.development_system_localtest import DevelopmentSystemOrchestratorLocalhost
+from development_system_localtest import DevelopmentSystemOrchestratorLocalhost
 
 
 @pytest.fixture

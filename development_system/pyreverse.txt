@@ -1,0 +1,18 @@
+python -m pylint --version
+
+
+pyreverse development_system/controller/development_system.py \
+development_system/controller/training_controller.py \
+development_system/controller/validation_controller.py \
+development_system/controller/testing_controller.py \
+development_system/model/smart_classifier.py \
+development_system/model/training_manager.py \
+development_system/model/validation_manager.py \
+development_system/model/test_manager.py \
+development_system/model/learning_set_data.py \
+development_system/generator/report_generator.py  -o png -p DevSystemCore -ASmy -f PUBLIC
+
+
+pyreverse -o png -p DevSystemCore development_system/controller development_system/model development_system/generator
+
+
