@@ -60,9 +60,14 @@ class RawSessionSchemaVerifier:
 
         self._require_keys(entry, ["UUID", "timestamp", "label"])
 
-        self._verify_uuid(entry["UUID"])
-        self._verify_string(entry["timestamp"])
-        self._verify_string(entry["label"])
+        if entry["UUID"] is not None:
+            self._verify_uuid(entry["UUID"])
+
+        if entry["timestamp"] is not None:
+            self._verify_string(entry["timestamp"])
+
+        if entry["label"] is not None:
+            self._verify_string(entry["label"])
 
     def _verify_string(self, value):
         if value is not None and not isinstance(value, str):
