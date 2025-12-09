@@ -11,14 +11,10 @@ class CommunicationConfig:
     """
     def __init__(self):
         # Path is stored in .env as COMMUNICATION_SYSTEM_CONFIG
-        config_path = os.getenv("COMMUNICATION_SYSTEM_CONFIG")
 
-        if not config_path:
-            raise ValueError("[ERROR] COMMUNICATION_SYSTEM_CONFIG not set in .env")
-
-        read_result, file_content = JsonReadWrite.read_json_file(config_path)
+        read_result, file_content = JsonReadWrite.read_json_file(os.getenv("COMMUNICATION_SYSTEM_CONFIG"))
         if not read_result or not file_content:
-            raise FileNotFoundError(f"[ERROR] Unable to read communication config at: {config_path}")
+            raise FileNotFoundError(f"[ERROR] Unable to read communication config at: {file_content}")
         self._config = file_content
 
 
@@ -37,5 +33,4 @@ class CommunicationConfig:
 
         if not ip or not port:
             raise ValueError(f"[ERROR] Invalid config for '{system_name}': missing ip or port.")
-
         return ip, port
