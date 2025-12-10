@@ -17,12 +17,12 @@
       "max": 250
     },
     "temperature": {
-      "min": 0,
-      "max": 60
+      "min": 20,
+      "max": 100
     },
     "ex_temperature": {
       "min": -20,
-      "max": 80
+      "max": 50
     },
     "current": {
       "min": 0,
