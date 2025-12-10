@@ -100,24 +100,32 @@ def start_app():
 def home():
     return "Ingestion System online!"
 
+last = 0
+
 @app.post("/test_stop")
 def test_stop():
-    print("[TEST] Test msg received")
     msg = request.get_json()
     end = datetime.datetime.now()
     message_controller = MessageController.get_instance()
     test_data = message_controller.test_data
     counter = 0
+    uuid = 0
     with message_controller.test_data_lock:
-        if msg["uuid"] not in test_data:
+        uuid = msg['uuid']
+        if uuid not in test_data:
             print("[ERR] invalid uuid received")
             return {"error": "invalid uuid"}, 400
 
-        start = test_data[msg["uuid"]]
-        del test_data[msg["uuid"]]
+        start = test_data[uuid]
+        del test_data[uuid]
         message_controller.test_counter -= 1
         counter = message_controller.test_counter
 
+    global last
+    if uuid - last > 1:
+        print(f"ERR last: {last}, received {uuid}")
+        exit(1)
+    last = uuid
     difference = end - start
     message_controller.cumulative_response_time += difference.total_seconds()
     if counter <= 0:
