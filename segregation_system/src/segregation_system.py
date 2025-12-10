@@ -74,9 +74,10 @@ class SegregationSystem:
         listener.setDaemon(True)
         listener.start()
 
+        self.write_state("STORE")
         current_state = self.read_state()
 
-        #self.prepared_session_storage.clear_dataset()
+        self.prepared_session_storage.clear_dataset()
 
         while True:
 
@@ -122,8 +123,8 @@ class SegregationSystem:
                 # answer = sys.stdin.readline().strip().lower()
                 # is_satisfactory = (answer == "y")
                 # logging.info(f"Balancing report satisfactory: {is_satisfactory}")
-                # is_satisfactory = random.random() < 0.9
-                is_satisfactory = True
+                is_satisfactory = random.random() < 0.9
+                # is_satisfactory = True
 
                 if not is_satisfactory:
                     print("[SEGREGATION SYSTEM] Please describe what you need in order to balance:")
@@ -155,8 +156,8 @@ class SegregationSystem:
                 # answer = sys.stdin.readline().strip().lower()
                 # is_satisfactory = (answer == "y")
                 # logging.info(f"Coverage report satisfactory: {is_satisfactory}")
-                # is_satisfactory = random.random() < 0.9
-                is_satisfactory = True
+                is_satisfactory = random.random() < 0.9
+                # is_satisfactory = True
 
                 if not is_satisfactory:
                     print("[SEGREGATION SYSTEM] Please describe what you need in order to cover all data:")
@@ -186,17 +187,16 @@ class SegregationSystem:
                                            "/learning_sets",
                                            learning_sets)
 
-                print(f"{self.segregation_system_config['development_system']['ip']}:{self.segregation_system_config['development_system']['port']}")
+                print(
+                    f"{self.segregation_system_config['development_system']['ip']}:{self.segregation_system_config['development_system']['port']}")
 
                 logging.info(f"Learning sent to Development System")
 
-                # self.prepared_session_storage.clear_dataset()
-                # self.prepared_session_storage.reset_counter()
-                self.write_state("BALANCING")
-                current_state = "BALANCING"
+                self.prepared_session_storage.clear_dataset()
+                self.prepared_session_storage.reset_counter()
+                self.write_state("STORE")
+                current_state = "STORE"
 
                 logging.info("Learning finished → Store state starting")
-
-                input()
 
                 continue

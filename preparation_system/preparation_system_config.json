@@ -37,5 +37,5 @@
       "max": 7
     }
   },
-  "development_phase": true
+  "development_phase": false
 }

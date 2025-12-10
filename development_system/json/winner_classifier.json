@@ -1,13 +1,12 @@
 {
-    "uuid": "NN16",
-    "train_error": 0.2916666666666667,
+    "uuid": "NN2",
+    "train_error": 0.6666666666666666,
     "validation_error": 0.0,
-    "layers": 2,
-    "neurons": 68,
+    "layers": 1,
+    "neurons": 32,
     "hidden_layers_structure": [
-        64,
-        4
+        32
     ],
-    "error_difference": 0.2916666666666667,
+    "error_difference": 0.6666666666666666,
     "overfitting_threshold": 0.25
 }
