@@ -23,6 +23,9 @@ class MessageController:
         self._received_json_queue = queue.Queue()
         self.test_data = {}
         self.test_data_lock = threading.Lock()
+        self.test_counter = 0
+        self.total_test = 0
+        self.cumulative_response_time = 0
 
     @staticmethod
     def get_instance():
@@ -102,15 +105,22 @@ def test_stop():
     print("[TEST] Test msg received")
     msg = request.get_json()
     end = datetime.datetime.now()
-    test_data = MessageController.get_instance().test_data
-    with MessageController.get_instance().test_data_lock:
+    message_controller = MessageController.get_instance()
+    test_data = message_controller.test_data
+    counter = 0
+    with message_controller.test_data_lock:
         if msg["uuid"] not in test_data:
             print("[ERR] invalid uuid received")
             return {"error": "invalid uuid"}, 400
 
         start = test_data[msg["uuid"]]
         del test_data[msg["uuid"]]
+        message_controller.test_counter -= 1
+        counter = message_controller.test_counter
+
     difference = end - start
-    with open("test.csv", "a") as f:
-        f.write(f"{start.isoformat()};{end.isoformat()};{difference.total_seconds()}\n")
+    message_controller.cumulative_response_time += difference.total_seconds()
+    if counter <= 0:
+        with open("test.csv", "a") as f:
+            f.write(f"{message_controller.total_test};{message_controller.cumulative_response_time / message_controller.total_test}\n")
     return {}, 200
