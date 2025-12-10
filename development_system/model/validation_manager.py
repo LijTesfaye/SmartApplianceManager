@@ -69,9 +69,15 @@ class ValidationManager:
 
         grid_search_result, iterations_number, overfitting_threshold = self.generate_hyperparameter_options()
 
+        print(grid_search_result)
+        print(iterations_number)
+        print(overfitting_threshold)
+
         if not grid_search_result:
             print("[WARN] No hyperparameter settings generated, skipping validation.")
             return
+
+        counter = 0
 
         for index, setting in enumerate(grid_search_result):
             new_config = SMARTClassifierConfig(iterations_number, setting)
@@ -90,8 +96,10 @@ class ValidationManager:
                 self._validation_data["labels"]
             )
 
-            if (validation_error - train_error) > overfitting_threshold:
-                continue
+            #if (validation_error - train_error) > overfitting_threshold:
+            #    continue
+
+            counter = counter + 1
 
             self._smart_classifier.save_classifier("NN" + str(index))
 
@@ -117,6 +125,9 @@ class ValidationManager:
             # A check that the top classifiers selected are not more than FIVE
             if len(self._candidate_classifiers) > 5:
                 self._candidate_classifiers.pop(5)
+
+        if counter == 0:
+            raise ValueError("[ERROR] Totally overfitting")
 
         # The top-5  candidate classifiers are saved into JSON here
         self.save_top5_classifiers_json()

@@ -1,8 +1,8 @@
 [
     {
-        "uuid": "NN2",
-        "test_error": 0.0,
-        "validation_error": 0.0,
+        "uuid": "NN0",
+        "test_error": 0.6666666666666666,
+        "validation_error": 0.6666666666666666,
         "difference": 0.0,
         "generalization_tolerance": 0.3
     }
