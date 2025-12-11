@@ -63,6 +63,6 @@ class Classifier:
         prediction = self.model.predict(data_frame)[0]
 
         return Label(
-            UUID=prepared_session.get_UUID(),
+            uuid=prepared_session.get_uuid(),
             label_type=LabelType.from_string(str(prediction))
         )
