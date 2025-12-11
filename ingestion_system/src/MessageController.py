@@ -139,6 +139,7 @@ def dev_stop():
     message_controller = MessageController.get_instance()
     if message_controller.test_counter >= message_controller.total_test:
         return {}, 200
+    print(f"[TEST] deployed classificator {message_controller.test_counter}")
     message_controller.test_counter += 1
     resp = datetime.datetime.now() - message_controller.first_timestamp
     resp = resp.total_seconds()
