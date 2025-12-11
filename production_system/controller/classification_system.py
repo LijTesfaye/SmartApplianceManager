@@ -3,11 +3,11 @@
 from threading import Thread
 import jsonschema
 
-from config.configuration_controller import ConfigurationController
-from classifier.classifier import Classifier
-from messaging.msg_json import MessagingJsonController
-from model.prepared_session import PreparedSession
-from errorlog.error_logger import ErrorLogger
+from production_system.config.configuration_controller import ConfigurationController
+from production_system.classifier.classifier import Classifier
+from production_system.messaging.msg_json import MessagingJsonController
+from production_system.model.prepared_session import PreparedSession
+from production_system.errorlog.error_logger import ErrorLogger
 
 class ClassificationSystem:
     """ Main system class """
@@ -199,7 +199,7 @@ class ClassificationSystem:
                     else:
                         print(f"(TEST) SENDING TO INGESTION:\n{label.to_dict()}")
                         ing_sys = self._conf.get_addresses()["ingestion_system"]
-                        msg = {'uuid': label.get_UUID()}
+                        msg = {'uuid': label.get_uuid()}
 
                         try:
                             MessagingJsonController.send(
