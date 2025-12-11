@@ -1,5 +1,6 @@
 import datetime
 import queue
+import sys
 import threading
 from threading import Thread
 from flask import Flask, request
@@ -26,6 +27,7 @@ class MessageController:
         self.test_counter = 0
         self.total_test = 0
         self.cumulative_response_time = 0
+        self.first_timestamp = None
 
     @staticmethod
     def get_instance():
@@ -101,7 +103,6 @@ def home():
     return "Ingestion System online!"
 
 last = 0
-
 @app.post("/test_stop")
 def test_stop():
     msg = request.get_json()
@@ -131,4 +132,16 @@ def test_stop():
     if counter <= 0:
         with open("test.csv", "a") as f:
             f.write(f"{message_controller.total_test};{message_controller.cumulative_response_time / message_controller.total_test}\n")
+    return {}, 200
+
+@app.post("/dev_stop")
+def dev_stop():
+    message_controller = MessageController.get_instance()
+    if message_controller.test_counter >= message_controller.total_test:
+        return {}, 200
+    message_controller.test_counter += 1
+    resp = datetime.datetime.now() - message_controller.first_timestamp
+    resp = resp.total_seconds()
+    with open("dev_test.csv", "a") as f:
+        f.write(f"{message_controller.test_counter}; {resp}\n")
     return {}, 200
