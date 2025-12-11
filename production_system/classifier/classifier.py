@@ -45,7 +45,7 @@ class Classifier:
             return
 
         working_dir = os.getcwd()
-        full_path = os.path.join(working_dir, filename)
+        full_path = os.path.join(working_dir, "classifier", filename)
 
         joblib.dump(self.model, full_path)
 
