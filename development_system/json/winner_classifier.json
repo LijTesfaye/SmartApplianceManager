@@ -1,7 +1,7 @@
 {
     "uuid": "NN0",
-    "train_error": 0.6666666666666666,
-    "validation_error": 0.6666666666666666,
+    "train_error": 0.3333333333333333,
+    "validation_error": 1.0,
     "layers": 4,
     "neurons": 256,
     "hidden_layers_structure": [
@@ -10,6 +10,6 @@
         64,
         64
     ],
-    "error_difference": 0.0,
+    "error_difference": 0.6666666666666667,
     "overfitting_threshold": 0.25
 }

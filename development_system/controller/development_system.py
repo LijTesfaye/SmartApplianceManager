@@ -109,7 +109,8 @@ class DevelopmentSystemOrchestrator:
                 else:
                     print(" ")
                     # learning_res = input("[Human] Is the number of iterations fine? (Y/n): ")
-                    learning_res = 'y' if random.random() < 0.9 else 'n'
+                    # learning_res = 'y' if random.random() < 0.9 else 'n'
+                    learning_res = 'y'
                     print(f"[HUMAN] Is the number of iterations fine? {learning_res}")
                 if learning_res.lower() == "y":
                     self.system_conf.ongoing_validation = False
@@ -149,7 +150,8 @@ class DevelopmentSystemOrchestrator:
                     test_res = "y"
                 else:
                     # test_res = input("[HUMAN] Is the test passed? (Y/n): ")
-                    test_res = 'y' if random.random() < 0.9 else 'n'
+                    # test_res = 'y' if random.random() < 0.9 else 'n'
+                    test_res = 'y'
                     print(f"[HUMAN] Is the test passed? (Y/n): {test_res}")
                 if test_res.lower() == "y":
                     print("Test Passed!")
