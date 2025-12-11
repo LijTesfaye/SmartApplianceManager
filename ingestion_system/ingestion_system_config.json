@@ -19,7 +19,7 @@
     "ip": "127.0.0.1",
     "port": 5007
   },
-  "currentPhase": "production",
+  "currentPhase": "development",
   "minimumRecords": 20,
   "missingSamplesThreshold": 5,
   "recordsCollectionPeriodSeconds": 0.0,
@@ -29,6 +29,7 @@
   "evaluationSessions": 20000000,
   "test": {
     "isTest": true,
-    "rawSessions": 2000
+    "rawSessions": 2000,
+    "developedClassifiers": 2
   }
 }

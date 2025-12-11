@@ -108,12 +108,23 @@ class IngestionSystemOrchestrator:
         test = self.configuration_controller.is_test()
         is_test = test["isTest"]
         n_sessions = test["rawSessions"]
+        n_dev = test["developedClassifiers"]
         test_counter = 0
-        message_controller.test_counter = n_sessions
-        message_controller.total_test = n_sessions
+        if is_test and current_phase == "production":
+            # production test
+            message_controller.test_counter = n_sessions
+            message_controller.total_test = n_sessions
+        elif is_test and current_phase == "development":
+            # development test
+            message_controller.test_counter = 0
+            message_controller.total_test = n_dev
+            message_controller.first_timestamp = datetime.datetime.now()
         time.sleep(1)
 
         while True:
+            if message_controller.test_counter >= message_controller.total_test and is_test and current_phase == "development":
+                print("[TEST] TEST COMPLETED")
+                exit(0)
             while True:
                 # records collection from client side systems
                 self.records_buffer.store_record(appliance_client.get_record())
@@ -169,7 +180,8 @@ class IngestionSystemOrchestrator:
                 # print("[INFO] Sent Raw session to preparation system")
                 self.sessions_completed += 1
                 test_counter += 1
-                if test_counter >= n_sessions and is_test:
+                if test_counter >= n_sessions and is_test and current_phase == "production":
+                    # wait for production test end
                     end_counter = 99999
                     while end_counter > 0:
                         time.sleep(1)
