@@ -6,7 +6,7 @@
   },
   "ingestion_system":
   {
-    "ip": "127.0.0.1",
+    "ip": "25.18.213.203",
     "port": 5002
   },
   "evaluation_system":
@@ -22,13 +22,13 @@
   "currentPhase": "production",
   "minimumRecords": 20,
   "missingSamplesThreshold": 5,
-  "recordsCollectionPeriodSeconds": 0,
+  "recordsCollectionPeriodSeconds": 0.0,
   "preparationSystemEndpoint": "raw_session",
   "evaluationSystemEndpoint": "label/expert",
   "productionSessions": 20000000,
   "evaluationSessions": 20000000,
   "test": {
     "isTest": true,
-    "rawSessions": 10000
+    "rawSessions": 2000
   }
 }

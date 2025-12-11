@@ -109,6 +109,8 @@ class IngestionSystemOrchestrator:
         is_test = test["isTest"]
         n_sessions = test["rawSessions"]
         test_counter = 0
+        message_controller.test_counter = n_sessions
+        message_controller.total_test = n_sessions
         time.sleep(1)
 
         while True:
@@ -130,9 +132,9 @@ class IngestionSystemOrchestrator:
                 label_record.uuid = rec.uuid
                 label_record.timestamp = rec.timestamp
                 label_record.label = rec.label
-                print("[INFO] Received Label from expert")
+                # print("[INFO] Received Label from expert")
 
-            print("[INFO] Creating raw session...")
+            # print("[INFO] Creating raw session...")
             # create raw session
             raw_session = self.create_raw_session(label_record)
 
@@ -154,9 +156,7 @@ class IngestionSystemOrchestrator:
                 label_msg.dst_port = evaluation_system_address["port"]
                 label_msg.expert_record = label_record
                 result = message_controller.send(label_msg, evaluation_system_endpoint)
-                if result:
-                    print("[INFO] Sent label to evaluation system")
-                else:
+                if not result:
                     print("[ERR] Failed to send label to evaluation system")
 
             # print(json.dumps(raw_session.to_dict(), indent=4))
@@ -166,10 +166,15 @@ class IngestionSystemOrchestrator:
             raw_session_msg.raw_session = raw_session
             result = message_controller.send(raw_session_msg, preparation_system_endpoint)
             if result:
-                print("[INFO] Sent Raw session to preparation system")
+                # print("[INFO] Sent Raw session to preparation system")
                 self.sessions_completed += 1
                 test_counter += 1
                 if test_counter >= n_sessions and is_test:
+                    end_counter = 99999
+                    while end_counter > 0:
+                        time.sleep(1)
+                        with message_controller.test_data_lock:
+                            end_counter = message_controller.test_counter
                     print("[TEST] TEST COMPLETED")
                     exit(0)
 
