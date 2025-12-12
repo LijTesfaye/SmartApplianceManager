@@ -111,6 +111,12 @@ class EvaluationSystem:
                     print("==========================")
                     print("Starting evaluation report")
 
+                    # Log eventual unpaired labels
+                    tot = self._database_manager.get_count_all()
+                    full = self._database_manager.get_count_pairs()
+                    if full < tot:
+                        self._error_logger.log(f"Unpaired labels present: {tot-full}")
+
                     # Generate evaluation report
                     self._eval_report_controller.generate_report()
                     # this also deletes used labels
