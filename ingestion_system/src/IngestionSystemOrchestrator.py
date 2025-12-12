@@ -140,7 +140,7 @@ class IngestionSystemOrchestrator:
             label_record = ExpertRecord()
             if current_phase == "development" or current_phase == "evaluation":
                 rec = expert_client.get_record()
-                label_record.uuid = rec.uuid
+                label_record.uuid = self.next_raw_session_uuid
                 label_record.timestamp = rec.timestamp
                 label_record.label = rec.label
                 # print("[INFO] Received Label from expert")
@@ -194,7 +194,7 @@ class IngestionSystemOrchestrator:
                     exit(0)
 
                 if self.sessions_completed >= production_sessions and current_phase == "production":
-                    current_phase = "production"
+                    current_phase = "evaluation"
                     self.sessions_completed = 0
                     print("[INFO] Finished production phase, starting evaluation phase...")
                 elif self.sessions_completed >= evaluation_sessions and current_phase == "evaluation":
