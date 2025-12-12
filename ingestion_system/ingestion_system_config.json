@@ -14,13 +14,8 @@
     "ip": "25.16.136.221",
     "port": 5006
   },
-  "messaging_system":
-  {
-    "ip": "127.0.0.1",
-    "port": 5007
-  },
-  "currentPhase": "development",
-  "minimumRecords": 20,
+  "currentPhase": "production",
+  "minimumRecords": 10,
   "missingSamplesThreshold": 5,
   "recordsCollectionPeriodSeconds": 0.0,
   "preparationSystemEndpoint": "raw_session",
@@ -29,7 +24,7 @@
   "evaluationSessions": 20000000,
   "test": {
     "isTest": true,
-    "rawSessions": 2000,
-    "developedClassifiers": 2
+    "rawSessions": 500,
+    "developedClassifiers": 100
   }
 }

@@ -103,6 +103,7 @@ def home():
     return "Ingestion System online!"
 
 last = 0
+test_resp_times = []
 @app.post("/test_stop")
 def test_stop():
     msg = request.get_json()
@@ -129,9 +130,12 @@ def test_stop():
     last = uuid
     difference = end - start
     message_controller.cumulative_response_time += difference.total_seconds()
+    global test_resp_times
+    test_resp_times.append(difference.total_seconds())
     if counter <= 0:
         with open("test.csv", "a") as f:
-            f.write(f"{message_controller.total_test};{message_controller.cumulative_response_time / message_controller.total_test}\n")
+            for i in range(len(test_resp_times)):
+                f.write(f"{i + 1}; {test_resp_times[i]}\n")
     return {}, 200
 
 @app.post("/dev_stop")
