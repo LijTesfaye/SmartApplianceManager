@@ -14,6 +14,24 @@ class PreparedSessionStorage:
             print(f'[SEGREGATION SYSTEM] SQL Connection Error [{e}]')
             sys.exit(1)
 
+        # init database
+        cursor = self._conn.cursor()
+
+        # prepared session table
+        cursor.execute("""
+                CREATE TABLE IF NOT EXISTS prepared_session (
+                    uuid INTEGER,
+                    mean_current FLOAT,
+                    mean_voltage FLOAT,
+                    mean_temperature FLOAT,
+                    mean_external_temperature FLOAT,
+                    mean_external_humidity FLOAT,
+                    mean_occupancy FLOAT,
+                    label TEXT
+                )
+        """)
+        self._conn.commit()
+
     def get_session_number(self):
         return self.prepared_session_counter
 
