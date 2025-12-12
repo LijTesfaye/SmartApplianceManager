@@ -144,6 +144,9 @@ class IngestionSystemOrchestrator:
                 label_record.timestamp = rec.timestamp
                 label_record.label = rec.label
                 # print("[INFO] Received Label from expert")
+                if label_record.label is None:
+                    print("[ERR] No label received, discarding.")
+                    continue
 
             # print("[INFO] Creating raw session...")
             # create raw session
