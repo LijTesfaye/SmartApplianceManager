@@ -123,8 +123,7 @@ class SegregationSystem:
                 # answer = sys.stdin.readline().strip().lower()
                 # is_satisfactory = (answer == "y")
                 # logging.info(f"Balancing report satisfactory: {is_satisfactory}")
-                # is_satisfactory = random.random() < 0.9
-                is_satisfactory = True
+                is_satisfactory = random.random() < 0.7
 
                 if not is_satisfactory:
                     print("[SEGREGATION SYSTEM] Please describe what you need in order to balance:")
@@ -156,8 +155,7 @@ class SegregationSystem:
                 # answer = sys.stdin.readline().strip().lower()
                 # is_satisfactory = (answer == "y")
                 # logging.info(f"Coverage report satisfactory: {is_satisfactory}")
-                # is_satisfactory = random.random() < 0.9
-                is_satisfactory = True
+                is_satisfactory = random.random() < 0.7
 
                 if not is_satisfactory:
                     print("[SEGREGATION SYSTEM] Please describe what you need in order to cover all data:")

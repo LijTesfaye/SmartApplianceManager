@@ -109,8 +109,8 @@ class DevelopmentSystemOrchestrator:
                 else:
                     print(" ")
                     # learning_res = input("[Human] Is the number of iterations fine? (Y/n): ")
-                    # learning_res = 'y' if random.random() < 0.9 else 'n'
-                    learning_res = 'y'
+                    learning_res = 'y' if random.random() < 0.9 else 'n'
+                    # learning_res = 'y'
                     print(f"[HUMAN] Is the number of iterations fine? {learning_res}")
                 if learning_res.lower() == "y":
                     self.system_conf.ongoing_validation = False
@@ -150,8 +150,8 @@ class DevelopmentSystemOrchestrator:
                     test_res = "y"
                 else:
                     # test_res = input("[HUMAN] Is the test passed? (Y/n): ")
-                    # test_res = 'y' if random.random() < 0.9 else 'n'
-                    test_res = 'y'
+                    test_res = 'y' if random.random() < 0.9 else 'n'
+                    # test_res = 'y'
                     print(f"[HUMAN] Is the test passed? (Y/n): {test_res}")
                 if test_res.lower() == "y":
                     print("Test Passed!")
@@ -166,8 +166,6 @@ class DevelopmentSystemOrchestrator:
             if self.system_conf.stage == "config_sent":
                 print("[WARN] Test not passed. Reconfiguration required.")
                 self.update_stage("waiting")
-                print("[WARN] The Development system shuts Down.Bye!")
-                sys.exit(1)
 
                 # 9️ Send Final WinnerClassifier to Classification system
             if self.system_conf.stage == "send_classifier":
