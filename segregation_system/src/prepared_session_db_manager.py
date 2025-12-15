@@ -41,8 +41,6 @@ class PreparedSessionStorage:
     def reset_counter(self):
         self.prepared_session_counter = 0
 
-    # TODO validation method for prepared sessions
-
     def store_prepared_session(self, prepared_session):
 
         query = """
