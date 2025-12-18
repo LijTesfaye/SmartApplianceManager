@@ -1,1 +1,959 @@
 
+C:\Users\tesfaye\miniconda3\envs\smart_env\python.exe C:\Users\tesfaye\PycharmProjects\SmartApplianceManager\development_system\main.py 
+[INFO] STARTING THE DEVELOPMENT SYSTEM...
+{'startup_mode': 'waiting', 'ongoing_validation': False, 'stage': 'send_classifier'}
+True
+[INFO] Set Average Hyperparameters
+INITIALIZING TRAINING MANAGER
+IN SIDE RUN
+[DEBUG] Running in LOCAL TEST MODE — injecting mock dataset...
+[DEBUG] Looking for dataset at: C:\Users\tesfaye\PycharmProjects\SmartApplianceManager\development_system\json\mock_learning_data.json
+[INFO] Mock learning data loaded successfully.
+[INFO] External dataset successfully set.
+[INFO] Mock dataset loaded into DevelopmentSystem.
+[INFO] Stage is set to set_avg_hyp...
+In  the BIG  while loop.
+[INFO] Setting average hyperparameters...
+Initially the Training Network has this hidden layer sizes: (66, 33, 17)
+[INFO] Average hyperparameters set.
+[NFO] Num iterations Inserted.
+[DEBUG] Update SMART classifier config file
+[INFO] Starting training...
+[INFO] Model training started.
+[INFO] Model training completed.
+[INFO] Learning plot saved at: C:\Users\tesfaye\PycharmProjects\SmartApplianceManager\development_system\test\images\learning_plot.png
+[INFO] Training chart exported. Waiting for DS to review...
+[INFO] Starting validation phase...
+inside the get_candidate_classifiers 
+[DEBUG] Update SMART classifier config file
+The architecture with  (0, (128,))  is accepted.
+The architecture with  (1, (64,))  is accepted.
+The architecture with  (2, (32,))  is accepted.
+The architecture with  (3, (16,))  is accepted.
+The architecture with  (4, (8,))  is accepted.
+The architecture with  (5, (4,))  is accepted.
+The architecture with  (6, (128, 128))  is accepted.
+The architecture with  (7, (128, 64))  is accepted.
+The architecture with  (8, (128, 32))  is accepted.
+The architecture with  (9, (128, 16))  is accepted.
+The architecture with  (10, (128, 8))  is accepted.
+The architecture with  (11, (128, 4))  is accepted.
+The architecture with  (12, (64, 64))  is accepted.
+The architecture with  (13, (64, 32))  is accepted.
+The architecture with  (14, (64, 16))  is accepted.
+The architecture with  (15, (64, 8))  is accepted.
+The architecture with  (16, (64, 4))  is accepted.
+The architecture with  (17, (32, 32))  is accepted.
+The architecture with  (18, (32, 16))  is accepted.
+The architecture with  (19, (32, 8))  is accepted.
+The architecture with  (20, (32, 4))  is accepted.
+The architecture with  (21, (16, 16))  is accepted.
+The architecture with  (22, (16, 8))  is accepted.
+The architecture with  (23, (16, 4))  is accepted.
+The architecture with  (24, (8, 8))  is accepted.
+The architecture with  (25, (8, 4))  is accepted.
+The architecture with  (26, (4, 4))  is accepted.
+The architecture with  (27, (128, 128, 128))  is accepted.
+The architecture with  (28, (128, 128, 64))  is accepted.
+The architecture with  (29, (128, 128, 32))  is accepted.
+The architecture with  (30, (128, 128, 16))  is accepted.
+The architecture with  (31, (128, 128, 8))  is accepted.
+The architecture with  (32, (128, 128, 4))  is accepted.
+The architecture with  (33, (128, 64, 64))  is accepted.
+The architecture with  (34, (128, 64, 32))  is accepted.
+The architecture with  (35, (128, 64, 16))  is accepted.
+The architecture with  (36, (128, 64, 8))  is accepted.
+The architecture with  (37, (128, 64, 4))  is accepted.
+The architecture with  (38, (128, 32, 32))  is accepted.
+The architecture with  (39, (128, 32, 16))  is accepted.
+The architecture with  (40, (128, 32, 8))  is accepted.
+The architecture with  (41, (128, 32, 4))  is accepted.
+The architecture with  (42, (128, 16, 16))  is accepted.
+The architecture with  (43, (128, 16, 8))  is accepted.
+The architecture with  (44, (128, 16, 4))  is accepted.
+The architecture with  (45, (128, 8, 8))  is accepted.
+The architecture with  (46, (128, 8, 4))  is accepted.
+The architecture with  (47, (128, 4, 4))  is accepted.
+The architecture with  (48, (64, 64, 64))  is accepted.
+The architecture with  (49, (64, 64, 32))  is accepted.
+The architecture with  (50, (64, 64, 16))  is accepted.
+The architecture with  (51, (64, 64, 8))  is accepted.
+The architecture with  (52, (64, 64, 4))  is accepted.
+The architecture with  (53, (64, 32, 32))  is accepted.
+The architecture with  (54, (64, 32, 16))  is accepted.
+The architecture with  (55, (64, 32, 8))  is accepted.
+The architecture with  (56, (64, 32, 4))  is accepted.
+The architecture with  (57, (64, 16, 16))  is accepted.
+The architecture with  (58, (64, 16, 8))  is accepted.
+The architecture with  (59, (64, 16, 4))  is accepted.
+The architecture with  (60, (64, 8, 8))  is accepted.
+The architecture with  (61, (64, 8, 4))  is accepted.
+The architecture with  (62, (64, 4, 4))  is accepted.
+The architecture with  (63, (32, 32, 32))  is accepted.
+The architecture with  (64, (32, 32, 16))  is accepted.
+The architecture with  (65, (32, 32, 8))  is accepted.
+The architecture with  (66, (32, 32, 4))  is accepted.
+The architecture with  (67, (32, 16, 16))  is accepted.
+The architecture with  (68, (32, 16, 8))  is accepted.
+The architecture with  (69, (32, 16, 4))  is accepted.
+The architecture with  (70, (32, 8, 8))  is accepted.
+The architecture with  (71, (32, 8, 4))  is accepted.
+The architecture with  (72, (32, 4, 4))  is accepted.
+The architecture with  (73, (16, 16, 16))  is accepted.
+The architecture with  (74, (16, 16, 8))  is accepted.
+The architecture with  (75, (16, 16, 4))  is accepted.
+The architecture with  (76, (16, 8, 8))  is accepted.
+The architecture with  (77, (16, 8, 4))  is accepted.
+The architecture with  (78, (16, 4, 4))  is accepted.
+The architecture with  (79, (8, 8, 8))  is accepted.
+The architecture with  (80, (8, 8, 4))  is accepted.
+The architecture with  (81, (8, 4, 4))  is accepted.
+The architecture with  (82, (4, 4, 4))  is accepted.
+The architecture with  (83, (128, 128, 128, 128))  is accepted.
+The architecture with  (84, (128, 128, 128, 64))  is accepted.
+The architecture with  (85, (128, 128, 128, 32))  is accepted.
+The architecture with  (86, (128, 128, 128, 16))  is accepted.
+The architecture with  (87, (128, 128, 128, 8))  is accepted.
+The architecture with  (88, (128, 128, 128, 4))  is accepted.
+The architecture with  (89, (128, 128, 64, 64))  is accepted.
+The architecture with  (90, (128, 128, 64, 32))  is accepted.
+The architecture with  (91, (128, 128, 64, 16))  is accepted.
+The architecture with  (92, (128, 128, 64, 8))  is accepted.
+The architecture with  (93, (128, 128, 64, 4))  is accepted.
+The architecture with  (94, (128, 128, 32, 32))  is accepted.
+The architecture with  (95, (128, 128, 32, 16))  is accepted.
+The architecture with  (96, (128, 128, 32, 8))  is accepted.
+The architecture with  (97, (128, 128, 32, 4))  is accepted.
+The architecture with  (98, (128, 128, 16, 16))  is accepted.
+The architecture with  (99, (128, 128, 16, 8))  is accepted.
+The architecture with  (100, (128, 128, 16, 4))  is accepted.
+The architecture with  (101, (128, 128, 8, 8))  is accepted.
+The architecture with  (102, (128, 128, 8, 4))  is accepted.
+The architecture with  (103, (128, 128, 4, 4))  is accepted.
+The architecture with  (104, (128, 64, 64, 64))  is accepted.
+The architecture with  (105, (128, 64, 64, 32))  is accepted.
+The architecture with  (106, (128, 64, 64, 16))  is accepted.
+The architecture with  (107, (128, 64, 64, 8))  is accepted.
+The architecture with  (108, (128, 64, 64, 4))  is accepted.
+The architecture with  (109, (128, 64, 32, 32))  is accepted.
+The architecture with  (110, (128, 64, 32, 16))  is accepted.
+The architecture with  (111, (128, 64, 32, 8))  is accepted.
+The architecture with  (112, (128, 64, 32, 4))  is accepted.
+The architecture with  (113, (128, 64, 16, 16))  is accepted.
+The architecture with  (114, (128, 64, 16, 8))  is accepted.
+The architecture with  (115, (128, 64, 16, 4))  is accepted.
+The architecture with  (116, (128, 64, 8, 8))  is accepted.
+The architecture with  (117, (128, 64, 8, 4))  is accepted.
+The architecture with  (118, (128, 64, 4, 4))  is accepted.
+The architecture with  (119, (128, 32, 32, 32))  is accepted.
+The architecture with  (120, (128, 32, 32, 16))  is accepted.
+The architecture with  (121, (128, 32, 32, 8))  is accepted.
+The architecture with  (122, (128, 32, 32, 4))  is accepted.
+The architecture with  (123, (128, 32, 16, 16))  is accepted.
+The architecture with  (124, (128, 32, 16, 8))  is accepted.
+The architecture with  (125, (128, 32, 16, 4))  is accepted.
+The architecture with  (126, (128, 32, 8, 8))  is accepted.
+The architecture with  (127, (128, 32, 8, 4))  is accepted.
+The architecture with  (128, (128, 32, 4, 4))  is accepted.
+The architecture with  (129, (128, 16, 16, 16))  is accepted.
+The architecture with  (130, (128, 16, 16, 8))  is accepted.
+The architecture with  (131, (128, 16, 16, 4))  is accepted.
+The architecture with  (132, (128, 16, 8, 8))  is accepted.
+The architecture with  (133, (128, 16, 8, 4))  is accepted.
+The architecture with  (134, (128, 16, 4, 4))  is accepted.
+The architecture with  (135, (128, 8, 8, 8))  is accepted.
+The architecture with  (136, (128, 8, 8, 4))  is accepted.
+The architecture with  (137, (128, 8, 4, 4))  is accepted.
+The architecture with  (138, (128, 4, 4, 4))  is accepted.
+The architecture with  (139, (64, 64, 64, 64))  is accepted.
+The architecture with  (140, (64, 64, 64, 32))  is accepted.
+The architecture with  (141, (64, 64, 64, 16))  is accepted.
+The architecture with  (142, (64, 64, 64, 8))  is accepted.
+The architecture with  (143, (64, 64, 64, 4))  is accepted.
+The architecture with  (144, (64, 64, 32, 32))  is accepted.
+The architecture with  (145, (64, 64, 32, 16))  is accepted.
+The architecture with  (146, (64, 64, 32, 8))  is accepted.
+The architecture with  (147, (64, 64, 32, 4))  is accepted.
+The architecture with  (148, (64, 64, 16, 16))  is accepted.
+The architecture with  (149, (64, 64, 16, 8))  is accepted.
+The architecture with  (150, (64, 64, 16, 4))  is accepted.
+The architecture with  (151, (64, 64, 8, 8))  is accepted.
+The architecture with  (152, (64, 64, 8, 4))  is accepted.
+The architecture with  (153, (64, 64, 4, 4))  is accepted.
+The architecture with  (154, (64, 32, 32, 32))  is accepted.
+The architecture with  (155, (64, 32, 32, 16))  is accepted.
+The architecture with  (156, (64, 32, 32, 8))  is accepted.
+The architecture with  (157, (64, 32, 32, 4))  is accepted.
+The architecture with  (158, (64, 32, 16, 16))  is accepted.
+The architecture with  (159, (64, 32, 16, 8))  is accepted.
+The architecture with  (160, (64, 32, 16, 4))  is accepted.
+The architecture with  (161, (64, 32, 8, 8))  is accepted.
+The architecture with  (162, (64, 32, 8, 4))  is accepted.
+The architecture with  (163, (64, 32, 4, 4))  is accepted.
+The architecture with  (164, (64, 16, 16, 16))  is accepted.
+The architecture with  (165, (64, 16, 16, 8))  is accepted.
+The architecture with  (166, (64, 16, 16, 4))  is accepted.
+The architecture with  (167, (64, 16, 8, 8))  is accepted.
+The architecture with  (168, (64, 16, 8, 4))  is accepted.
+The architecture with  (169, (64, 16, 4, 4))  is accepted.
+The architecture with  (170, (64, 8, 8, 8))  is accepted.
+The architecture with  (171, (64, 8, 8, 4))  is accepted.
+The architecture with  (172, (64, 8, 4, 4))  is accepted.
+The architecture with  (173, (64, 4, 4, 4))  is accepted.
+The architecture with  (174, (32, 32, 32, 32))  is accepted.
+The architecture with  (175, (32, 32, 32, 16))  is accepted.
+The architecture with  (176, (32, 32, 32, 8))  is accepted.
+The architecture with  (177, (32, 32, 32, 4))  is accepted.
+The architecture with  (178, (32, 32, 16, 16))  is accepted.
+The architecture with  (179, (32, 32, 16, 8))  is accepted.
+The architecture with  (180, (32, 32, 16, 4))  is accepted.
+The architecture with  (181, (32, 32, 8, 8))  is accepted.
+The architecture with  (182, (32, 32, 8, 4))  is accepted.
+The architecture with  (183, (32, 32, 4, 4))  is accepted.
+The architecture with  (184, (32, 16, 16, 16))  is accepted.
+The architecture with  (185, (32, 16, 16, 8))  is accepted.
+The architecture with  (186, (32, 16, 16, 4))  is accepted.
+The architecture with  (187, (32, 16, 8, 8))  is accepted.
+The architecture with  (188, (32, 16, 8, 4))  is accepted.
+The architecture with  (189, (32, 16, 4, 4))  is accepted.
+The architecture with  (190, (32, 8, 8, 8))  is accepted.
+The architecture with  (191, (32, 8, 8, 4))  is accepted.
+The architecture with  (192, (32, 8, 4, 4))  is accepted.
+The architecture with  (193, (32, 4, 4, 4))  is accepted.
+The architecture with  (194, (16, 16, 16, 16))  is accepted.
+The architecture with  (195, (16, 16, 16, 8))  is accepted.
+The architecture with  (196, (16, 16, 16, 4))  is accepted.
+The architecture with  (197, (16, 16, 8, 8))  is accepted.
+The architecture with  (198, (16, 16, 8, 4))  is accepted.
+The architecture with  (199, (16, 16, 4, 4))  is accepted.
+The architecture with  (200, (16, 8, 8, 8))  is accepted.
+The architecture with  (201, (16, 8, 8, 4))  is accepted.
+The architecture with  (202, (16, 8, 4, 4))  is accepted.
+The architecture with  (203, (16, 4, 4, 4))  is accepted.
+The architecture with  (204, (8, 8, 8, 8))  is accepted.
+The architecture with  (205, (8, 8, 8, 4))  is accepted.
+The architecture with  (206, (8, 8, 4, 4))  is accepted.
+The architecture with  (207, (8, 4, 4, 4))  is accepted.
+The architecture with  (208, (4, 4, 4, 4))  is accepted.
+The architecture with  (209, (128, 128, 128, 128, 128))  is accepted.
+The architecture with  (210, (128, 128, 128, 128, 64))  is accepted.
+The architecture with  (211, (128, 128, 128, 128, 32))  is accepted.
+The architecture with  (212, (128, 128, 128, 128, 16))  is accepted.
+The architecture with  (213, (128, 128, 128, 128, 8))  is accepted.
+The architecture with  (214, (128, 128, 128, 128, 4))  is accepted.
+The architecture with  (215, (128, 128, 128, 64, 64))  is accepted.
+The architecture with  (216, (128, 128, 128, 64, 32))  is accepted.
+The architecture with  (217, (128, 128, 128, 64, 16))  is accepted.
+The architecture with  (218, (128, 128, 128, 64, 8))  is accepted.
+The architecture with  (219, (128, 128, 128, 64, 4))  is accepted.
+The architecture with  (220, (128, 128, 128, 32, 32))  is accepted.
+The architecture with  (221, (128, 128, 128, 32, 16))  is accepted.
+The architecture with  (222, (128, 128, 128, 32, 8))  is accepted.
+The architecture with  (223, (128, 128, 128, 32, 4))  is accepted.
+The architecture with  (224, (128, 128, 128, 16, 16))  is accepted.
+The architecture with  (225, (128, 128, 128, 16, 8))  is accepted.
+The architecture with  (226, (128, 128, 128, 16, 4))  is accepted.
+The architecture with  (227, (128, 128, 128, 8, 8))  is accepted.
+The architecture with  (228, (128, 128, 128, 8, 4))  is accepted.
+The architecture with  (229, (128, 128, 128, 4, 4))  is accepted.
+The architecture with  (230, (128, 128, 64, 64, 64))  is accepted.
+The architecture with  (231, (128, 128, 64, 64, 32))  is accepted.
+The architecture with  (232, (128, 128, 64, 64, 16))  is accepted.
+The architecture with  (233, (128, 128, 64, 64, 8))  is accepted.
+The architecture with  (234, (128, 128, 64, 64, 4))  is accepted.
+The architecture with  (235, (128, 128, 64, 32, 32))  is accepted.
+The architecture with  (236, (128, 128, 64, 32, 16))  is accepted.
+The architecture with  (237, (128, 128, 64, 32, 8))  is accepted.
+The architecture with  (238, (128, 128, 64, 32, 4))  is accepted.
+The architecture with  (239, (128, 128, 64, 16, 16))  is accepted.
+The architecture with  (240, (128, 128, 64, 16, 8))  is accepted.
+The architecture with  (241, (128, 128, 64, 16, 4))  is accepted.
+The architecture with  (242, (128, 128, 64, 8, 8))  is accepted.
+The architecture with  (243, (128, 128, 64, 8, 4))  is accepted.
+The architecture with  (244, (128, 128, 64, 4, 4))  is accepted.
+The architecture with  (245, (128, 128, 32, 32, 32))  is accepted.
+The architecture with  (246, (128, 128, 32, 32, 16))  is accepted.
+The architecture with  (247, (128, 128, 32, 32, 8))  is accepted.
+The architecture with  (248, (128, 128, 32, 32, 4))  is accepted.
+The architecture with  (249, (128, 128, 32, 16, 16))  is accepted.
+The architecture with  (250, (128, 128, 32, 16, 8))  is accepted.
+The architecture with  (251, (128, 128, 32, 16, 4))  is accepted.
+The architecture with  (252, (128, 128, 32, 8, 8))  is accepted.
+The architecture with  (253, (128, 128, 32, 8, 4))  is accepted.
+The architecture with  (254, (128, 128, 32, 4, 4))  is accepted.
+The architecture with  (255, (128, 128, 16, 16, 16))  is accepted.
+The architecture with  (256, (128, 128, 16, 16, 8))  is accepted.
+The architecture with  (257, (128, 128, 16, 16, 4))  is accepted.
+The architecture with  (258, (128, 128, 16, 8, 8))  is accepted.
+The architecture with  (259, (128, 128, 16, 8, 4))  is accepted.
+The architecture with  (260, (128, 128, 16, 4, 4))  is accepted.
+The architecture with  (261, (128, 128, 8, 8, 8))  is accepted.
+The architecture with  (262, (128, 128, 8, 8, 4))  is accepted.
+The architecture with  (263, (128, 128, 8, 4, 4))  is accepted.
+The architecture with  (264, (128, 128, 4, 4, 4))  is accepted.
+The architecture with  (265, (128, 64, 64, 64, 64))  is accepted.
+The architecture with  (266, (128, 64, 64, 64, 32))  is accepted.
+The architecture with  (267, (128, 64, 64, 64, 16))  is accepted.
+The architecture with  (268, (128, 64, 64, 64, 8))  is accepted.
+The architecture with  (269, (128, 64, 64, 64, 4))  is accepted.
+The architecture with  (270, (128, 64, 64, 32, 32))  is accepted.
+The architecture with  (271, (128, 64, 64, 32, 16))  is accepted.
+The architecture with  (272, (128, 64, 64, 32, 8))  is accepted.
+The architecture with  (273, (128, 64, 64, 32, 4))  is accepted.
+The architecture with  (274, (128, 64, 64, 16, 16))  is accepted.
+The architecture with  (275, (128, 64, 64, 16, 8))  is accepted.
+The architecture with  (276, (128, 64, 64, 16, 4))  is accepted.
+The architecture with  (277, (128, 64, 64, 8, 8))  is accepted.
+The architecture with  (278, (128, 64, 64, 8, 4))  is accepted.
+The architecture with  (279, (128, 64, 64, 4, 4))  is accepted.
+The architecture with  (280, (128, 64, 32, 32, 32))  is accepted.
+The architecture with  (281, (128, 64, 32, 32, 16))  is accepted.
+The architecture with  (282, (128, 64, 32, 32, 8))  is accepted.
+The architecture with  (283, (128, 64, 32, 32, 4))  is accepted.
+The architecture with  (284, (128, 64, 32, 16, 16))  is accepted.
+The architecture with  (285, (128, 64, 32, 16, 8))  is accepted.
+The architecture with  (286, (128, 64, 32, 16, 4))  is accepted.
+The architecture with  (287, (128, 64, 32, 8, 8))  is accepted.
+The architecture with  (288, (128, 64, 32, 8, 4))  is accepted.
+The architecture with  (289, (128, 64, 32, 4, 4))  is accepted.
+The architecture with  (290, (128, 64, 16, 16, 16))  is accepted.
+The architecture with  (291, (128, 64, 16, 16, 8))  is accepted.
+The architecture with  (292, (128, 64, 16, 16, 4))  is accepted.
+The architecture with  (293, (128, 64, 16, 8, 8))  is accepted.
+The architecture with  (294, (128, 64, 16, 8, 4))  is accepted.
+The architecture with  (295, (128, 64, 16, 4, 4))  is accepted.
+The architecture with  (296, (128, 64, 8, 8, 8))  is accepted.
+The architecture with  (297, (128, 64, 8, 8, 4))  is accepted.
+The architecture with  (298, (128, 64, 8, 4, 4))  is accepted.
+The architecture with  (299, (128, 64, 4, 4, 4))  is accepted.
+The architecture with  (300, (128, 32, 32, 32, 32))  is accepted.
+The architecture with  (301, (128, 32, 32, 32, 16))  is accepted.
+The architecture with  (302, (128, 32, 32, 32, 8))  is accepted.
+The architecture with  (303, (128, 32, 32, 32, 4))  is accepted.
+The architecture with  (304, (128, 32, 32, 16, 16))  is accepted.
+The architecture with  (305, (128, 32, 32, 16, 8))  is accepted.
+The architecture with  (306, (128, 32, 32, 16, 4))  is accepted.
+The architecture with  (307, (128, 32, 32, 8, 8))  is accepted.
+The architecture with  (308, (128, 32, 32, 8, 4))  is accepted.
+The architecture with  (309, (128, 32, 32, 4, 4))  is accepted.
+The architecture with  (310, (128, 32, 16, 16, 16))  is accepted.
+The architecture with  (311, (128, 32, 16, 16, 8))  is accepted.
+The architecture with  (312, (128, 32, 16, 16, 4))  is accepted.
+The architecture with  (313, (128, 32, 16, 8, 8))  is accepted.
+The architecture with  (314, (128, 32, 16, 8, 4))  is accepted.
+The architecture with  (315, (128, 32, 16, 4, 4))  is accepted.
+The architecture with  (316, (128, 32, 8, 8, 8))  is accepted.
+The architecture with  (317, (128, 32, 8, 8, 4))  is accepted.
+The architecture with  (318, (128, 32, 8, 4, 4))  is accepted.
+The architecture with  (319, (128, 32, 4, 4, 4))  is accepted.
+The architecture with  (320, (128, 16, 16, 16, 16))  is accepted.
+The architecture with  (321, (128, 16, 16, 16, 8))  is accepted.
+The architecture with  (322, (128, 16, 16, 16, 4))  is accepted.
+The architecture with  (323, (128, 16, 16, 8, 8))  is accepted.
+The architecture with  (324, (128, 16, 16, 8, 4))  is accepted.
+The architecture with  (325, (128, 16, 16, 4, 4))  is accepted.
+The architecture with  (326, (128, 16, 8, 8, 8))  is accepted.
+The architecture with  (327, (128, 16, 8, 8, 4))  is accepted.
+The architecture with  (328, (128, 16, 8, 4, 4))  is accepted.
+The architecture with  (329, (128, 16, 4, 4, 4))  is accepted.
+The architecture with  (330, (128, 8, 8, 8, 8))  is accepted.
+The architecture with  (331, (128, 8, 8, 8, 4))  is accepted.
+The architecture with  (332, (128, 8, 8, 4, 4))  is accepted.
+The architecture with  (333, (128, 8, 4, 4, 4))  is accepted.
+The architecture with  (334, (128, 4, 4, 4, 4))  is accepted.
+The architecture with  (335, (64, 64, 64, 64, 64))  is accepted.
+The architecture with  (336, (64, 64, 64, 64, 32))  is accepted.
+The architecture with  (337, (64, 64, 64, 64, 16))  is accepted.
+The architecture with  (338, (64, 64, 64, 64, 8))  is accepted.
+The architecture with  (339, (64, 64, 64, 64, 4))  is accepted.
+The architecture with  (340, (64, 64, 64, 32, 32))  is accepted.
+The architecture with  (341, (64, 64, 64, 32, 16))  is accepted.
+The architecture with  (342, (64, 64, 64, 32, 8))  is accepted.
+The architecture with  (343, (64, 64, 64, 32, 4))  is accepted.
+The architecture with  (344, (64, 64, 64, 16, 16))  is accepted.
+The architecture with  (345, (64, 64, 64, 16, 8))  is accepted.
+The architecture with  (346, (64, 64, 64, 16, 4))  is accepted.
+The architecture with  (347, (64, 64, 64, 8, 8))  is accepted.
+The architecture with  (348, (64, 64, 64, 8, 4))  is accepted.
+The architecture with  (349, (64, 64, 64, 4, 4))  is accepted.
+The architecture with  (350, (64, 64, 32, 32, 32))  is accepted.
+The architecture with  (351, (64, 64, 32, 32, 16))  is accepted.
+The architecture with  (352, (64, 64, 32, 32, 8))  is accepted.
+The architecture with  (353, (64, 64, 32, 32, 4))  is accepted.
+The architecture with  (354, (64, 64, 32, 16, 16))  is accepted.
+The architecture with  (355, (64, 64, 32, 16, 8))  is accepted.
+The architecture with  (356, (64, 64, 32, 16, 4))  is accepted.
+The architecture with  (357, (64, 64, 32, 8, 8))  is accepted.
+The architecture with  (358, (64, 64, 32, 8, 4))  is accepted.
+The architecture with  (359, (64, 64, 32, 4, 4))  is accepted.
+The architecture with  (360, (64, 64, 16, 16, 16))  is accepted.
+The architecture with  (361, (64, 64, 16, 16, 8))  is accepted.
+The architecture with  (362, (64, 64, 16, 16, 4))  is accepted.
+The architecture with  (363, (64, 64, 16, 8, 8))  is accepted.
+The architecture with  (364, (64, 64, 16, 8, 4))  is accepted.
+The architecture with  (365, (64, 64, 16, 4, 4))  is accepted.
+The architecture with  (366, (64, 64, 8, 8, 8))  is accepted.
+The architecture with  (367, (64, 64, 8, 8, 4))  is accepted.
+The architecture with  (368, (64, 64, 8, 4, 4))  is accepted.
+The architecture with  (369, (64, 64, 4, 4, 4))  is accepted.
+The architecture with  (370, (64, 32, 32, 32, 32))  is accepted.
+The architecture with  (371, (64, 32, 32, 32, 16))  is accepted.
+The architecture with  (372, (64, 32, 32, 32, 8))  is accepted.
+The architecture with  (373, (64, 32, 32, 32, 4))  is accepted.
+The architecture with  (374, (64, 32, 32, 16, 16))  is accepted.
+The architecture with  (375, (64, 32, 32, 16, 8))  is accepted.
+The architecture with  (376, (64, 32, 32, 16, 4))  is accepted.
+The architecture with  (377, (64, 32, 32, 8, 8))  is accepted.
+The architecture with  (378, (64, 32, 32, 8, 4))  is accepted.
+The architecture with  (379, (64, 32, 32, 4, 4))  is accepted.
+The architecture with  (380, (64, 32, 16, 16, 16))  is accepted.
+The architecture with  (381, (64, 32, 16, 16, 8))  is accepted.
+The architecture with  (382, (64, 32, 16, 16, 4))  is accepted.
+The architecture with  (383, (64, 32, 16, 8, 8))  is accepted.
+The architecture with  (384, (64, 32, 16, 8, 4))  is accepted.
+The architecture with  (385, (64, 32, 16, 4, 4))  is accepted.
+The architecture with  (386, (64, 32, 8, 8, 8))  is accepted.
+The architecture with  (387, (64, 32, 8, 8, 4))  is accepted.
+The architecture with  (388, (64, 32, 8, 4, 4))  is accepted.
+The architecture with  (389, (64, 32, 4, 4, 4))  is accepted.
+The architecture with  (390, (64, 16, 16, 16, 16))  is accepted.
+The architecture with  (391, (64, 16, 16, 16, 8))  is accepted.
+The architecture with  (392, (64, 16, 16, 16, 4))  is accepted.
+The architecture with  (393, (64, 16, 16, 8, 8))  is accepted.
+The architecture with  (394, (64, 16, 16, 8, 4))  is accepted.
+The architecture with  (395, (64, 16, 16, 4, 4))  is accepted.
+The architecture with  (396, (64, 16, 8, 8, 8))  is accepted.
+The architecture with  (397, (64, 16, 8, 8, 4))  is accepted.
+The architecture with  (398, (64, 16, 8, 4, 4))  is accepted.
+The architecture with  (399, (64, 16, 4, 4, 4))  is accepted.
+The architecture with  (400, (64, 8, 8, 8, 8))  is accepted.
+The architecture with  (401, (64, 8, 8, 8, 4))  is accepted.
+The architecture with  (402, (64, 8, 8, 4, 4))  is accepted.
+The architecture with  (403, (64, 8, 4, 4, 4))  is accepted.
+The architecture with  (404, (64, 4, 4, 4, 4))  is accepted.
+The architecture with  (405, (32, 32, 32, 32, 32))  is accepted.
+The architecture with  (406, (32, 32, 32, 32, 16))  is accepted.
+The architecture with  (407, (32, 32, 32, 32, 8))  is accepted.
+The architecture with  (408, (32, 32, 32, 32, 4))  is accepted.
+The architecture with  (409, (32, 32, 32, 16, 16))  is accepted.
+The architecture with  (410, (32, 32, 32, 16, 8))  is accepted.
+The architecture with  (411, (32, 32, 32, 16, 4))  is accepted.
+The architecture with  (412, (32, 32, 32, 8, 8))  is accepted.
+The architecture with  (413, (32, 32, 32, 8, 4))  is accepted.
+The architecture with  (414, (32, 32, 32, 4, 4))  is accepted.
+The architecture with  (415, (32, 32, 16, 16, 16))  is accepted.
+The architecture with  (416, (32, 32, 16, 16, 8))  is accepted.
+The architecture with  (417, (32, 32, 16, 16, 4))  is accepted.
+The architecture with  (418, (32, 32, 16, 8, 8))  is accepted.
+The architecture with  (419, (32, 32, 16, 8, 4))  is accepted.
+The architecture with  (420, (32, 32, 16, 4, 4))  is accepted.
+The architecture with  (421, (32, 32, 8, 8, 8))  is accepted.
+The architecture with  (422, (32, 32, 8, 8, 4))  is accepted.
+The architecture with  (423, (32, 32, 8, 4, 4))  is accepted.
+The architecture with  (424, (32, 32, 4, 4, 4))  is accepted.
+The architecture with  (425, (32, 16, 16, 16, 16))  is accepted.
+The architecture with  (426, (32, 16, 16, 16, 8))  is accepted.
+The architecture with  (427, (32, 16, 16, 16, 4))  is accepted.
+The architecture with  (428, (32, 16, 16, 8, 8))  is accepted.
+The architecture with  (429, (32, 16, 16, 8, 4))  is accepted.
+The architecture with  (430, (32, 16, 16, 4, 4))  is accepted.
+The architecture with  (431, (32, 16, 8, 8, 8))  is accepted.
+The architecture with  (432, (32, 16, 8, 8, 4))  is accepted.
+The architecture with  (433, (32, 16, 8, 4, 4))  is accepted.
+The architecture with  (434, (32, 16, 4, 4, 4))  is accepted.
+The architecture with  (435, (32, 8, 8, 8, 8))  is accepted.
+The architecture with  (436, (32, 8, 8, 8, 4))  is accepted.
+The architecture with  (437, (32, 8, 8, 4, 4))  is accepted.
+The architecture with  (438, (32, 8, 4, 4, 4))  is accepted.
+The architecture with  (439, (32, 4, 4, 4, 4))  is accepted.
+The architecture with  (440, (16, 16, 16, 16, 16))  is accepted.
+The architecture with  (441, (16, 16, 16, 16, 8))  is accepted.
+The architecture with  (442, (16, 16, 16, 16, 4))  is accepted.
+The architecture with  (443, (16, 16, 16, 8, 8))  is accepted.
+The architecture with  (444, (16, 16, 16, 8, 4))  is accepted.
+The architecture with  (445, (16, 16, 16, 4, 4))  is accepted.
+The architecture with  (446, (16, 16, 8, 8, 8))  is accepted.
+The architecture with  (447, (16, 16, 8, 8, 4))  is accepted.
+The architecture with  (448, (16, 16, 8, 4, 4))  is accepted.
+The architecture with  (449, (16, 16, 4, 4, 4))  is accepted.
+The architecture with  (450, (16, 8, 8, 8, 8))  is accepted.
+The architecture with  (451, (16, 8, 8, 8, 4))  is accepted.
+The architecture with  (452, (16, 8, 8, 4, 4))  is accepted.
+The architecture with  (453, (16, 8, 4, 4, 4))  is accepted.
+The architecture with  (454, (16, 4, 4, 4, 4))  is accepted.
+The architecture with  (455, (8, 8, 8, 8, 8))  is accepted.
+The architecture with  (456, (8, 8, 8, 8, 4))  is accepted.
+The architecture with  (457, (8, 8, 8, 4, 4))  is accepted.
+The architecture with  (458, (8, 8, 4, 4, 4))  is accepted.
+The architecture with  (459, (8, 4, 4, 4, 4))  is accepted.
+The architecture with  (460, (4, 4, 4, 4, 4))  is accepted.
+The architecture with  (461, (128, 128, 128, 128, 128, 128))  is accepted.
+The architecture with  (462, (128, 128, 128, 128, 128, 64))  is accepted.
+The architecture with  (463, (128, 128, 128, 128, 128, 32))  is accepted.
+The architecture with  (464, (128, 128, 128, 128, 128, 16))  is accepted.
+The architecture with  (465, (128, 128, 128, 128, 128, 8))  is accepted.
+The architecture with  (466, (128, 128, 128, 128, 128, 4))  is accepted.
+The architecture with  (467, (128, 128, 128, 128, 64, 64))  is accepted.
+The architecture with  (468, (128, 128, 128, 128, 64, 32))  is accepted.
+The architecture with  (469, (128, 128, 128, 128, 64, 16))  is accepted.
+The architecture with  (470, (128, 128, 128, 128, 64, 8))  is accepted.
+The architecture with  (471, (128, 128, 128, 128, 64, 4))  is accepted.
+The architecture with  (472, (128, 128, 128, 128, 32, 32))  is accepted.
+The architecture with  (473, (128, 128, 128, 128, 32, 16))  is accepted.
+The architecture with  (474, (128, 128, 128, 128, 32, 8))  is accepted.
+The architecture with  (475, (128, 128, 128, 128, 32, 4))  is accepted.
+The architecture with  (476, (128, 128, 128, 128, 16, 16))  is accepted.
+The architecture with  (477, (128, 128, 128, 128, 16, 8))  is accepted.
+The architecture with  (478, (128, 128, 128, 128, 16, 4))  is accepted.
+The architecture with  (479, (128, 128, 128, 128, 8, 8))  is accepted.
+The architecture with  (480, (128, 128, 128, 128, 8, 4))  is accepted.
+The architecture with  (481, (128, 128, 128, 128, 4, 4))  is accepted.
+The architecture with  (482, (128, 128, 128, 64, 64, 64))  is accepted.
+The architecture with  (483, (128, 128, 128, 64, 64, 32))  is accepted.
+The architecture with  (484, (128, 128, 128, 64, 64, 16))  is accepted.
+The architecture with  (485, (128, 128, 128, 64, 64, 8))  is accepted.
+The architecture with  (486, (128, 128, 128, 64, 64, 4))  is accepted.
+The architecture with  (487, (128, 128, 128, 64, 32, 32))  is accepted.
+The architecture with  (488, (128, 128, 128, 64, 32, 16))  is accepted.
+The architecture with  (489, (128, 128, 128, 64, 32, 8))  is accepted.
+The architecture with  (490, (128, 128, 128, 64, 32, 4))  is accepted.
+The architecture with  (491, (128, 128, 128, 64, 16, 16))  is accepted.
+The architecture with  (492, (128, 128, 128, 64, 16, 8))  is accepted.
+The architecture with  (493, (128, 128, 128, 64, 16, 4))  is accepted.
+The architecture with  (494, (128, 128, 128, 64, 8, 8))  is accepted.
+The architecture with  (495, (128, 128, 128, 64, 8, 4))  is accepted.
+The architecture with  (496, (128, 128, 128, 64, 4, 4))  is accepted.
+The architecture with  (497, (128, 128, 128, 32, 32, 32))  is accepted.
+The architecture with  (498, (128, 128, 128, 32, 32, 16))  is accepted.
+The architecture with  (499, (128, 128, 128, 32, 32, 8))  is accepted.
+The architecture with  (500, (128, 128, 128, 32, 32, 4))  is accepted.
+The architecture with  (501, (128, 128, 128, 32, 16, 16))  is accepted.
+The architecture with  (502, (128, 128, 128, 32, 16, 8))  is accepted.
+The architecture with  (503, (128, 128, 128, 32, 16, 4))  is accepted.
+The architecture with  (504, (128, 128, 128, 32, 8, 8))  is accepted.
+The architecture with  (505, (128, 128, 128, 32, 8, 4))  is accepted.
+The architecture with  (506, (128, 128, 128, 32, 4, 4))  is accepted.
+The architecture with  (507, (128, 128, 128, 16, 16, 16))  is accepted.
+The architecture with  (508, (128, 128, 128, 16, 16, 8))  is accepted.
+The architecture with  (509, (128, 128, 128, 16, 16, 4))  is accepted.
+The architecture with  (510, (128, 128, 128, 16, 8, 8))  is accepted.
+The architecture with  (511, (128, 128, 128, 16, 8, 4))  is accepted.
+The architecture with  (512, (128, 128, 128, 16, 4, 4))  is accepted.
+The architecture with  (513, (128, 128, 128, 8, 8, 8))  is accepted.
+The architecture with  (514, (128, 128, 128, 8, 8, 4))  is accepted.
+The architecture with  (515, (128, 128, 128, 8, 4, 4))  is accepted.
+The architecture with  (516, (128, 128, 128, 4, 4, 4))  is accepted.
+The architecture with  (517, (128, 128, 64, 64, 64, 64))  is accepted.
+The architecture with  (518, (128, 128, 64, 64, 64, 32))  is accepted.
+The architecture with  (519, (128, 128, 64, 64, 64, 16))  is accepted.
+The architecture with  (520, (128, 128, 64, 64, 64, 8))  is accepted.
+The architecture with  (521, (128, 128, 64, 64, 64, 4))  is accepted.
+The architecture with  (522, (128, 128, 64, 64, 32, 32))  is accepted.
+The architecture with  (523, (128, 128, 64, 64, 32, 16))  is accepted.
+The architecture with  (524, (128, 128, 64, 64, 32, 8))  is accepted.
+The architecture with  (525, (128, 128, 64, 64, 32, 4))  is accepted.
+The architecture with  (526, (128, 128, 64, 64, 16, 16))  is accepted.
+The architecture with  (527, (128, 128, 64, 64, 16, 8))  is accepted.
+The architecture with  (528, (128, 128, 64, 64, 16, 4))  is accepted.
+The architecture with  (529, (128, 128, 64, 64, 8, 8))  is accepted.
+The architecture with  (530, (128, 128, 64, 64, 8, 4))  is accepted.
+The architecture with  (531, (128, 128, 64, 64, 4, 4))  is accepted.
+The architecture with  (532, (128, 128, 64, 32, 32, 32))  is accepted.
+The architecture with  (533, (128, 128, 64, 32, 32, 16))  is accepted.
+The architecture with  (534, (128, 128, 64, 32, 32, 8))  is accepted.
+The architecture with  (535, (128, 128, 64, 32, 32, 4))  is accepted.
+The architecture with  (536, (128, 128, 64, 32, 16, 16))  is accepted.
+The architecture with  (537, (128, 128, 64, 32, 16, 8))  is accepted.
+The architecture with  (538, (128, 128, 64, 32, 16, 4))  is accepted.
+The architecture with  (539, (128, 128, 64, 32, 8, 8))  is accepted.
+The architecture with  (540, (128, 128, 64, 32, 8, 4))  is accepted.
+The architecture with  (541, (128, 128, 64, 32, 4, 4))  is accepted.
+The architecture with  (542, (128, 128, 64, 16, 16, 16))  is accepted.
+The architecture with  (543, (128, 128, 64, 16, 16, 8))  is accepted.
+The architecture with  (544, (128, 128, 64, 16, 16, 4))  is accepted.
+The architecture with  (545, (128, 128, 64, 16, 8, 8))  is accepted.
+The architecture with  (546, (128, 128, 64, 16, 8, 4))  is accepted.
+The architecture with  (547, (128, 128, 64, 16, 4, 4))  is accepted.
+The architecture with  (548, (128, 128, 64, 8, 8, 8))  is accepted.
+The architecture with  (549, (128, 128, 64, 8, 8, 4))  is accepted.
+The architecture with  (550, (128, 128, 64, 8, 4, 4))  is accepted.
+The architecture with  (551, (128, 128, 64, 4, 4, 4))  is accepted.
+The architecture with  (552, (128, 128, 32, 32, 32, 32))  is accepted.
+The architecture with  (553, (128, 128, 32, 32, 32, 16))  is accepted.
+The architecture with  (554, (128, 128, 32, 32, 32, 8))  is accepted.
+The architecture with  (555, (128, 128, 32, 32, 32, 4))  is accepted.
+The architecture with  (556, (128, 128, 32, 32, 16, 16))  is accepted.
+The architecture with  (557, (128, 128, 32, 32, 16, 8))  is accepted.
+The architecture with  (558, (128, 128, 32, 32, 16, 4))  is accepted.
+The architecture with  (559, (128, 128, 32, 32, 8, 8))  is accepted.
+The architecture with  (560, (128, 128, 32, 32, 8, 4))  is accepted.
+The architecture with  (561, (128, 128, 32, 32, 4, 4))  is accepted.
+The architecture with  (562, (128, 128, 32, 16, 16, 16))  is accepted.
+The architecture with  (563, (128, 128, 32, 16, 16, 8))  is accepted.
+The architecture with  (564, (128, 128, 32, 16, 16, 4))  is accepted.
+The architecture with  (565, (128, 128, 32, 16, 8, 8))  is accepted.
+The architecture with  (566, (128, 128, 32, 16, 8, 4))  is accepted.
+The architecture with  (567, (128, 128, 32, 16, 4, 4))  is accepted.
+The architecture with  (568, (128, 128, 32, 8, 8, 8))  is accepted.
+The architecture with  (569, (128, 128, 32, 8, 8, 4))  is accepted.
+The architecture with  (570, (128, 128, 32, 8, 4, 4))  is accepted.
+The architecture with  (571, (128, 128, 32, 4, 4, 4))  is accepted.
+The architecture with  (572, (128, 128, 16, 16, 16, 16))  is accepted.
+The architecture with  (573, (128, 128, 16, 16, 16, 8))  is accepted.
+The architecture with  (574, (128, 128, 16, 16, 16, 4))  is accepted.
+The architecture with  (575, (128, 128, 16, 16, 8, 8))  is accepted.
+The architecture with  (576, (128, 128, 16, 16, 8, 4))  is accepted.
+The architecture with  (577, (128, 128, 16, 16, 4, 4))  is accepted.
+The architecture with  (578, (128, 128, 16, 8, 8, 8))  is accepted.
+The architecture with  (579, (128, 128, 16, 8, 8, 4))  is accepted.
+The architecture with  (580, (128, 128, 16, 8, 4, 4))  is accepted.
+The architecture with  (581, (128, 128, 16, 4, 4, 4))  is accepted.
+The architecture with  (582, (128, 128, 8, 8, 8, 8))  is accepted.
+The architecture with  (583, (128, 128, 8, 8, 8, 4))  is accepted.
+The architecture with  (584, (128, 128, 8, 8, 4, 4))  is accepted.
+The architecture with  (585, (128, 128, 8, 4, 4, 4))  is accepted.
+The architecture with  (586, (128, 128, 4, 4, 4, 4))  is accepted.
+The architecture with  (587, (128, 64, 64, 64, 64, 64))  is accepted.
+The architecture with  (588, (128, 64, 64, 64, 64, 32))  is accepted.
+The architecture with  (589, (128, 64, 64, 64, 64, 16))  is accepted.
+The architecture with  (590, (128, 64, 64, 64, 64, 8))  is accepted.
+The architecture with  (591, (128, 64, 64, 64, 64, 4))  is accepted.
+The architecture with  (592, (128, 64, 64, 64, 32, 32))  is accepted.
+The architecture with  (593, (128, 64, 64, 64, 32, 16))  is accepted.
+The architecture with  (594, (128, 64, 64, 64, 32, 8))  is accepted.
+The architecture with  (595, (128, 64, 64, 64, 32, 4))  is accepted.
+The architecture with  (596, (128, 64, 64, 64, 16, 16))  is accepted.
+The architecture with  (597, (128, 64, 64, 64, 16, 8))  is accepted.
+The architecture with  (598, (128, 64, 64, 64, 16, 4))  is accepted.
+The architecture with  (599, (128, 64, 64, 64, 8, 8))  is accepted.
+The architecture with  (600, (128, 64, 64, 64, 8, 4))  is accepted.
+The architecture with  (601, (128, 64, 64, 64, 4, 4))  is accepted.
+The architecture with  (602, (128, 64, 64, 32, 32, 32))  is accepted.
+The architecture with  (603, (128, 64, 64, 32, 32, 16))  is accepted.
+The architecture with  (604, (128, 64, 64, 32, 32, 8))  is accepted.
+The architecture with  (605, (128, 64, 64, 32, 32, 4))  is accepted.
+The architecture with  (606, (128, 64, 64, 32, 16, 16))  is accepted.
+The architecture with  (607, (128, 64, 64, 32, 16, 8))  is accepted.
+The architecture with  (608, (128, 64, 64, 32, 16, 4))  is accepted.
+The architecture with  (609, (128, 64, 64, 32, 8, 8))  is accepted.
+The architecture with  (610, (128, 64, 64, 32, 8, 4))  is accepted.
+The architecture with  (611, (128, 64, 64, 32, 4, 4))  is accepted.
+The architecture with  (612, (128, 64, 64, 16, 16, 16))  is accepted.
+The architecture with  (613, (128, 64, 64, 16, 16, 8))  is accepted.
+The architecture with  (614, (128, 64, 64, 16, 16, 4))  is accepted.
+The architecture with  (615, (128, 64, 64, 16, 8, 8))  is accepted.
+The architecture with  (616, (128, 64, 64, 16, 8, 4))  is accepted.
+The architecture with  (617, (128, 64, 64, 16, 4, 4))  is accepted.
+The architecture with  (618, (128, 64, 64, 8, 8, 8))  is accepted.
+The architecture with  (619, (128, 64, 64, 8, 8, 4))  is accepted.
+The architecture with  (620, (128, 64, 64, 8, 4, 4))  is accepted.
+The architecture with  (621, (128, 64, 64, 4, 4, 4))  is accepted.
+The architecture with  (622, (128, 64, 32, 32, 32, 32))  is accepted.
+The architecture with  (623, (128, 64, 32, 32, 32, 16))  is accepted.
+The architecture with  (624, (128, 64, 32, 32, 32, 8))  is accepted.
+The architecture with  (625, (128, 64, 32, 32, 32, 4))  is accepted.
+The architecture with  (626, (128, 64, 32, 32, 16, 16))  is accepted.
+The architecture with  (627, (128, 64, 32, 32, 16, 8))  is accepted.
+The architecture with  (628, (128, 64, 32, 32, 16, 4))  is accepted.
+The architecture with  (629, (128, 64, 32, 32, 8, 8))  is accepted.
+The architecture with  (630, (128, 64, 32, 32, 8, 4))  is accepted.
+The architecture with  (631, (128, 64, 32, 32, 4, 4))  is accepted.
+The architecture with  (632, (128, 64, 32, 16, 16, 16))  is accepted.
+The architecture with  (633, (128, 64, 32, 16, 16, 8))  is accepted.
+The architecture with  (634, (128, 64, 32, 16, 16, 4))  is accepted.
+The architecture with  (635, (128, 64, 32, 16, 8, 8))  is accepted.
+The architecture with  (636, (128, 64, 32, 16, 8, 4))  is accepted.
+The architecture with  (637, (128, 64, 32, 16, 4, 4))  is accepted.
+The architecture with  (638, (128, 64, 32, 8, 8, 8))  is accepted.
+The architecture with  (639, (128, 64, 32, 8, 8, 4))  is accepted.
+The architecture with  (640, (128, 64, 32, 8, 4, 4))  is accepted.
+The architecture with  (641, (128, 64, 32, 4, 4, 4))  is accepted.
+The architecture with  (642, (128, 64, 16, 16, 16, 16))  is accepted.
+The architecture with  (643, (128, 64, 16, 16, 16, 8))  is accepted.
+The architecture with  (644, (128, 64, 16, 16, 16, 4))  is accepted.
+The architecture with  (645, (128, 64, 16, 16, 8, 8))  is accepted.
+The architecture with  (646, (128, 64, 16, 16, 8, 4))  is accepted.
+The architecture with  (647, (128, 64, 16, 16, 4, 4))  is accepted.
+The architecture with  (648, (128, 64, 16, 8, 8, 8))  is accepted.
+The architecture with  (649, (128, 64, 16, 8, 8, 4))  is accepted.
+The architecture with  (650, (128, 64, 16, 8, 4, 4))  is accepted.
+The architecture with  (651, (128, 64, 16, 4, 4, 4))  is accepted.
+The architecture with  (652, (128, 64, 8, 8, 8, 8))  is accepted.
+The architecture with  (653, (128, 64, 8, 8, 8, 4))  is accepted.
+The architecture with  (654, (128, 64, 8, 8, 4, 4))  is accepted.
+The architecture with  (655, (128, 64, 8, 4, 4, 4))  is accepted.
+The architecture with  (656, (128, 64, 4, 4, 4, 4))  is accepted.
+The architecture with  (657, (128, 32, 32, 32, 32, 32))  is accepted.
+The architecture with  (658, (128, 32, 32, 32, 32, 16))  is accepted.
+The architecture with  (659, (128, 32, 32, 32, 32, 8))  is accepted.
+The architecture with  (660, (128, 32, 32, 32, 32, 4))  is accepted.
+The architecture with  (661, (128, 32, 32, 32, 16, 16))  is accepted.
+The architecture with  (662, (128, 32, 32, 32, 16, 8))  is accepted.
+The architecture with  (663, (128, 32, 32, 32, 16, 4))  is accepted.
+The architecture with  (664, (128, 32, 32, 32, 8, 8))  is accepted.
+The architecture with  (665, (128, 32, 32, 32, 8, 4))  is accepted.
+The architecture with  (666, (128, 32, 32, 32, 4, 4))  is accepted.
+The architecture with  (667, (128, 32, 32, 16, 16, 16))  is accepted.
+The architecture with  (668, (128, 32, 32, 16, 16, 8))  is accepted.
+The architecture with  (669, (128, 32, 32, 16, 16, 4))  is accepted.
+The architecture with  (670, (128, 32, 32, 16, 8, 8))  is accepted.
+The architecture with  (671, (128, 32, 32, 16, 8, 4))  is accepted.
+The architecture with  (672, (128, 32, 32, 16, 4, 4))  is accepted.
+The architecture with  (673, (128, 32, 32, 8, 8, 8))  is accepted.
+The architecture with  (674, (128, 32, 32, 8, 8, 4))  is accepted.
+The architecture with  (675, (128, 32, 32, 8, 4, 4))  is accepted.
+The architecture with  (676, (128, 32, 32, 4, 4, 4))  is accepted.
+The architecture with  (677, (128, 32, 16, 16, 16, 16))  is accepted.
+The architecture with  (678, (128, 32, 16, 16, 16, 8))  is accepted.
+The architecture with  (679, (128, 32, 16, 16, 16, 4))  is accepted.
+The architecture with  (680, (128, 32, 16, 16, 8, 8))  is accepted.
+The architecture with  (681, (128, 32, 16, 16, 8, 4))  is accepted.
+The architecture with  (682, (128, 32, 16, 16, 4, 4))  is accepted.
+The architecture with  (683, (128, 32, 16, 8, 8, 8))  is accepted.
+The architecture with  (684, (128, 32, 16, 8, 8, 4))  is accepted.
+The architecture with  (685, (128, 32, 16, 8, 4, 4))  is accepted.
+The architecture with  (686, (128, 32, 16, 4, 4, 4))  is accepted.
+The architecture with  (687, (128, 32, 8, 8, 8, 8))  is accepted.
+The architecture with  (688, (128, 32, 8, 8, 8, 4))  is accepted.
+The architecture with  (689, (128, 32, 8, 8, 4, 4))  is accepted.
+The architecture with  (690, (128, 32, 8, 4, 4, 4))  is accepted.
+The architecture with  (691, (128, 32, 4, 4, 4, 4))  is accepted.
+The architecture with  (692, (128, 16, 16, 16, 16, 16))  is accepted.
+The architecture with  (693, (128, 16, 16, 16, 16, 8))  is accepted.
+The architecture with  (694, (128, 16, 16, 16, 16, 4))  is accepted.
+The architecture with  (695, (128, 16, 16, 16, 8, 8))  is accepted.
+The architecture with  (696, (128, 16, 16, 16, 8, 4))  is accepted.
+The architecture with  (697, (128, 16, 16, 16, 4, 4))  is accepted.
+The architecture with  (698, (128, 16, 16, 8, 8, 8))  is accepted.
+The architecture with  (699, (128, 16, 16, 8, 8, 4))  is accepted.
+The architecture with  (700, (128, 16, 16, 8, 4, 4))  is accepted.
+The architecture with  (701, (128, 16, 16, 4, 4, 4))  is accepted.
+The architecture with  (702, (128, 16, 8, 8, 8, 8))  is accepted.
+The architecture with  (703, (128, 16, 8, 8, 8, 4))  is accepted.
+The architecture with  (704, (128, 16, 8, 8, 4, 4))  is accepted.
+The architecture with  (705, (128, 16, 8, 4, 4, 4))  is accepted.
+The architecture with  (706, (128, 16, 4, 4, 4, 4))  is accepted.
+The architecture with  (707, (128, 8, 8, 8, 8, 8))  is accepted.
+The architecture with  (708, (128, 8, 8, 8, 8, 4))  is accepted.
+The architecture with  (709, (128, 8, 8, 8, 4, 4))  is accepted.
+The architecture with  (710, (128, 8, 8, 4, 4, 4))  is accepted.
+The architecture with  (711, (128, 8, 4, 4, 4, 4))  is accepted.
+The architecture with  (712, (128, 4, 4, 4, 4, 4))  is accepted.
+The architecture with  (713, (64, 64, 64, 64, 64, 64))  is accepted.
+The architecture with  (714, (64, 64, 64, 64, 64, 32))  is accepted.
+The architecture with  (715, (64, 64, 64, 64, 64, 16))  is accepted.
+The architecture with  (716, (64, 64, 64, 64, 64, 8))  is accepted.
+The architecture with  (717, (64, 64, 64, 64, 64, 4))  is accepted.
+The architecture with  (718, (64, 64, 64, 64, 32, 32))  is accepted.
+The architecture with  (719, (64, 64, 64, 64, 32, 16))  is accepted.
+The architecture with  (720, (64, 64, 64, 64, 32, 8))  is accepted.
+The architecture with  (721, (64, 64, 64, 64, 32, 4))  is accepted.
+The architecture with  (722, (64, 64, 64, 64, 16, 16))  is accepted.
+The architecture with  (723, (64, 64, 64, 64, 16, 8))  is accepted.
+The architecture with  (724, (64, 64, 64, 64, 16, 4))  is accepted.
+The architecture with  (725, (64, 64, 64, 64, 8, 8))  is accepted.
+The architecture with  (726, (64, 64, 64, 64, 8, 4))  is accepted.
+The architecture with  (727, (64, 64, 64, 64, 4, 4))  is accepted.
+The architecture with  (728, (64, 64, 64, 32, 32, 32))  is accepted.
+The architecture with  (729, (64, 64, 64, 32, 32, 16))  is accepted.
+The architecture with  (730, (64, 64, 64, 32, 32, 8))  is accepted.
+The architecture with  (731, (64, 64, 64, 32, 32, 4))  is accepted.
+The architecture with  (732, (64, 64, 64, 32, 16, 16))  is accepted.
+The architecture with  (733, (64, 64, 64, 32, 16, 8))  is accepted.
+The architecture with  (734, (64, 64, 64, 32, 16, 4))  is accepted.
+The architecture with  (735, (64, 64, 64, 32, 8, 8))  is accepted.
+The architecture with  (736, (64, 64, 64, 32, 8, 4))  is accepted.
+The architecture with  (737, (64, 64, 64, 32, 4, 4))  is accepted.
+The architecture with  (738, (64, 64, 64, 16, 16, 16))  is accepted.
+The architecture with  (739, (64, 64, 64, 16, 16, 8))  is accepted.
+The architecture with  (740, (64, 64, 64, 16, 16, 4))  is accepted.
+The architecture with  (741, (64, 64, 64, 16, 8, 8))  is accepted.
+The architecture with  (742, (64, 64, 64, 16, 8, 4))  is accepted.
+The architecture with  (743, (64, 64, 64, 16, 4, 4))  is accepted.
+The architecture with  (744, (64, 64, 64, 8, 8, 8))  is accepted.
+The architecture with  (745, (64, 64, 64, 8, 8, 4))  is accepted.
+The architecture with  (746, (64, 64, 64, 8, 4, 4))  is accepted.
+The architecture with  (747, (64, 64, 64, 4, 4, 4))  is accepted.
+The architecture with  (748, (64, 64, 32, 32, 32, 32))  is accepted.
+The architecture with  (749, (64, 64, 32, 32, 32, 16))  is accepted.
+The architecture with  (750, (64, 64, 32, 32, 32, 8))  is accepted.
+The architecture with  (751, (64, 64, 32, 32, 32, 4))  is accepted.
+The architecture with  (752, (64, 64, 32, 32, 16, 16))  is accepted.
+The architecture with  (753, (64, 64, 32, 32, 16, 8))  is accepted.
+The architecture with  (754, (64, 64, 32, 32, 16, 4))  is accepted.
+The architecture with  (755, (64, 64, 32, 32, 8, 8))  is accepted.
+The architecture with  (756, (64, 64, 32, 32, 8, 4))  is accepted.
+The architecture with  (757, (64, 64, 32, 32, 4, 4))  is accepted.
+The architecture with  (758, (64, 64, 32, 16, 16, 16))  is accepted.
+The architecture with  (759, (64, 64, 32, 16, 16, 8))  is accepted.
+The architecture with  (760, (64, 64, 32, 16, 16, 4))  is accepted.
+The architecture with  (761, (64, 64, 32, 16, 8, 8))  is accepted.
+The architecture with  (762, (64, 64, 32, 16, 8, 4))  is accepted.
+The architecture with  (763, (64, 64, 32, 16, 4, 4))  is accepted.
+The architecture with  (764, (64, 64, 32, 8, 8, 8))  is accepted.
+The architecture with  (765, (64, 64, 32, 8, 8, 4))  is accepted.
+The architecture with  (766, (64, 64, 32, 8, 4, 4))  is accepted.
+The architecture with  (767, (64, 64, 32, 4, 4, 4))  is accepted.
+The architecture with  (768, (64, 64, 16, 16, 16, 16))  is accepted.
+The architecture with  (769, (64, 64, 16, 16, 16, 8))  is accepted.
+The architecture with  (770, (64, 64, 16, 16, 16, 4))  is accepted.
+The architecture with  (771, (64, 64, 16, 16, 8, 8))  is accepted.
+The architecture with  (772, (64, 64, 16, 16, 8, 4))  is accepted.
+The architecture with  (773, (64, 64, 16, 16, 4, 4))  is accepted.
+The architecture with  (774, (64, 64, 16, 8, 8, 8))  is accepted.
+The architecture with  (775, (64, 64, 16, 8, 8, 4))  is accepted.
+The architecture with  (776, (64, 64, 16, 8, 4, 4))  is accepted.
+The architecture with  (777, (64, 64, 16, 4, 4, 4))  is accepted.
+The architecture with  (778, (64, 64, 8, 8, 8, 8))  is accepted.
+The architecture with  (779, (64, 64, 8, 8, 8, 4))  is accepted.
+The architecture with  (780, (64, 64, 8, 8, 4, 4))  is accepted.
+The architecture with  (781, (64, 64, 8, 4, 4, 4))  is accepted.
+The architecture with  (782, (64, 64, 4, 4, 4, 4))  is accepted.
+The architecture with  (783, (64, 32, 32, 32, 32, 32))  is accepted.
+The architecture with  (784, (64, 32, 32, 32, 32, 16))  is accepted.
+The architecture with  (785, (64, 32, 32, 32, 32, 8))  is accepted.
+The architecture with  (786, (64, 32, 32, 32, 32, 4))  is accepted.
+The architecture with  (787, (64, 32, 32, 32, 16, 16))  is accepted.
+The architecture with  (788, (64, 32, 32, 32, 16, 8))  is accepted.
+The architecture with  (789, (64, 32, 32, 32, 16, 4))  is accepted.
+The architecture with  (790, (64, 32, 32, 32, 8, 8))  is accepted.
+The architecture with  (791, (64, 32, 32, 32, 8, 4))  is accepted.
+The architecture with  (792, (64, 32, 32, 32, 4, 4))  is accepted.
+The architecture with  (793, (64, 32, 32, 16, 16, 16))  is accepted.
+The architecture with  (794, (64, 32, 32, 16, 16, 8))  is accepted.
+The architecture with  (795, (64, 32, 32, 16, 16, 4))  is accepted.
+The architecture with  (796, (64, 32, 32, 16, 8, 8))  is accepted.
+The architecture with  (797, (64, 32, 32, 16, 8, 4))  is accepted.
+The architecture with  (798, (64, 32, 32, 16, 4, 4))  is accepted.
+The architecture with  (799, (64, 32, 32, 8, 8, 8))  is accepted.
+The architecture with  (800, (64, 32, 32, 8, 8, 4))  is accepted.
+The architecture with  (801, (64, 32, 32, 8, 4, 4))  is accepted.
+The architecture with  (802, (64, 32, 32, 4, 4, 4))  is accepted.
+The architecture with  (803, (64, 32, 16, 16, 16, 16))  is accepted.
+The architecture with  (804, (64, 32, 16, 16, 16, 8))  is accepted.
+The architecture with  (805, (64, 32, 16, 16, 16, 4))  is accepted.
+The architecture with  (806, (64, 32, 16, 16, 8, 8))  is accepted.
+The architecture with  (807, (64, 32, 16, 16, 8, 4))  is accepted.
+The architecture with  (808, (64, 32, 16, 16, 4, 4))  is accepted.
+The architecture with  (809, (64, 32, 16, 8, 8, 8))  is accepted.
+The architecture with  (810, (64, 32, 16, 8, 8, 4))  is accepted.
+The architecture with  (811, (64, 32, 16, 8, 4, 4))  is accepted.
+The architecture with  (812, (64, 32, 16, 4, 4, 4))  is accepted.
+The architecture with  (813, (64, 32, 8, 8, 8, 8))  is accepted.
+The architecture with  (814, (64, 32, 8, 8, 8, 4))  is accepted.
+The architecture with  (815, (64, 32, 8, 8, 4, 4))  is accepted.
+The architecture with  (816, (64, 32, 8, 4, 4, 4))  is accepted.
+The architecture with  (817, (64, 32, 4, 4, 4, 4))  is accepted.
+The architecture with  (818, (64, 16, 16, 16, 16, 16))  is accepted.
+The architecture with  (819, (64, 16, 16, 16, 16, 8))  is accepted.
+The architecture with  (820, (64, 16, 16, 16, 16, 4))  is accepted.
+The architecture with  (821, (64, 16, 16, 16, 8, 8))  is accepted.
+The architecture with  (822, (64, 16, 16, 16, 8, 4))  is accepted.
+The architecture with  (823, (64, 16, 16, 16, 4, 4))  is accepted.
+The architecture with  (824, (64, 16, 16, 8, 8, 8))  is accepted.
+The architecture with  (825, (64, 16, 16, 8, 8, 4))  is accepted.
+The architecture with  (826, (64, 16, 16, 8, 4, 4))  is accepted.
+The architecture with  (827, (64, 16, 16, 4, 4, 4))  is accepted.
+The architecture with  (828, (64, 16, 8, 8, 8, 8))  is accepted.
+The architecture with  (829, (64, 16, 8, 8, 8, 4))  is accepted.
+The architecture with  (830, (64, 16, 8, 8, 4, 4))  is accepted.
+The architecture with  (831, (64, 16, 8, 4, 4, 4))  is accepted.
+The architecture with  (832, (64, 16, 4, 4, 4, 4))  is accepted.
+The architecture with  (833, (64, 8, 8, 8, 8, 8))  is accepted.
+The architecture with  (834, (64, 8, 8, 8, 8, 4))  is accepted.
+The architecture with  (835, (64, 8, 8, 8, 4, 4))  is accepted.
+The architecture with  (836, (64, 8, 8, 4, 4, 4))  is accepted.
+The architecture with  (837, (64, 8, 4, 4, 4, 4))  is accepted.
+The architecture with  (838, (64, 4, 4, 4, 4, 4))  is accepted.
+The architecture with  (839, (32, 32, 32, 32, 32, 32))  is accepted.
+The architecture with  (840, (32, 32, 32, 32, 32, 16))  is accepted.
+The architecture with  (841, (32, 32, 32, 32, 32, 8))  is accepted.
+The architecture with  (842, (32, 32, 32, 32, 32, 4))  is accepted.
+The architecture with  (843, (32, 32, 32, 32, 16, 16))  is accepted.
+The architecture with  (844, (32, 32, 32, 32, 16, 8))  is accepted.
+The architecture with  (845, (32, 32, 32, 32, 16, 4))  is accepted.
+The architecture with  (846, (32, 32, 32, 32, 8, 8))  is accepted.
+The architecture with  (847, (32, 32, 32, 32, 8, 4))  is accepted.
+The architecture with  (848, (32, 32, 32, 32, 4, 4))  is accepted.
+The architecture with  (849, (32, 32, 32, 16, 16, 16))  is accepted.
+The architecture with  (850, (32, 32, 32, 16, 16, 8))  is accepted.
+The architecture with  (851, (32, 32, 32, 16, 16, 4))  is accepted.
+The architecture with  (852, (32, 32, 32, 16, 8, 8))  is accepted.
+The architecture with  (853, (32, 32, 32, 16, 8, 4))  is accepted.
+The architecture with  (854, (32, 32, 32, 16, 4, 4))  is accepted.
+The architecture with  (855, (32, 32, 32, 8, 8, 8))  is accepted.
+The architecture with  (856, (32, 32, 32, 8, 8, 4))  is accepted.
+The architecture with  (857, (32, 32, 32, 8, 4, 4))  is accepted.
+The architecture with  (858, (32, 32, 32, 4, 4, 4))  is accepted.
+The architecture with  (859, (32, 32, 16, 16, 16, 16))  is accepted.
+The architecture with  (860, (32, 32, 16, 16, 16, 8))  is accepted.
+The architecture with  (861, (32, 32, 16, 16, 16, 4))  is accepted.
+The architecture with  (862, (32, 32, 16, 16, 8, 8))  is accepted.
+The architecture with  (863, (32, 32, 16, 16, 8, 4))  is accepted.
+The architecture with  (864, (32, 32, 16, 16, 4, 4))  is accepted.
+The architecture with  (865, (32, 32, 16, 8, 8, 8))  is accepted.
+The architecture with  (866, (32, 32, 16, 8, 8, 4))  is accepted.
+The architecture with  (867, (32, 32, 16, 8, 4, 4))  is accepted.
+The architecture with  (868, (32, 32, 16, 4, 4, 4))  is accepted.
+The architecture with  (869, (32, 32, 8, 8, 8, 8))  is accepted.
+The architecture with  (870, (32, 32, 8, 8, 8, 4))  is accepted.
+The architecture with  (871, (32, 32, 8, 8, 4, 4))  is accepted.
+The architecture with  (872, (32, 32, 8, 4, 4, 4))  is accepted.
+The architecture with  (873, (32, 32, 4, 4, 4, 4))  is accepted.
+The architecture with  (874, (32, 16, 16, 16, 16, 16))  is accepted.
+The architecture with  (875, (32, 16, 16, 16, 16, 8))  is accepted.
+The architecture with  (876, (32, 16, 16, 16, 16, 4))  is accepted.
+The architecture with  (877, (32, 16, 16, 16, 8, 8))  is accepted.
+The architecture with  (878, (32, 16, 16, 16, 8, 4))  is accepted.
+The architecture with  (879, (32, 16, 16, 16, 4, 4))  is accepted.
+The architecture with  (880, (32, 16, 16, 8, 8, 8))  is accepted.
+The architecture with  (881, (32, 16, 16, 8, 8, 4))  is accepted.
+The architecture with  (882, (32, 16, 16, 8, 4, 4))  is accepted.
+The architecture with  (883, (32, 16, 16, 4, 4, 4))  is accepted.
+The architecture with  (884, (32, 16, 8, 8, 8, 8))  is accepted.
+The architecture with  (885, (32, 16, 8, 8, 8, 4))  is accepted.
+The architecture with  (886, (32, 16, 8, 8, 4, 4))  is accepted.
+The architecture with  (887, (32, 16, 8, 4, 4, 4))  is accepted.
+The architecture with  (888, (32, 16, 4, 4, 4, 4))  is accepted.
+The architecture with  (889, (32, 8, 8, 8, 8, 8))  is accepted.
+The architecture with  (890, (32, 8, 8, 8, 8, 4))  is accepted.
+The architecture with  (891, (32, 8, 8, 8, 4, 4))  is accepted.
+The architecture with  (892, (32, 8, 8, 4, 4, 4))  is accepted.
+The architecture with  (893, (32, 8, 4, 4, 4, 4))  is accepted.
+The architecture with  (894, (32, 4, 4, 4, 4, 4))  is accepted.
+The architecture with  (895, (16, 16, 16, 16, 16, 16))  is accepted.
+The architecture with  (896, (16, 16, 16, 16, 16, 8))  is accepted.
+The architecture with  (897, (16, 16, 16, 16, 16, 4))  is accepted.
+The architecture with  (898, (16, 16, 16, 16, 8, 8))  is accepted.
+The architecture with  (899, (16, 16, 16, 16, 8, 4))  is accepted.
+The architecture with  (900, (16, 16, 16, 16, 4, 4))  is accepted.
+The architecture with  (901, (16, 16, 16, 8, 8, 8))  is accepted.
+The architecture with  (902, (16, 16, 16, 8, 8, 4))  is accepted.
+The architecture with  (903, (16, 16, 16, 8, 4, 4))  is accepted.
+The architecture with  (904, (16, 16, 16, 4, 4, 4))  is accepted.
+The architecture with  (905, (16, 16, 8, 8, 8, 8))  is accepted.
+The architecture with  (906, (16, 16, 8, 8, 8, 4))  is accepted.
+The architecture with  (907, (16, 16, 8, 8, 4, 4))  is accepted.
+The architecture with  (908, (16, 16, 8, 4, 4, 4))  is accepted.
+The architecture with  (909, (16, 16, 4, 4, 4, 4))  is accepted.
+The architecture with  (910, (16, 8, 8, 8, 8, 8))  is accepted.
+The architecture with  (911, (16, 8, 8, 8, 8, 4))  is accepted.
+The architecture with  (912, (16, 8, 8, 8, 4, 4))  is accepted.
+The architecture with  (913, (16, 8, 8, 4, 4, 4))  is accepted.
+The architecture with  (914, (16, 8, 4, 4, 4, 4))  is accepted.
+The architecture with  (915, (16, 4, 4, 4, 4, 4))  is accepted.
+The architecture with  (916, (8, 8, 8, 8, 8, 8))  is accepted.
+The architecture with  (917, (8, 8, 8, 8, 8, 4))  is accepted.
+The architecture with  (918, (8, 8, 8, 8, 4, 4))  is accepted.
+The architecture with  (919, (8, 8, 8, 4, 4, 4))  is accepted.
+The architecture with  (920, (8, 8, 4, 4, 4, 4))  is accepted.
+The architecture with  (921, (8, 4, 4, 4, 4, 4))  is accepted.
+The architecture with  (922, (4, 4, 4, 4, 4, 4))  is accepted.
+[INFO] Saved top 5 classifier metadata at C:\Users\tesfaye\PycharmProjects\SmartApplianceManager\development_system\json\top5_classifiers.json
+[DEBUG] THE BEST 5 CLASSIFIERS  :  [{'uuid': 'NN920', 'train_error': 0.06, 'validation_error': 0.06, 'layers': 6, 'neurons': 32, 'hidden_layers_structure': (8, 8, 4, 4, 4, 4), 'error_difference': 0.0, 'overfitting_threshold': 0.25}, {'uuid': 'NN79', 'train_error': 0.1, 'validation_error': 0.08, 'layers': 3, 'neurons': 24, 'hidden_layers_structure': (8, 8, 8), 'error_difference': 0.020000000000000004, 'overfitting_threshold': 0.25}, {'uuid': 'NN423', 'train_error': 0.0575, 'validation_error': 0.08, 'layers': 5, 'neurons': 80, 'hidden_layers_structure': (32, 32, 8, 4, 4), 'error_difference': 0.0225, 'overfitting_threshold': 0.25}, {'uuid': 'NN443', 'train_error': 0.05, 'validation_error': 0.08, 'layers': 5, 'neurons': 64, 'hidden_layers_structure': (16, 16, 16, 8, 8), 'error_difference': 0.03, 'overfitting_threshold': 0.25}, {'uuid': 'NN783', 'train_error': 0.1575, 'validation_error': 0.1, 'layers': 6, 'neurons': 224, 'hidden_layers_structure': (64, 32, 32, 32, 32, 32), 'error_difference': 0.057499999999999996, 'overfitting_threshold': 0.25}]
+[INFO] Saved top 5 classifier metadata at C:\Users\tesfaye\PycharmProjects\SmartApplianceManager\development_system\json\top5_classifiers.json
+[INFO] Running test phase...
+[INFO] Test report generated. Waiting for DS evaluation.
+Test Passed!
+
+Process finished with exit code 0
