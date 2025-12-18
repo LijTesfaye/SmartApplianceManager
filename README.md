@@ -1,6 +1,9 @@
 # SmartApplianceManager
 Project for **Software Systems Engineering** course at University of Pisa, MSc Computer Engineering.
 
+# Development System Log
+If you see a log like [this]() one while running the development system then it is a complete bliss!
+
 # Source
 https://github.com/AlessioSmn/HomeAppliancePowerManager
 
